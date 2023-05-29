@@ -1,9 +1,9 @@
 # IntegracaoSistemasInformacao
 Trabalhos feitos em: Integração de Sistemas de Informação - Conceitos (UFCD 5420)
 
-Nome: Ana Rita Eleutério Amaral
+**Nome:** Ana Rita Eleutério Amaral
 
-Trabalho: 
+**Trabalho:** 
 "Restaurant Order Management": 
 Create a program that simulates a restaurant order management system. 
 It should allow customers to place orders, modify orders, and track the status of each order (e.g., pending, preparing, served). 
