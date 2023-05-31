@@ -6,7 +6,7 @@
 
 **Nome:** Ana Rita Eleutério Amaral
 
----
+***
 
 **Trabalho:** 
 "Restaurant Order Management": 
@@ -17,7 +17,7 @@ Must use: classes, data structures, and clear separation of responsibilities.
 
 Language: C#
 
----
+___
 
 **Notas:**  
 Consultar: [Markdown Guide, Basic Syntax](https://www.markdownguide.org/basic-syntax).
