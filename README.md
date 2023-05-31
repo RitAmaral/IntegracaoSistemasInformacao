@@ -2,7 +2,11 @@
 
 ### Trabalhos feitos em: Integração de Sistemas de Informação - Conceitos (UFCD 5420)
 
+---
+
 **Nome:** Ana Rita Eleutério Amaral
+
+---
 
 **Trabalho:** 
 "Restaurant Order Management": 
@@ -13,6 +17,7 @@ Must use: classes, data structures, and clear separation of responsibilities.
 
 Language: C#
 
+---
 
-**Notas:** 
+**Notas:**  
 Consultar: [Markdown Guide, Basic Syntax](https://www.markdownguide.org/basic-syntax).
