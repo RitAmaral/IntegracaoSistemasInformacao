@@ -9,8 +9,8 @@ ___
 
 **Tarefas:**
 
-* [Task 01](Task01)
-* [Task 02](Task02)
+* [Task 01](Task01), aula: 29/05/2023
+* [Task 02](Task02), aula: 05/06/2023
 
 ---
 
