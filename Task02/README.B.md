@@ -24,4 +24,5 @@ Nessa pasta deverá existir um ficheiro "README.B.md" com a descrição das esco
 
 ## Resposta da Task 02.B
 
+Na Task 02.A identifiquei 4 classes, 1 superclasse (Jar) e 3 subclasses (Golf Balls, Pebbles, Sand). A superclasse Jar, que representa a vida, é uma classe **abstrata** pois possui características que vão ser herdadas pelas subclasses, como o nome, a data de nascimento, a nacionalidade e o género. As subclasses são usadas para adicionar outras características mais específicas da vida da pessoa. Por exemplo, na subclasse Golf Balls ficamos a saber mais detalhes sobre a vida de uma pessoa, se tem família, amigos, saúde e hobbies.
 
