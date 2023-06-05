@@ -10,14 +10,15 @@ Implementar a estrutura de classes de uma forma organizada aplicando se possíve
 
 A execução do programa deve apresentar evidências da utilização das carateristicas que distinguem o padrão utilizado (ou padrões utilizados)
 
-*NOTA: Podem utilizar como ponto de partida algumas ideias partilhadas nos exemplos apresentados .*
+*NOTA: Podem utilizar como ponto de partida algumas ideias partilhadas nos [exemplos apresentados](https://github.com/pinjoa/ufcd5420_CESAE_SDEV03_BRA/tree/main/Task02/Conceitos).*
 
 ---
 
 ## Método para responder ao desafio:
 
 Na resposta da tarefa no TEAMS deverá ser fornecido o URL para uma pasta "Task02" (do repositório individual no github), local onde deve ser criada a solução em C#;
-Nessa pasta deverá existir um ficheiro "README.B.md" com a descrição das escolhas feitas para responder ao desafio proposto. (documento escrito em notação Markdown)
+
+Nessa pasta deverá existir um ficheiro "README.B.md" com a descrição das escolhas feitas para responder ao desafio proposto.
 
 ---
 
