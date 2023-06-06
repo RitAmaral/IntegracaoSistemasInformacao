@@ -24,5 +24,15 @@ Nessa pasta deverá existir um ficheiro "README.B.md" com a descrição das esco
 
 ## Resposta da Task 02.B
 
-Na Task 02.A identifiquei 4 classes, 1 superclasse (Jar) e 3 subclasses (Golf Balls, Pebbles, Sand). A superclasse Jar, que representa a vida, é uma classe **abstrata** pois possui características que vão ser herdadas pelas subclasses, como o nome, a data de nascimento, a nacionalidade e o género. As subclasses são usadas para adicionar outras características mais específicas da vida da pessoa. Por exemplo, na subclasse Golf Balls ficamos a saber mais detalhes sobre a vida de uma pessoa, se tem família, amigos, saúde e hobbies.
+**Padrão de Design Identificado:** Factory
+
+Na Task 02.A identifiquei 4 classes, 1 superclasse (Jar) e 3 subclasses (Golf Balls, Pebbles, Sand). A superclasse Jar, que representa a vida, é uma classe **abstrata** pois possui características que vão ser herdadas pelas subclasses, como o nome, a data de nascimento, a nacionalidade e o género. As subclasses são usadas para adicionar outras características mais específicas da vida da pessoa. Por exemplo, na subclasse Golf Balls ficamos a saber mais detalhes sobre a vida de uma pessoa, se tem família, amigos, saúde e hobbies. Na subclasse Pebbles, ficamos a saber mais detalhes como o carro, o trabalho e se tem casa. Na última subclasse, Sand, ficamos a aprender sobre se a pessoa perde muito tempo a procrastinar ou em brigas/zangas.
+
+Como não podemos instanciar objetos de superclasses, podemos fazê-lo a partir das suas subclasses, e adicionar também as tais características específicas (mencionadas em cima) das subclasses. Para isto acontecer devemos criar um processo de fabricação específico, usando o **padrão de desenho Factory**.
+
+Depois de criadas as 4 classes (jar, golf balls, pebbles, sand) com as respetivas propriedades e métodos, foi criada a classe FabricaJar com um método (CriarJar), que é usado para preencher o Jar. Este método vai receber como parâmetro o elemento que vai ser utilizado num bloco switch, indicando o que vai ser colocado no Jar.
+
+Por último, criei a classe JarException que herda de ApplicationException, e coloquei um construtor com um parâmetro message que recebe de ApplicationException. Depois coloquei no switch case um default para aparecer um erro. E chamei-o no programa usando o bloco try / catch.
+
+*Nota: alterações feitas desde a task01: não criei a lista passions, coloquei apenas a propriedade passions. Alterei também o tipo DateTime para DateOnly nas propriedades do Jar.*
 
