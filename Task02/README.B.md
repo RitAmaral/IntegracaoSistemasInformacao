@@ -34,5 +34,10 @@ Depois de criadas as 4 classes (jar, golf balls, pebbles, sand) com as respetiva
 
 Por último, criei a classe JarException que herda de ApplicationException, e coloquei um construtor com um parâmetro message que recebe de ApplicationException. Depois coloquei no switch case um default para aparecer um erro. E chamei-o no programa usando o bloco try / catch.
 
-*Nota: alterações feitas desde a task01: não criei a lista passions, coloquei apenas a propriedade passions. Alterei também o tipo DateTime para DateOnly nas propriedades do Jar.*
+---
+
+*Nota: alterações feitas desde a task01:* 
+
+- *não criei a lista passions, coloquei apenas a propriedade passions.*
+- *alterei também o tipo DateTime para DateOnly nas propriedades do Jar.*
 
