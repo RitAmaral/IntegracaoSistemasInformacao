@@ -15,3 +15,5 @@
 ## Resposta da Task 03
 
 **Padrão de Arquitetura:** MVC (Model-View-Controller)
+
+O MVC é um padrão de arquitetura usado para implementar interfaces de utilizador (view), dados (model) e um controlador da lógica (controller).
