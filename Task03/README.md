@@ -8,7 +8,7 @@
 
 ## Objetivo:
 
-
+Pegar numa parte do projeto que fizemos (app saúde menos distante), e aplicar o MVC. (Usar os dados da classe médico ou utente?)
 
 ---
 
@@ -17,3 +17,4 @@
 **Padrão de Arquitetura:** MVC (Model-View-Controller)
 
 O MVC é um padrão de arquitetura usado para implementar interfaces de utilizador (view), dados (model) e um controlador da lógica (controller).
+
