@@ -36,6 +36,8 @@ Depois de criadas as 4 classes (jar, golf balls, pebbles, sand) com as respetiva
 
 Por último, criei a classe JarException que herda de ApplicationException, e coloquei um construtor com um parâmetro message que recebe da classe ApplicationException. Depois coloquei no *switch case* um default para aparecer a seguinte mensagem caso haja um erro: *"Erro: Tipo de elemento inválido neste Jar. Elementos disponíveis: GolfBalls, Pebbles e Sand."*. E chamei-o no programa usando o bloco *try / catch*.
 
+**Solução em C#:** [Jar Life](JarLife)
+
 ---
 
 *Nota: alterações feitas desde a task01:* 
