@@ -14,4 +14,4 @@
 
 ## Resposta da Task 03
 
-**Padrões de Arquitetura:** MVC (Model-View-Controller)
+**Padrão de Arquitetura:** MVC (Model-View-Controller)
