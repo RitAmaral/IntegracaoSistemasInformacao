@@ -10,6 +10,8 @@
 
 Pegar numa parte do projeto que fizemos (app saúde menos distante), e aplicar o MVC. (Usar os dados da classe médico ou utente?)
 
+**Material de apoio:** [Task 03](https://github.com/pinjoa/ufcd5420_CESAE_SDEV03_BRA/tree/main/Task03)
+
 ---
 
 ## Resposta da Task 03
