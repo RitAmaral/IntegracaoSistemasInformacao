@@ -23,7 +23,7 @@ Aplicar as estratégias abordadas em contexto de aula para reescrever o código 
 
 ## Resposta da Task 03
 
-**Padrão de Arquitetura:** MVC (Model-View-Controller)
+**Padrão de Arquitetura:** MVC (Model-View-Controller).
 
 O MVC é um padrão de arquitetura usado para implementar interfaces de utilizador (view), dados (model) e um controlador que comunica com o model e a view (controller).
 Escolhi as classes [Colaborador](https://github.com/RitAmaral/TrabalhoAplicacao/blob/main/TPApp1/TPApp1/Entities/Colaborador.cs) e [Médico](https://github.com/RitAmaral/TrabalhoAplicacao/blob/main/TPApp1/TPApp1/Entities/Medico.cs) do [projeto de POO](https://github.com/RitAmaral/TrabalhoAplicacao/tree/main/TPApp1/TPApp1) para alicar o padrão de MVC.
