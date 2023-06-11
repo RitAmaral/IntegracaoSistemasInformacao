@@ -26,9 +26,9 @@ Aplicar as estratégias abordadas em contexto de aula para reescrever o código 
 **Padrão de Arquitetura:** MVC (Model-View-Controller).
 
 O MVC é um padrão de arquitetura usado para implementar interfaces de utilizador (view), dados (model) e um controlador que comunica com o model e a view (controller).
-Escolhi as classes [Colaborador](https://github.com/RitAmaral/TrabalhoAplicacao/blob/main/TPApp1/TPApp1/Entities/Colaborador.cs) e [Médico](https://github.com/RitAmaral/TrabalhoAplicacao/blob/main/TPApp1/TPApp1/Entities/Medico.cs) do [projeto de POO](https://github.com/RitAmaral/TrabalhoAplicacao/tree/main/TPApp1/TPApp1) para alicar o padrão de MVC.
+Escolhi as classes [Colaborador](https://github.com/RitAmaral/TrabalhoAplicacao/blob/main/TPApp1/TPApp1/Entities/Colaborador.cs) e [Médico](https://github.com/RitAmaral/TrabalhoAplicacao/blob/main/TPApp1/TPApp1/Entities/Medico.cs) do [projeto de POO](https://github.com/RitAmaral/TrabalhoAplicacao/tree/main/TPApp1/TPApp1) para alicar o padrão de arquitetura MVC.
 
-Comecei por criar 3 pastas: Controller, Model, View, e depois as respetivas classes do Colaborador e do Médico em cada pasta. Comecei por escrever os models/modelos do Colaborador e do Médico, onde coloquei as propriedades e métodos de *ObterDetalhes* onde coloquei alguns dados sobre o Colaborador e o Médico, respetivamente.
+Comecei por criar 3 pastas: Controller, Model, View. Depois criei 2 ficheiros para cada pasta, um ficheiro correspondente à classe do Colaborador e outro correspondente à classe do Médico, com o objetivo de dividir as responsabilidades de cada classe pelo agrupamento correto (Controller, Model, View). Comecei por escrever os models/modelos do Colaborador e do Médico, onde coloquei as propriedades e métodos de *ObterDetalhes* onde coloquei alguns dados sobre o Colaborador e o Médico, respetivamente.
 
 Depois, nas classes View, coloquei mais métodos onde vai aparecer a informação que vai ser mostrada ao utilizador no programa. Por exemplo na classe MedicoView, criei o método *EscreverDetalhesMedico* que recebe os seguintes parâmetros: string funcao, int id, string nome, entre outros. Dentro do método escrevo: 
 
@@ -44,7 +44,7 @@ Depois, nas classes View, coloquei mais métodos onde vai aparecer a informaçã
 
 Este código é o que vai aparecer no terminal do programa quando chamarmos o método *MostrarDetalhes* que vai ser criado na classe do MedicoController. Neste método vamos buscar o método *ObterDetalhes* que foi criado na classe MedicoModel, e vamos buscar o método *EscreverDetalhesMedico* criado na classe MedicoView. 
 
-Depois, no programa, são criados objetos das 3 classes:
+Depois, no programa, são criados objetos das 3 classes (medmodel, medview e med22, sendo que este último recebe como parâmetros o medmodel e medview):
 
 `MedicoModel medmodel = new MedicoModel();`
 
