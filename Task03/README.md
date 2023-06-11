@@ -44,7 +44,15 @@ Depois, nas classes View, coloquei mais métodos onde vai aparecer a informaçã
 
 Este código é o que vai aparecer no terminal do programa quando chamarmos o método *MostrarDetalhes* que vai ser criado na classe do MedicoController. Neste método vamos buscar o método *ObterDetalhes* que foi criado na classe MedicoModel, e vamos buscar o método *EscreverDetalhesMedico* criado na classe MedicoView. 
 
-Depois, no programa, são criados objetos das 3 classes (exemplo: `MedicoModel medmodel = new MedicoModel();`), e chamamos então o método *MostrarDetalhes*: `med22.MostrarDetalhes(1)`, que nos mostra isto no terminal:
+Depois, no programa, são criados objetos das 3 classes:
+
+`MedicoModel medmodel = new MedicoModel();`
+
+`MedicoView medview = new MedicoView();`
+
+`MedicoController med22 = new MedicoController(medmodel, medview);`
+
+E então chamamos então o método *MostrarDetalhes*: `med22.MostrarDetalhes(1)`, que nos mostra isto no terminal:
 
 ![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/c29e7074-a536-464a-9710-dfe114b76be4)
 
