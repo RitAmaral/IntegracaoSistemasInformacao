@@ -1,0 +1,30 @@
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\bin\Debug\net6.0\Task03MVC.exe
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\bin\Debug\net6.0\Task03MVC.deps.json
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\bin\Debug\net6.0\Task03MVC.runtimeconfig.json
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\bin\Debug\net6.0\Task03MVC.dll
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\bin\Debug\net6.0\Task03MVC.pdb
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.csproj.AssemblyReference.cache
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.AssemblyInfoInputs.cache
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.AssemblyInfo.cs
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.csproj.CoreCompileInputs.cache
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.dll
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\refint\Task03MVC.dll
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.pdb
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\Task03MVC.genruntimeconfig.cache
+C:\Users\Cesae\Desktop\Ana Rita\Integracao de Sistemas de Informacao\Trabalhos ISI\IntegracaoSistemasInformacao\Task03\Task03MVC\obj\Debug\net6.0\ref\Task03MVC.dll
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.csproj.AssemblyReference.cache
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.AssemblyInfoInputs.cache
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.AssemblyInfo.cs
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.csproj.CoreCompileInputs.cache
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.dll
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\refint\Task03MVC.dll
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.pdb
+C:\Users\Utilizador\Downloads\Task03MVC\bin\Debug\net6.0\Task03MVC.exe
+C:\Users\Utilizador\Downloads\Task03MVC\bin\Debug\net6.0\Task03MVC.deps.json
+C:\Users\Utilizador\Downloads\Task03MVC\bin\Debug\net6.0\Task03MVC.runtimeconfig.json
+C:\Users\Utilizador\Downloads\Task03MVC\bin\Debug\net6.0\Task03MVC.dll
+C:\Users\Utilizador\Downloads\Task03MVC\bin\Debug\net6.0\Task03MVC.pdb
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\Task03MVC.genruntimeconfig.cache
+C:\Users\Utilizador\Downloads\Task03MVC\obj\Debug\net6.0\ref\Task03MVC.dll
