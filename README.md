@@ -19,4 +19,6 @@ ___
 ---
 
 **Notas:**  
-Consultar: [Markdown Guide, Basic Syntax](https://www.markdownguide.org/basic-syntax).
+Consultar: 
+* [Markdown Guide, Basic Syntax](https://www.markdownguide.org/basic-syntax)
+* [GitHub Enunciados](https://github.com/pinjoa/ufcd5420_CESAE_SDEV03_BRA/tree/main)
