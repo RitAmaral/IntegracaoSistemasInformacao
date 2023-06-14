@@ -12,6 +12,7 @@ ___
 * [Task 01](Task01), aula: 29/05/2023
 * [Task 02](Task02), aula: 05/06/2023
 * [Task 03](Task03), aula: 07/06/2023
+* [Work 01](Work01), aula: 14/06/2023
 
 ---
 
