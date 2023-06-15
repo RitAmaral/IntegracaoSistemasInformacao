@@ -12,11 +12,15 @@ deverá incluir todas as aprendizagens até ao momento. O “único” output da
 
 ### Método para responder ao desafio: 
 
-Na resposta da tarefa no TEAMS deverá ser fornecido o URL para uma pasta "Task04" (do repositório individual no github), local onde deve ser criada a solução em C#; 
-Deverá ser fornecido a parte do código escolhida para se analisar as opções e comparar as funcionalidades originais com o resultado apresentado; 
-Nessa pasta também deverá existir um ficheiro "README.md" com a descrição das escolhas feitas para responder ao desafio proposto.
+- Na resposta da tarefa no TEAMS deverá ser fornecido o URL para uma pasta "Task04" (do repositório individual no github), local onde deve ser criada a solução em C#; 
+
+- Deverá ser fornecido a parte do código escolhida para se analisar as opções e comparar as funcionalidades originais com o resultado apresentado; 
+
+- Nessa pasta também deverá existir um ficheiro "README.md" com a descrição das escolhas feitas para responder ao desafio proposto.
 
 ---
+
+### Resposta: 
 
 Nesta task, tive como base o exercício feito na aula de dia 14/06/2023 - [Agenda 01](https://github.com/pinjoa/ufcd5420_CESAE_SDEV03_BRA/tree/main/Work01/Agenda_v01).
 
