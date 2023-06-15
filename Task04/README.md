@@ -17,5 +17,12 @@ Nessa pasta também deverá existir um ficheiro "README.md" com a descrição da
 
 ---
 
+Nesta task, tive como base o exercício feito na aula de dia 14/06/2023 - [Agenda 01](https://github.com/pinjoa/ufcd5420_CESAE_SDEV03_BRA/tree/main/Work01/Agenda_v01).
 
+Comecei por criar os diferentes projetos / bibliotecas de classes: 
+- BO = business logic
+- BL = business logic
+- DAL = data access layer
+
+Depois dentro de cada projeto fui criando diferentes classes (BR = business rule, DAO = data access object) e até um Enum (Tipo).
 
