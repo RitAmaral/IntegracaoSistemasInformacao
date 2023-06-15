@@ -7,18 +7,20 @@ namespace Anotacao_BO
         public string Nome { get; set; }
         public string Aula { get; set; }
         public Tipo Tipo { get; set; }
+        public bool Revisado { get; set; }
 
         //Construtores
-        public AnotacoesAula(string nome, string aula, Tipo tipo) 
+        public AnotacoesAula(string nome, string aula, Tipo tipo, bool revisado) 
         {
             Nome = nome;
             Aula = aula;
             Tipo = tipo;
+            Revisado = revisado;
         }
 
         public override string? ToString()
         {
-            return $"{Nome}\t|\t{Aula}\t|\t{Tipo}\n";
+            return $"{Revisado}\t|\t{Nome}\t|\t{Aula}\t|\t{Tipo}\n";
         }
     }
 }
