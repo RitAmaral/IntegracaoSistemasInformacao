@@ -14,11 +14,26 @@ internal class Program
 
         Compromisso novo1 = gestaoCompromissos.NovoCompromisso(15, 2, "João Carlos", "Intervalo");
         Compromisso novo2 = gestaoCompromissos.NovoCompromisso(16, 4, "João Carlos", "Intervalo");
+        Compromisso novo3 = gestaoCompromissos.NovoCompromisso(15, 2, "João", "Atividade");
+        Compromisso novo4 = gestaoCompromissos.NovoCompromisso(16, 1, "Orlando", "Trabalho de grupo");
+        Compromisso novo5 = gestaoCompromissos.NovoCompromisso(17, 3, "Joaquim", "Mini+Amendoins");
 
         gestaoCompromissos.AdicionarCompromisso(novo1);
         gestaoCompromissos.AdicionarCompromisso(novo2);
+        gestaoCompromissos.AdicionarCompromisso(novo3);
+        gestaoCompromissos.AdicionarCompromisso(novo4);
+        gestaoCompromissos.AdicionarCompromisso(novo5);
 
-        foreach (var item in gestaoCompromissos.GetCompromissoList())
+        MostrarLista(gestaoCompromissos.GetCompromissoList());
+
+        if (gestaoCompromissos.ApagarCompromisso("Orlando"))
+            MostrarLista(gestaoCompromissos.GetCompromissoList());
+
+
+    }
+    private static void MostrarLista(List<string> lista)
+    {
+        foreach (var item in lista)
         {
             Console.WriteLine(item.ToString());
         }

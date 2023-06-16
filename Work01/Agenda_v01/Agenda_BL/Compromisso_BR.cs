@@ -41,5 +41,13 @@ namespace Agenda_BL //adicionar referencia de projeto (em cima de dependencias_B
         {
             return _CompromissoDao.GetCompromissoList(); 
         }
+        public bool ApagarCompromisso(string nome)
+        {
+            return _CompromissoDao.ApagarCompromisso(nome);
+        }
+        public bool ExisteCliente(string nome)
+        {
+            return _CompromissoDao.ExisteCliente(nome);
+        }
     }
 }

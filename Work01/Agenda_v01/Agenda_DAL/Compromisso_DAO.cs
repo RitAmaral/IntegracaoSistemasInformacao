@@ -17,6 +17,30 @@ namespace Agenda_DAL
             _compromissoList.Add(compromisso); //adiciona à lista
             return true;
         }
+        public bool ApagarCompromisso(string nome)
+        {
+            Compromisso? obj = null;
+            string tNome = nome.Trim();
+            if (ExisteCliente(tNome, out obj))
+            {
+                if (obj == null) return false;
+                return _compromissoList.Remove(obj);
+            }
+            return false;
+        }
+        public bool ExisteCliente(string nome) //verificar se existe cliente (pelo nome)
+        {
+            Compromisso? obj = null;
+            return ExisteCliente(nome, out obj);
+        }
+        public bool ExisteCliente(string nome, out Compromisso? obj) //pelo nome
+        {
+            obj = null;
+            string tNome = nome.Trim();
+            if (tNome.Length == 0) return false;
+            obj = _compromissoList.Find(c => c.Nome.CompareTo(tNome) == 0);
+            return !ReferenceEquals(obj, null);
+        }
         public List<string> GetCompromissoList()
         {
             List<string> list = new List<string>();
