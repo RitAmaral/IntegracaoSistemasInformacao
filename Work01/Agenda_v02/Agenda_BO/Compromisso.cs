@@ -4,7 +4,7 @@ using ToolBox;
 
 namespace Agenda_BO
 {
-    [Serializable]
+    [Serializable] // estrutura para serialização
     public struct RegistoCompromisso
     {
         [XmlAnyElement]
@@ -55,7 +55,7 @@ namespace Agenda_BO
         //Métodos
         public RegistoCompromisso RegistoCompromisso()
         {
-            RegistoCompromisso registo;
+            RegistoCompromisso registo = new RegistoCompromisso();
             registo.Id = Id;
             registo.Data = Data;
             registo.Nome = Nome;
