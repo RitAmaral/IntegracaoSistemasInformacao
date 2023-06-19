@@ -14,8 +14,13 @@ ___
 * [Task 01](Task01), aula: 29/05/2023 - Conceitos
 * [Task 02](Task02), aula: 05/06/2023 - Conceitos: Padrão de Design - Singleton, Abstract, Factory
 * [Task 03](Task03), aula: 07/06/2023 - Conceitos: Padrão de Arquitetura - MVC
-* [Work 01](Work01), aula: 14/06/2023
-* [Task 04](Task04), aula: 15/06/2023
+* [Work 01](Work01), aula: 14/06/2023, 19/06/2023
+  - [Agenda v1](Work01/Agenda_v01)
+  - [Agenda v2](Work01/Agenda_v02) - Início da aula sobre xml e serialização
+  - [Agenda v3](Work01/Agenda_v03) - Exercício finalizado: serialização
+* [Task 04](Task04), aula: 15/06/2023, 19/06/2023
+  - [Anotações v1](Task04/Anotacoes_v01)
+  - [Anotações v2](Task04/Anotacoes_v02) - serialização
 
 ---
 
