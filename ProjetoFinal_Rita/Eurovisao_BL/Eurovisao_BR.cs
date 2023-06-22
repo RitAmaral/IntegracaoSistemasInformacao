@@ -13,7 +13,7 @@ namespace Eurovisao_BL
         }
 
         //Métodos
-        public Eurovisao NovoConcorrente(string pais, string nomeRepresentante, string nomeMusica, int pontosJuri, int pontosTelevoto, int classificacaoFinal)
+        public Eurovisao NovoConcorrente(string pais, string nomeRepresentante, string nomeMusica, int pontosJuri, int pontosTelevoto, int totalPontos, int classificacaoFinal)
         {
             string tPais = pais.Trim();
             if (tPais.Length == 0) throw new ArgumentNullException(nameof(tPais));
@@ -23,9 +23,10 @@ namespace Eurovisao_BL
             if (tNomeMusica.Length == 0) throw new ArgumentNullException(nameof(tNomeMusica));
             int tPontosJuri = pontosJuri;
             int tPontosTelevoto = pontosTelevoto;
+            int tTotalPontos = totalPontos;
             int tClassificacaoFinal = classificacaoFinal;
 
-            return new Eurovisao(tPais, tNomeRepresentante, tNomeMusica, tPontosJuri, tPontosTelevoto, tClassificacaoFinal);
+            return new Eurovisao(tPais, tNomeRepresentante, tNomeMusica, tPontosJuri, tPontosTelevoto, tTotalPontos, tClassificacaoFinal);
         }
 
         public bool AdicionarConcorrente(Eurovisao concorrente)
@@ -44,6 +45,14 @@ namespace Eurovisao_BL
         public bool ExisteConcorrente(string pais)
         {
             return _eurovisaoDAO.ExisteConcorrente(pais);
+        }
+        public void ExportarDados()
+        {
+            _eurovisaoDAO.ExportarDados();
+        }
+        public bool ImportarDados()
+        {
+            return _eurovisaoDAO.ImportarDados();
         }
 
     }

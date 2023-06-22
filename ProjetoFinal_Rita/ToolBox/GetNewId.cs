@@ -20,5 +20,9 @@
                 return instancia;
             }
         }
+        public void ResetProximo(int novoInicioContador) // necessário executar quando carregamos a base de dados XML, para evitar duplicação de Id's
+        {
+            contador = novoInicioContador;
+        }
     }
 }

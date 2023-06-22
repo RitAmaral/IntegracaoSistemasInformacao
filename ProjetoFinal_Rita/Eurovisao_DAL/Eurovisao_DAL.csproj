@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eurovisao_BO\Eurovisao_BO.csproj" />
+    <ProjectReference Include="..\Eurovisao_Constantes\Eurovisao_Constantes.csproj" />
+    <ProjectReference Include="..\SerializeTools\SerializeTools.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Eurovisao_Constantes\Eurovisao_Constantes.csproj" />
-    <ProjectReference Include="..\ToolBox\ToolBox.csproj" />
-  </ItemGroup>
-
 </Project>
