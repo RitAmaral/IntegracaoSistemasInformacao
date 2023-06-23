@@ -24,8 +24,6 @@ namespace Anotacao_DAL
         //Criação da lista
         //private List<AnotacoesAula> _anotacoesList;
         private AnotacoesBD _anotacoesList;
-        private DateTime _loaded; //variaveis adicionadas (_loaded e _modified) para o momento em que carreguei, e quando foi modificada
-        private DateTime _modified;
 
         public AnotacoesAula_DAO()
         {
@@ -41,7 +39,6 @@ namespace Anotacao_DAL
         public bool AdicionarAnotacao(RegistoAnotacao anotacao)
         { // um struct está sempre preenchido
             _anotacoesList.Items.Add(anotacao); //adiciona à lista
-            _modified = DateTime.Now;
             return true;
         }
         public List<string> GetAnotacoesList() 
@@ -63,7 +60,6 @@ namespace Anotacao_DAL
                 // apagar todos os registos com o nome igual ao "nome"
                 if (_anotacoesList.Items.RemoveAll(r => r.Nome.Equals(nome)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
                 {
-                    _modified = DateTime.Now;
                     return true;
                 }
             }
@@ -95,19 +91,17 @@ namespace Anotacao_DAL
             if (tIndex > -1)
             {
                 _anotacoesList.Items[tIndex] = anotacao.RegistoAnotacao();
-                _modified = DateTime.Now;
                 return true;
             }
             return false;
         }
         public void ExportarDados()
         {
-            if (_modified > _loaded || !File.Exists(Constantes.NomeXmlAnotacoes))
+            if (!File.Exists(Constantes.NomeXmlAnotacoes))
             {
                 try
                 {
                     ExportarXml(Constantes.NomeXmlAnotacoes);
-                    _modified = _loaded = DateTime.Now;
                 }
                 catch (Exception)
                 {
@@ -143,8 +137,6 @@ namespace Anotacao_DAL
                 try
                 {
                     _anotacoesList = XmlMethods.DeserializeXmlToObject<AnotacoesBD>(ficheiro);
-                    _loaded = DateTime.Now;
-                    _modified = DateTime.Now;
                     // uma proposta de solução para evitar duplicação de Id's
                     // estratégia para se atualizar o gerador de Id's
                     if (_anotacoesList.Items.Count > 0)
