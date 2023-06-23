@@ -174,7 +174,7 @@ namespace Agenda_DAL
                         {
                             if (r.Id > tId) tId = r.Id;
                         }
-                        GetNewId.Instancia.ResetProximo(tId);
+                        GetNewId.Instancia.ResetProximo(tId); //se editar o ficheiro xml e colocar um id para 15, o proximo id a ser criado é o 16
                     }
                     return true;
                 }
