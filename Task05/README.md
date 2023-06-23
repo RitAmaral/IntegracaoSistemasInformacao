@@ -9,3 +9,11 @@ Deverá incluir todas as aprendizagens até ao momento. O “único” output da
 
 ![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/dce2d556-99f3-4354-b9cf-cabd737ba4e0)
 
+---
+
+### Resposta Task 05:
+
+Em [anotações v2](Task05/Anotacoes_v02) foi criada uma biblioteca de classes e uma classe chamada XmlMethods, onde foram criados 4 métodos, 2 para serializar e 
+2 para desserializar. Foram colocados `[Serializable]` em AnotacoesAula e em Tipo (um enum, por isso tem de ser sempre colocado, se não, dá erro). 
+Em AnotacoesAula foi ainda criado um struct RegistoAnotacao porque não se pode serializar uma classe. Coloquei `[XmlElement]` nas propriedades/atributos 
+do struct.
