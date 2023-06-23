@@ -12,5 +12,5 @@ Nas semi-finais não há votação juri.. colocar 0 pontos?
 
 Criar lista1 semi-final 1, lista2 semi-final 2. Apagar da listas das semi-finais os paises eliminados. Criar lista da final? É possível ser feito isto? Se não, fazer só lista da final.
 
-Classe criada: eurovisao. Mas devo criar classe semi final 1, semi final 2 e final? Posso criar lista para semi final 1, outra para semi final 2 e outra para a final.
+Classe criada: eurovisao. Criar lista para semi final 1, outra para semi final 2 e outra para a final.
 Mudar de (element name) concorrentes para concorrente no DAO.
