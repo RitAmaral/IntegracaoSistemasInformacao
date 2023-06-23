@@ -22,5 +22,5 @@ Depois foram inseridos nas classes **AnotacoesAula_BR** e **AnotacoesAula_DAO** 
 Dentro da classe **AnotacoesAula_DAO** foi também criado uma classe AnotacoesBD que vai representar a base de dados, por isso colocamos em cima `[XmlRoot(ElementName = "Anotacoes")]`. Dentro desta classe foi também criado o método AnotacoesBD(), que é composto por uma lista de anotações - RegistoAnotacao.
 Também foi alterada a lista que foi criada na Task04 (`private List<AnotacoesAula> _anotacoesList;` para: `private AnotacoesBD _anotacoesList;`).
 
-
+**Nota:** O output da solução está no Projeto chamado “Task04App”.
   
