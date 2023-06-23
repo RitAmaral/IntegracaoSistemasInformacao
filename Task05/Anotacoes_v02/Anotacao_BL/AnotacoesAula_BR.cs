@@ -38,6 +38,11 @@ namespace Anotacao_BL
         {
             return _AnotacoesDao.ApagarAnotacao(nome);
         }
+        public bool ModificarAnotacao(int id, AnotacoesAula anotacao)
+        {
+            if (ReferenceEquals(anotacao, null)) return false;
+            return _AnotacoesDao.ModificarAnotacao(id, anotacao);
+        }
         public bool ExisteAnotacao(string nome)
         {
             return _AnotacoesDao.ExisteAnotacao(nome);

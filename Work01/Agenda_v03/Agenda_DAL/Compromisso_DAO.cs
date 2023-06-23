@@ -120,6 +120,7 @@ namespace Agenda_DAL
             }
             return list;
         }
+
         public void ExportarDados() //exporta a estrutura para xml
         {
             if (_modified > _loaded || !File.Exists(Constantes.NomeXmlCompromissos))

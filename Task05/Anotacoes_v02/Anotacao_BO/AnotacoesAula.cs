@@ -47,6 +47,7 @@ namespace Anotacao_BO
             Tipo = registo.Tipo;
             Revisado= registo.Revisado;
         }
+        //Métodos
         public RegistoAnotacao RegistoAnotacao() //metodo
         {
             return new RegistoAnotacao

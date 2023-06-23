@@ -88,6 +88,18 @@ namespace Anotacao_DAL
             }
             return false;
         }
+        public bool ModificarAnotacao(int id, AnotacoesAula anotacao)
+        {
+            if (ReferenceEquals(anotacao, null)) return false;
+            int tIndex = _anotacoesList.Items.FindIndex(r => r.Id.Equals(id));
+            if (tIndex > -1)
+            {
+                _anotacoesList.Items[tIndex] = anotacao.RegistoAnotacao();
+                _modified = DateTime.Now;
+                return true;
+            }
+            return false;
+        }
         public void ExportarDados()
         {
             if (_modified > _loaded || !File.Exists(Constantes.NomeXmlAnotacoes))

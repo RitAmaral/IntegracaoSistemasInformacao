@@ -8,14 +8,12 @@ internal class Program
     private static void Main(string[] args)
     {
         AnotacoesAula_BR gestaoAnotacoes = new AnotacoesAula_BR();
-        Console.WriteLine("REVISADO\t|\tID\t|\tNOME\t|\tAULA\t|\tTIPO");
-        Console.WriteLine();
-
+        AnotacoesAula novo1 = gestaoAnotacoes.NovaAnotacao("O problema da distribuição", "MATEMÁTICA 630", Enum.Parse<Tipo>("Seminario"), false);
         if (!gestaoAnotacoes.ImportarDados())
         {
             Console.WriteLine("Os dados não foram carregados.");
-            Console.WriteLine("Adicionar os dois objetos");
-            gestaoAnotacoes.AdicionarAnotacao(gestaoAnotacoes.NovaAnotacao("O problema da distribuição", "MATEMÁTICA 630", Enum.Parse<Tipo>("Seminario"), false));
+            Console.WriteLine("A adicionar os objetos....");
+            gestaoAnotacoes.AdicionarAnotacao(novo1);
             gestaoAnotacoes.AdicionarAnotacao(gestaoAnotacoes.NovaAnotacao("Economia Americana Pós-Guerra", "HISTÓRIA 230", Enum.Parse<Tipo>("Sessao"), true));
             gestaoAnotacoes.AdicionarAnotacao(gestaoAnotacoes.NovaAnotacao("Kazuo Ishiguro: Debate", "LITERATURA 455", Enum.Parse <Tipo>("GrupoDeEstudo"), false));
             gestaoAnotacoes.AdicionarAnotacao(gestaoAnotacoes.NovaAnotacao("Formas Barrocas: Kandinsky", "ARTE 399", Enum.Parse<Tipo>("Leitura"), true));
@@ -27,17 +25,29 @@ internal class Program
             Console.WriteLine("Dados carregados!");
         }
 
-        Console.WriteLine("Listar os objetos");
+        Console.WriteLine("Listar os objetos:");
+        Console.WriteLine("REVISADO\t|\tID\t|\tNOME\t|\tAULA\t|\tTIPO");
+        Console.WriteLine("-----------------------------------------------------------------------------------------");
         MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
-        Console.WriteLine("Apagar o objeto com o nome \"Formas Barrocas: Kandinsky\"");
+        Console.WriteLine("A apagar o objeto com o nome \"Formas Barrocas: Kandinsky\"");
         if (gestaoAnotacoes.ApagarAnotacao("Formas Barrocas: Kandinsky"))
             MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
-        Console.WriteLine("Listar os objetos");
+        Console.WriteLine();
+        Console.WriteLine($"A verificar a existência do objeto com o nome \"{novo1.Nome}\"...");
+        if (gestaoAnotacoes.ExisteAnotacao(novo1.Nome))
+        {
+            Console.WriteLine($"A modificar o ID do objeto com o nome \"{novo1.Nome}\"...");
+            novo1.Id = 10;
+            gestaoAnotacoes.ModificarAnotacao(1, novo1);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Listar os objetos:");
         MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
-        Console.WriteLine("Serializar a lista");
+        Console.WriteLine("A serializar a lista.....");
         gestaoAnotacoes.ExportarDados();
 
     }
