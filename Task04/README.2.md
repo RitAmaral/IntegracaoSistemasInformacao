@@ -13,9 +13,4 @@ O XmlSerializer cria ficheiros C# e compila-os em .dll ficheiros para efetuar es
 
 *[Mais informação sobre Serialização XML](https://learn.microsoft.com/pt-pt/dotnet/standard/serialization/introducing-xml-serialization)*
 
----
 
-Em [anotações v2](Task04/Anotacoes_v02) foi criada uma biblioteca de classes e uma classe chamada XmlMethods, onde foram criados 4 métodos, 2 para serializar e 
-2 para desserializar. Foram colocados `[Serializable]` em AnotacoesAula e em Tipo (um enum, por isso tem de ser sempre colocado, se não, dá erro). 
-Em AnotacoesAula foi ainda criado um struct RegistoAnotacao porque não se pode serializar uma classe. Coloquei `[XmlElement]` nas propriedades/atributos 
-do struct.
