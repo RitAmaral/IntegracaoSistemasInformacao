@@ -65,7 +65,7 @@ namespace Anotacao_DAL
             }
             return false;
         }
-        public bool ExisteAnotacao(string nome)
+        public bool ExisteAnotacao(string nome) //existe anotação pelo nome
         {
             AnotacoesAula? obj = null;
             return ExisteAnotacao(nome, out obj);
@@ -84,7 +84,7 @@ namespace Anotacao_DAL
             }
             return false;
         }
-        public bool ModificarAnotacao(int id, AnotacoesAula anotacao)
+        public bool ModificarAnotacao(int id, AnotacoesAula anotacao) //modifica id da anotação
         {
             if (ReferenceEquals(anotacao, null)) return false;
             int tIndex = _anotacoesList.Items.FindIndex(r => r.Id.Equals(id));
@@ -95,7 +95,7 @@ namespace Anotacao_DAL
             }
             return false;
         }
-        public void ExportarDados()
+        public void ExportarDados() //exporta dados
         {
             if (!File.Exists(Constantes.NomeXmlAnotacoes))
             {
@@ -126,7 +126,7 @@ namespace Anotacao_DAL
             }
             return false;
         }
-        public bool ImportarDados()
+        public bool ImportarDados() //importa dados
         {
             return ImportarXml(Constantes.NomeXmlAnotacoes);
         }
