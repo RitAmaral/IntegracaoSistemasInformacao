@@ -20,7 +20,8 @@ ___
   - [Agenda v3](Work01/Agenda_v03) - Exercício finalizado: serialização
 * [Task 04](Task04), aula: 15/06/2023, 19/06/2023
   - [Anotações v1](Task04/Anotacoes_v01)
-  - [Anotações v2](Task04/Anotacoes_v02) - serialização
+* [Task 05](Task05/Anotacoes_v02), aula: 23/06/2023 - serialização
+* [Projeto Final](ProjetoFinal_Rita)
 
 ---
 
