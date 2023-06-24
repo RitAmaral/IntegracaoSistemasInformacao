@@ -33,7 +33,7 @@ namespace Eurovisao_DAL
             _eurovisaoList.Items.Add(concorrente.RegistoConcorrentes());
             return true;
         }
-        public bool AdicionarAnotacao(RegistoConcorrente concorrente)
+        public bool AdicionarConcorrente(RegistoConcorrente concorrente)
         { 
             _eurovisaoList.Items.Add(concorrente); //adiciona à lista
             return true;

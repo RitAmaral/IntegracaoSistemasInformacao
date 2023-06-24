@@ -1,9 +1,12 @@
 ﻿using System.Xml.Serialization;
 using ToolBox;
 using Eurovisao_Constantes;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace Eurovisao_BO
 {
+    /*
     [Serializable]
     public struct RegistoConcorrente
     {
@@ -20,29 +23,29 @@ namespace Eurovisao_BO
         [XmlElement]
         public int PontosTelevoto { get; set; }
         [XmlElement]
-        public int TotalPontos { get; set; }
-        [XmlElement]
         public int ClassificacaoFinal { get; set; }
 
         public override string? ToString()
         {
-            return $"{ID}\t|{Pais}\t|{NomeRepresentante}\t|{NomeMusica}\t|{PontosJuri}\t|{PontosTelevoto}\t|{TotalPontos}\t|{ClassificacaoFinal}";
+            return $"{ID}\t|{Pais}\t|{NomeRepresentante}\t|{NomeMusica}\t|{PontosJuri}\t|{PontosTelevoto}\t|{ClassificacaoFinal}";
         }
     }
+    */
     public class Eurovisao
     {
-        //Propriedades
+        // Propriedades
         public int ID { get; set; }
         public string Pais { get; set; }
         public string NomeRepresentante { get; set; }
         public string NomeMusica { get; set; }
         public int PontosJuri { get; set; }
         public int PontosTelevoto { get; set; }
-        public int TotalPontos { get; set; }
+        public int TotalPontos => PontosJuri + PontosTelevoto; // Propriedade - Read-only: só leitura, que get/recebe PontosJuri + PontosTelevoto
         public int ClassificacaoFinal { get; set; }
 
-        //Construtores
-        public Eurovisao(string pais, string nomeRepresentante, string nomeMusica, int pontosJuri, int pontosTelevoto, int totalPontos, int classificacaoFinal)
+
+        // Construtores
+        public Eurovisao(string pais, string nomeRepresentante, string nomeMusica, int pontosJuri, int pontosTelevoto, int classificacaoFinal)
         {
             ID = GetNewId.Instancia.Proximo;
             Pais = pais;
@@ -50,19 +53,18 @@ namespace Eurovisao_BO
             NomeMusica = nomeMusica;
             PontosJuri = pontosJuri;
             PontosTelevoto = pontosTelevoto;
-            TotalPontos = totalPontos;
             ClassificacaoFinal = classificacaoFinal;
         }
-        public Eurovisao(RegistoConcorrente registo) 
-        { 
+        /*
+        public Eurovisao(RegistoConcorrente registo)
+        {
             ID = registo.ID;
             Pais = registo.Pais;
-            NomeRepresentante= registo.NomeRepresentante;
+            NomeRepresentante = registo.NomeRepresentante;
             NomeMusica = registo.NomeMusica;
-            PontosJuri= registo.PontosJuri;
+            PontosJuri = registo.PontosJuri;
             PontosTelevoto = registo.PontosTelevoto;
-            TotalPontos = registo.TotalPontos;
-            ClassificacaoFinal= registo.ClassificacaoFinal;
+            ClassificacaoFinal = registo.ClassificacaoFinal;
         }
         //Métodos
 
@@ -76,12 +78,11 @@ namespace Eurovisao_BO
                 NomeMusica = this.NomeMusica,
                 PontosJuri = this.PontosJuri,
                 PontosTelevoto = this.PontosTelevoto,
-                TotalPontos = this.TotalPontos,
                 ClassificacaoFinal = this.ClassificacaoFinal
             };
         }
-
-        public override string? ToString()
+        */
+        public override string ToString()
         {
             return $"{ID}\t|{Pais}\t|{NomeRepresentante}\t|{NomeMusica}\t|{PontosJuri}\t|{PontosTelevoto}\t|{TotalPontos}\t|{ClassificacaoFinal}";
         }
