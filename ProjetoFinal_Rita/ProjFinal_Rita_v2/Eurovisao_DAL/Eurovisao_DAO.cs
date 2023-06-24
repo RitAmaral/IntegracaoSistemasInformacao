@@ -40,13 +40,13 @@ namespace Eurovisao_DAL
             _eurovisaoList = new EurovisaoBD();
         }
         //Métodos
-        public bool AdicionarConcorrente(Eurovisao concorrente)
+        public bool AdicionarConcorrente(Eurovisao concorrente) //adiciona concorrente à lista
         {
-            _eurovisaoList.Items.Add(concorrente); //adiciona à lista
+            _eurovisaoList.Items.Add(concorrente);
             return true;
         }
 
-        public List<string> GetConcorrentesList()
+        public List<string> GetConcorrentesList() //mostra lista de concorrentes
         {
             List<string> list = new List<string>();
             foreach (Eurovisao concorrente in _eurovisaoList.Items)
@@ -56,7 +56,7 @@ namespace Eurovisao_DAL
             return list;
         }
 
-        public bool ApagarConcorrente(string pais)
+        public bool ApagarConcorrente(string pais) //apaga concorrente pelo nome do país que representa
         {
             string tPais = pais.Trim();
             Eurovisao concorrente = _eurovisaoList.Items.FirstOrDefault(e => e.Pais.Equals(tPais));
@@ -69,13 +69,13 @@ namespace Eurovisao_DAL
 
             return false;
         }
-        public bool ExisteConcorrente(string pais)
+        public bool ExisteConcorrente(string pais) //verifica se existe concorrente pelo nome do país
         {
             return _eurovisaoList.Items.Any(e => e.Pais.Equals(pais));
         }
-        public bool ExisteConcorrente(int iD)
+        public bool ExisteConcorrente(int id) //verifica se existe concorrente pelo id
         {
-            return _eurovisaoList.Items.Any(e => e.ID.Equals(iD));
+            return _eurovisaoList.Items.Any(e => e.ID.Equals(id));
         }
 
         public bool ModificarPontosJuri(int id, int pontosJuri) // modifica pontos do juri de um concorrente pelo id
@@ -84,7 +84,7 @@ namespace Eurovisao_DAL
             if (concorrente != null)
             {
                 concorrente.PontosJuri = pontosJuri;
-                AtualizarClassificacaoFinal();
+                AtualizarClassificacaoFinal(); //após alterar pontosJuri, vai ser atualizada a classificação final do concorrente
                 return true;
             }
             return false;
@@ -95,7 +95,7 @@ namespace Eurovisao_DAL
             if (concorrente != null)
             {
                 concorrente.PontosTelevoto = pontosTelevoto;
-                AtualizarClassificacaoFinal();
+                AtualizarClassificacaoFinal(); //após alterar pontosTelevoto, vai ser atualizada a classificação final do concorrente
                 return true;
             }
             return false;
@@ -103,7 +103,7 @@ namespace Eurovisao_DAL
 
         private void AtualizarClassificacaoFinal() //atualiza classificação final com base na modificação dos pontos de juri e televoto
         {
-            _eurovisaoList.Items = _eurovisaoList.Items.OrderByDescending(c => c.PontosJuri + c.PontosTelevoto).ToList();
+            _eurovisaoList.Items = _eurovisaoList.Items.OrderByDescending(c => c.TotalPontos).ToList(); //ordena a lista por ordem descendente de TotalPontos.
             for (int i = 0; i < _eurovisaoList.Items.Count; i++)
             {
                 _eurovisaoList.Items[i].ClassificacaoFinal = i + 1;

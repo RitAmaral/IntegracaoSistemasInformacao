@@ -98,8 +98,8 @@ namespace Eurovisao_Console
             if (gestaoEurovisao.ExisteConcorrente(conc1.ID))
             {
                 Console.WriteLine($"\nA modificar os pontos do Juri do objeto com o id \"{conc1.ID}\"...");
-                conc1.PontosJuri = 10; //quero mudar os pontos juri para 10
-                gestaoEurovisao.ModificarPontosJuri(1, 10); //o novo1 tem o ID = 1, e vai passar para ID = 10
+                conc1.PontosJuri = 15; //quero mudar os pontos juri para 10
+                gestaoEurovisao.ModificarPontosJuri(1, 15); //o novo1 tem o ID = 1, e vai passar para ID = 10
             }
 
             /*--------------------------Se quiser alterar Pontos do Televoto:--------------------------------------*/
@@ -108,19 +108,19 @@ namespace Eurovisao_Console
             {
                 Console.WriteLine($"\nA modificar os pontos do Televoto do objeto com o id \"{conc1.ID}\"...");
                 conc1.PontosTelevoto = 20; //quero mudar os pontos juri para 10
-                gestaoEurovisao.ModificarPontosJuri(1, 20); //o novo1 tem o ID = 1, e vai passar para ID = 10
+                gestaoEurovisao.ModificarPontosTelevoto(1, 20); //o novo1 tem o ID = 1, e vai passar para ID = 10
             }
 
             /*--------------------------Mostra lista atualizada da Eurovisão:-----------------------------------*/
 
-            Console.WriteLine("Lista atualizada:");
+            Console.WriteLine("\nLista atualizada:");
             Console.WriteLine("ID\t|Pais\t|Representante\t|Musica\t|Juri\t|Televoto\t|Total Pontos\t|Classificação Final");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
             MostrarLista(gestaoEurovisao.GetConcorrentesList());
 
 
         }
-        private static void MostrarLista(List<string> lista)
+        private static void MostrarLista(List<string> lista) //método responsável por mostrar a lista com todos os objetos (concorrentes)
         {
             foreach (var concorrente in lista)
             {
