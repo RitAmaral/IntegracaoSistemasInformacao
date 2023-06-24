@@ -1,16 +1,14 @@
 # Projeto Final
 
-### Tema: Implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão.
+## Tema: Implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão.
 
----
+### Versão 1
 
-#### Notas:
+Padrão de arquitetura: N-tier
 
-Colocar id (get new id (?)), nome pais string, nome representante string, nome música string, pontos juri int, pontos público int, total pontos int, classificação final int.
+Classe: Eurovisão
 
-Nas semi-finais não há votação juri.. colocar 0 pontos?
+Propriedades: id (get new id), nome pais string, nome representante string, nome música string, pontos juri int, pontos público int, total pontos int, classificação final int.
 
-Criar lista1 semi-final 1, lista2 semi-final 2. Apagar da listas das semi-finais os paises eliminados. Criar lista da final? É possível ser feito isto? Se não, fazer só lista da final.
+Uma lista com os 26 países da final, pontuações relativamente à final.
 
-Classe criada: eurovisao. Mas devo criar classe semi final 1, semi final 2 e final? Posso criar lista para semi final 1, outra para semi final 2 e outra para a final.
-Mudar de (element name) concorrentes para concorrente no DAO.
