@@ -4,7 +4,19 @@
 
 ![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/f1287a71-6e84-4375-a68b-eb19ddcab248)
 
-Padrão de arquitetura: N-tier
+**Padrão de arquitetura:** N-tier
+
+*Camada de Apresentação:* biblioteca de classes Eurovisao_Console - responsável pela interação com o utilizador, é a camada que mostra informações.
+
+*Business Logic:* biblioteca de classes Eurovisao_BL - é a camada da lógica que define classes e métodos (que interagem com a camada Data Access Layer) para lidar com as operações e regras de negócio relacionadas com os objetos da Eurovisão.
+
+*Data Access Layer:* biblioteca de classes Eurovisao_DAL - é a camada de dados que é responsável por aceder e manipular os dados. Contém métodos para executar operações nos objetos da classe Eurovisao (AdicionarConcorrente, ModificarPontos, ExisteConcorrente, ApagarConcorrente). 
+
+Neste projeto também foram criadas as seguintes biblitoecas de classes:
+
+- Eurovisao_Constantes - para ser possível a serialização
+- ToolBox - para ser possível atribuir um id automático
+- SerializeTools - para ser possível a serialização
 
 Classe: Eurovisão
 
