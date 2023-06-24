@@ -1,5 +1,8 @@
 # Integração de Sistemas de Informação
 
+![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/f2bd3178-e4eb-46f6-949a-0b2c20ea8e0b)
+
+
 ### Trabalhos feitos em: 
 * ### Integração de Sistemas de Informação - Conceitos (UFCD 5420)
 * ### Integração de Sistemas de Informação - Tecnologias e Níveis de Integração
