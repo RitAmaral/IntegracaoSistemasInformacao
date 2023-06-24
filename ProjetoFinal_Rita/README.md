@@ -8,7 +8,7 @@
 
 *Camada de Apresentação:* biblioteca de classes Eurovisao_Console - responsável pela interação com o utilizador, é a camada que mostra informações.
 
-*Business Logic:* biblioteca de classes Eurovisao_BL - é a camada da lógica que define classes e métodos (que interagem com a camada Data Access Layer) para lidar com as operações e regras de negócio relacionadas com os objetos da Eurovisão.
+*Business Logic:* biblioteca de classes Eurovisao_BL - é a camada da lógica e das regras de negócio, que define classes e métodos (que interagem com a camada Data Access Layer) para lidar com as operações e regras de negócio relacionadas com os objetos da Eurovisão.
 
 *Data Access Layer:* biblioteca de classes Eurovisao_DAL - é a camada de dados que é responsável por aceder e manipular os dados. Contém métodos para executar operações nos objetos da classe Eurovisao (AdicionarConcorrente, ModificarPontos, ExisteConcorrente, ApagarConcorrente). 
 
