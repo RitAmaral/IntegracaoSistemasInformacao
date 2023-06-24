@@ -10,19 +10,17 @@ namespace Eurovisao_DAL
     public class Eurovisao_DAO
     {
         [XmlRoot(ElementName = "Concorrentes")]
-        public class EurovisaoBD //criar classe, vai representar a base de dados; é composta por uma lista de anotações
+        public class EurovisaoBD //criar classe, vai representar a base de dados; é composta por uma lista de concorrentes
         {
             public EurovisaoBD()
             {
                 Items = new List<RegistoConcorrente>();
             }
 
-            [XmlElement(ElementName = "Concorrentes")]
+            [XmlElement(ElementName = "Concorrente")]
             public List<RegistoConcorrente> Items { get; set; }
         }
         private EurovisaoBD _eurovisaoList;
-        private DateTime _loaded; //variaveis adicionadas (_loaded e _modified) para o momento em que carreguei, e quando foi modificada
-        private DateTime _modified;
 
         public Eurovisao_DAO()
         {
@@ -33,13 +31,11 @@ namespace Eurovisao_DAL
         {
             if (ReferenceEquals(concorrente, null)) return false; //se enviar objeto nulo não vale a pena tar a perder tempo, logo return false
             _eurovisaoList.Items.Add(concorrente.RegistoConcorrentes());
-            _modified = DateTime.Now;
             return true;
         }
         public bool AdicionarAnotacao(RegistoConcorrente concorrente)
         { 
             _eurovisaoList.Items.Add(concorrente); //adiciona à lista
-            _modified = DateTime.Now;
             return true;
         }
         public List<string> GetConcorrentesList()
@@ -61,7 +57,6 @@ namespace Eurovisao_DAL
                 // apagar todos os registos com o nome igual ao "país"
                 if (_eurovisaoList.Items.RemoveAll(r => r.Pais.Equals(pais)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
                 {
-                    _modified = DateTime.Now;
                     return true;
                 }
             }
@@ -88,12 +83,11 @@ namespace Eurovisao_DAL
         }
         public void ExportarDados()
         {
-            if (_modified > _loaded || !File.Exists(Constantes.NomeXmlEurovisao))
+            if (!File.Exists(Constantes.NomeXmlEurovisao))
             {
                 try
                 {
                     ExportarXml(Constantes.NomeXmlEurovisao);
-                    _modified = _loaded = DateTime.Now;
                 }
                 catch (Exception)
                 {
@@ -129,8 +123,6 @@ namespace Eurovisao_DAL
                 try
                 {
                     _eurovisaoList = XmlMethods.DeserializeXmlToObject<EurovisaoBD>(ficheiro);
-                    _loaded = DateTime.Now;
-                    _modified = DateTime.Now;
                     // uma proposta de solução para evitar duplicação de Id's
                     // estratégia para se atualizar o gerador de Id's
                     if (_eurovisaoList.Items.Count > 0)
