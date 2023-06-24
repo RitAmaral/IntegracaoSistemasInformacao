@@ -1,10 +1,8 @@
 # Projeto Final
 
-### Tema: Implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão.
+## Tema: Implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão.
 
----
-
-#### Notas:
+- [Projeto Final v1]()
 
 Colocar id (get new id (?)), nome pais string, nome representante string, nome música string, pontos juri int, pontos público int, total pontos int, classificação final int.
 
