@@ -42,7 +42,7 @@ namespace Eurovisao_BL
         {
             return _eurovisaoDAO.ApagarConcorrente(pais);
         }
-        public bool ApagarConcClassificacaoFinal() //apaga concorrente pelo país
+        public bool ApagarConcClassificacaoFinal() //apaga concorrentes com menores pontuações
         {
             return _eurovisaoDAO.ApagarConcClassificacaoFinal();
         }
@@ -67,7 +67,10 @@ namespace Eurovisao_BL
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarPontosTelevoto(pontosTelevoto, concorrente);
         }
-
+        public bool AtualizarClassificacaoFinal()
+        {
+            return _eurovisaoDAO.AtualizarClassificacaoFinal();
+        }
         public void ExportarDados()
         {
             _eurovisaoDAO.ExportarDados();

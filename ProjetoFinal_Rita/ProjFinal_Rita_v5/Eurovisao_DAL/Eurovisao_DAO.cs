@@ -65,10 +65,10 @@ namespace Eurovisao_DAL
             }
             return false;
         }
-        public bool ApagarConcClassificacaoFinal()
+        public bool ApagarConcClassificacaoFinal() //apagar concorrentes com menores pontuações
         {
             int inicial = _eurovisaoList.Items.Count;
-            _eurovisaoList.Items.RemoveAll(concorrente => concorrente.ClassificacaoFinal >= 11);
+            _eurovisaoList.Items.RemoveAll(concorrente => concorrente.ClassificacaoFinal >= 11); //só passam 10 países há final, por isso eliminar os restantes
             int final = _eurovisaoList.Items.Count;
             return final < inicial;
         }
@@ -120,7 +120,7 @@ namespace Eurovisao_DAL
             return false;
         }
 
-        private void AtualizarClassificacaoFinal()
+        public bool AtualizarClassificacaoFinal() //se tiver modificado os pontos, este método atualiza a classificação final
         {
             _eurovisaoList.Items = _eurovisaoList.Items.OrderByDescending(c => c.PontosJuri + c.PontosTelevoto).ToList();
 
@@ -128,7 +128,9 @@ namespace Eurovisao_DAL
             {
                 var item = _eurovisaoList.Items[i];
                 item.ClassificacaoFinal = i + 1;
+                return true;
             }
+            return false;
         }
 
         public void ExportarDados()

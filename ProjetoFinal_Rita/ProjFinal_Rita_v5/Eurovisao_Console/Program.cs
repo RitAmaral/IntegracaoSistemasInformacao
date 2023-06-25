@@ -10,6 +10,8 @@ namespace Eurovisao_Console
             Console.WriteLine("BEM-VINDO À EUROVISÃO 2023!");
             Console.WriteLine("----------------------------\n");
 
+            /*-------------------------------Lista dos concorrentes da primeira semi-final--------------------------------*/
+
             Eurovisao_BR gestaoSemi1 = new Eurovisao_BR(); //nota: falta importar dados
 
             Eurovisao s1f1 = gestaoSemi1.NovoConcorrente("Finlândia", "Kaarija", "Cha Cha Cha", 0, 177, 1);
@@ -28,6 +30,29 @@ namespace Eurovisao_Console
             Eurovisao s1f14 = gestaoSemi1.NovoConcorrente("Azerbeijão", "TuralTuranX", "Tell Me More", 0, 4, 14);
             Eurovisao s1f15 = gestaoSemi1.NovoConcorrente("Malta", "The Busker", "Dance (Our Own Party)", 0, 3, 15);
 
+            if (!gestaoSemi1.ImportarDados()) //adicionar concorrentes da semi final 1 à lista e importa os dados
+            {
+                gestaoSemi1.AdicionarConcorrente(s1f1);
+                gestaoSemi1.AdicionarConcorrente(s1f2);
+                gestaoSemi1.AdicionarConcorrente(s1f3);
+                gestaoSemi1.AdicionarConcorrente(s1f4);
+                gestaoSemi1.AdicionarConcorrente(s1f5);
+                gestaoSemi1.AdicionarConcorrente(s1f6);
+                gestaoSemi1.AdicionarConcorrente(s1f7);
+                gestaoSemi1.AdicionarConcorrente(s1f8);
+                gestaoSemi1.AdicionarConcorrente(s1f9);
+                gestaoSemi1.AdicionarConcorrente(s1f10);
+                gestaoSemi1.AdicionarConcorrente(s1f11);
+                gestaoSemi1.AdicionarConcorrente(s1f12);
+                gestaoSemi1.AdicionarConcorrente(s1f13);
+                gestaoSemi1.AdicionarConcorrente(s1f14);
+                gestaoSemi1.AdicionarConcorrente(s1f15);
+            }
+            else
+            {
+                Console.WriteLine("Dados já previamente carregados!");
+            }
+
             /*--------------------------Mostra lista de concorrentes da primeira Semi-Final:-----------------------------------*/
 
             Console.WriteLine("Lista dos concorrentes da primeira Semi-Final:");
@@ -35,9 +60,9 @@ namespace Eurovisao_Console
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
             MostrarLista(gestaoSemi1.GetConcorrentesList());
 
-            /*--------------------------Se quiser apagar concorrentes da lista:--------------------------------------*/
+            /*--------------------------Apagar os 5 concorrentes com menos pontos da lista:--------------------------------------*/
 
-            Console.WriteLine($"\nA apagar concorrentes ...");
+            Console.WriteLine($"\nA apagar os 5 concorrentes que obtiveram menos pontos do televoto...");
             Console.WriteLine("Lista atualizada: ");
 
             if (gestaoSemi1.ApagarConcClassificacaoFinal()) //ver se este métodos funciona, ou seja, se apagar os 5 últimos concorrentes da lista
@@ -48,10 +73,11 @@ namespace Eurovisao_Console
             }
             else
             {
-                Console.WriteLine("Concorrentes não encontrados.");
+                Console.WriteLine("Concorrentes não encontrados, ou já eliminados.");
             }
 
-            //fazer igual depois para a semi2
+            /*-------------------------------Lista dos concorrentes da segunda semi-final--------------------------------*/
+
             Eurovisao_BR gestaoSemi2 = new Eurovisao_BR();
 
             Eurovisao s2f1 = gestaoSemi2.NovoConcorrente("Austrália", "Voyager", "Promise", 0, 149, 1);
@@ -71,6 +97,54 @@ namespace Eurovisao_Console
             Eurovisao s2f15 = gestaoSemi2.NovoConcorrente("Roménia", "Theodor Andrei", "D.G.T. (Off and On)", 0, 0, 15);
             Eurovisao s2f16 = gestaoSemi2.NovoConcorrente("San Marino", "Piqued Jacks", "Like An Animal", 0, 0, 16);
 
+            if (!gestaoSemi2.ImportarDados()) //adicionar concorrentes da semi final 2 à lista e importa os dados
+            {
+                gestaoSemi2.AdicionarConcorrente(s2f1);
+                gestaoSemi2.AdicionarConcorrente(s2f2);
+                gestaoSemi2.AdicionarConcorrente(s2f3);
+                gestaoSemi2.AdicionarConcorrente(s2f4);
+                gestaoSemi2.AdicionarConcorrente(s2f5);
+                gestaoSemi2.AdicionarConcorrente(s2f6);
+                gestaoSemi2.AdicionarConcorrente(s2f7);
+                gestaoSemi2.AdicionarConcorrente(s2f8);
+                gestaoSemi2.AdicionarConcorrente(s2f9);
+                gestaoSemi2.AdicionarConcorrente(s2f10);
+                gestaoSemi2.AdicionarConcorrente(s2f11);
+                gestaoSemi2.AdicionarConcorrente(s2f12);
+                gestaoSemi2.AdicionarConcorrente(s2f13);
+                gestaoSemi2.AdicionarConcorrente(s2f14);
+                gestaoSemi2.AdicionarConcorrente(s2f15);
+                gestaoSemi2.AdicionarConcorrente(s2f16);
+            }
+            else
+            {
+                Console.WriteLine("Dados já previamente carregados!");
+            }
+
+            /*--------------------------Mostra lista de concorrentes da segunda Semi-Final:-----------------------------------*/
+
+            Console.WriteLine("\nLista dos concorrentes da segunda Semi-Final:");
+            Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Júri\t|Televoto\t|Total Pontos\t|Classificação Final");
+            Console.WriteLine("----------------------------------------------------------------------------------------------------");
+            MostrarLista(gestaoSemi2.GetConcorrentesList());
+
+            /*--------------------------Apagar os 5 concorrentes com menos pontos da lista:--------------------------------------*/
+
+            Console.WriteLine($"\nA apagar os 6 concorrentes que obtiveram menos pontos do televoto...");
+            Console.WriteLine("Lista atualizada: ");
+
+            if (gestaoSemi2.ApagarConcClassificacaoFinal()) //ver se este métodos funciona, ou seja, se apagar os 5 últimos concorrentes da lista
+            {
+                Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Júri\t|Televoto\t|Total Pontos\t|Classificação Final");
+                Console.WriteLine("----------------------------------------------------------------------------------------------------");
+                MostrarLista(gestaoSemi2.GetConcorrentesList());
+            }
+            else
+            {
+                Console.WriteLine("Concorrentes não encontrados, ou já eliminados.");
+            }
+
+            /*-------------------------------Lista dos concorrentes da final-------------------------------------------*/
 
             Eurovisao_BR gestaoEurovisao = new Eurovisao_BR();
 
@@ -133,18 +207,19 @@ namespace Eurovisao_Console
             }
             else
             {
-                Console.WriteLine("Dados carregados!");
+                Console.WriteLine("Dados já previamente carregados!");
             }
 
             /*--------------------------Mostra lista de concorrentes da Eurovisão:-----------------------------------*/
 
-            Console.WriteLine("Lista dos concorrentes da Eurovisão 2023:");
+            Console.WriteLine("\nLista dos concorrentes da Final da Eurovisão 2023:");
             Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Júri\t|Televoto\t|Total Pontos\t|Classificação Final");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
             MostrarLista(gestaoEurovisao.GetConcorrentesList());
 
             /*--------------------------Se quiser apagar concorrentes da lista:--------------------------------------*/
 
+            /*
             Console.WriteLine($"\nA apagar concorrente \"{conc23.Pais}\"...");
             Console.WriteLine("Lista atualizada: ");
 
@@ -158,6 +233,7 @@ namespace Eurovisao_Console
             {
                 Console.WriteLine("Concorrente não encontrado, possivelmente já eliminado.");
             }
+            */
 
             /*--------------------------Se quiser alterar Pontos do Júri:--------------------------------------*/
             
@@ -170,7 +246,7 @@ namespace Eurovisao_Console
                 gestaoEurovisao.ModificarPontosJuri(340, conc1);  //aqui coloco os pontos do júri antigos
                 MostrarLista(gestaoEurovisao.GetConcorrentesList());
             }
-            else
+            else /* ---------------------------------nota: não está a ser atualizada a classificação final---------------------------------------*/
             {
                 Console.WriteLine("Concorrente não encontrado.");
             }
@@ -187,7 +263,7 @@ namespace Eurovisao_Console
                 gestaoEurovisao.ModificarPontosTelevoto(243, conc1); //aqui coloca os pontos de televoto antigos
                 MostrarLista(gestaoEurovisao.GetConcorrentesList());
             }
-            else
+            else /* ---------------------------------nota: não está a ser atualizada a classificação final---------------------------------------*/
             {
                 Console.WriteLine("Concorrente não encontrado.");
             }
