@@ -84,7 +84,7 @@ namespace Eurovisao_DAL
         {
             return _eurovisaoList.Items.Any(e => e.ID.Equals(id));
         }
-        public bool ExisteConcorrente(string pais, out Eurovisao? obj)
+        public bool ExisteConcorrente(string pais, out Eurovisao? obj) //este existe concorrente é necessário para o método apagar concorrente em cima
         {
             obj = null;
             string tPais = pais.Trim();
@@ -120,17 +120,15 @@ namespace Eurovisao_DAL
             }
             return false;
         }
-        public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente)
+        public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente) //modifica as rondas: semifinal1, semifinal2, final
         {
             if(ReferenceEquals(concorrente, null)) return false;
             int tIndex = _eurovisaoList.Items.FindIndex(c => c.Pais.Equals(pais));
             if (tIndex > -1)
             {
-                //concorrente.Ronda = ronda;
                 _eurovisaoList.Items[tIndex] = concorrente.RegistoConcorrentes();
                 return true;
             }
-
             return false;
         }
         public bool OrdenarLista() //ordena a lista por ordem descendente de total pontos
@@ -138,7 +136,7 @@ namespace Eurovisao_DAL
             _eurovisaoList.Items = _eurovisaoList.Items.OrderByDescending(concorrente => concorrente.TotalPontos).ToList();
             return true;
         }
-        public RegistoConcorrente Vencedor()
+        public RegistoConcorrente Vencedor() //diz o vencedor da eurovisão após lista ordenada por ordem descendente de total pontos
         {
             OrdenarLista();
             return _eurovisaoList.Items.FirstOrDefault();
