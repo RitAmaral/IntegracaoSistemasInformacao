@@ -82,8 +82,13 @@ Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armaz
 
 **Requisitos funcionais:** 
 
-
+1. Inserir concorrentes: O sistema deve permitir a inserção dos 37 países concorrentes da Eurovisão 2023, fornecendo as informações necessárias, como nome do país, nome do representante, nome da música, etc.
+2. Atribuir pontos do júri e televoto: O sistema deve permitir a atribuição ou modificação dos pontos obtidos por cada concorrente nas semi-finais, tanto pelo júri quanto pelo televoto. Apesar de que, este ano, não houve votações do júri nas semi-finais, e por isso nesta fase vão ser colocados 0 pontos de júri em todas as músicas.
+3. Calcular total de pontos: Com base nos pontos atribuídos pelo júri e televoto, o sistema deve calcular o total de pontos de cada concorrente, somando os dois valores.
+4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semi-final para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os big 5: Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da último edição da Eurovisão, a Ucrânia).
+5. Ordenar lista por total de pontos: Após a realização da final, o sistema deve ordenar a lista de concorrentes por ordem decrescente de total de pontos, para determinar a classificação final.
+6. Identificar vencedor: Com a lista ordenada por total de pontos, o sistema deve identificar o concorrente com a maior pontuação como o vencedor da Eurovisão. 
 
 **Estrutura pensada para o desenvolvimento do projeto:**
 
-A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes. Vão ser colocados os pontos obtidos (júri, televoto), em cada semi-final, e vão ser calculados o total de pontos. No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser 0. Depois, passam para a final os 10 concorrentes de cada semi-final, e juntam-se a eles, 6 países já automaticamente qualificados para final. No fim a lista é ordenada por total pontos, e quem tiver mais pontos será o vencedor da Eurovisão. 
+A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes. Vão ser colocados os pontos obtidos (júri, televoto), em cada semi-final, e vão ser calculados o total de pontos. No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser 0. Depois, passam para a final os 10 concorrentes de cada semi-final, e juntam-se a eles, 6 países já automaticamente qualificados para final. No fim a lista é ordenada por total pontos, e quem tiver mais pontos será o vencedor da Eurovisão 2023. 
