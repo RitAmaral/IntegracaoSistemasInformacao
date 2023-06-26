@@ -1,6 +1,7 @@
 ﻿using Eurovisao_BO;
 using Eurovisao_BL;
 using Eurovisao_DAL;
+using Eurovisao_Constantes;
 using System.Reflection;
 
 namespace Eurovisao_Console
@@ -16,21 +17,21 @@ namespace Eurovisao_Console
 
             Eurovisao_BR gestaoSemi1 = new Eurovisao_BR(); 
 
-            Eurovisao s1f1 = gestaoSemi1.NovoConcorrente("Finlândia", "Kaarija", "Cha Cha Cha", 0, 177);
-            Eurovisao s1f2 = gestaoSemi1.NovoConcorrente("Suécia", "Loreen", "Tattoo", 0, 135);
-            Eurovisao s1f3 = gestaoSemi1.NovoConcorrente("Israel", "Noa Kirel", "Unicorn", 0, 127);
-            Eurovisao s1f4 = gestaoSemi1.NovoConcorrente("Chéquia", "Vesna", "My Sister's Crown", 0, 110);
-            Eurovisao s1f5 = gestaoSemi1.NovoConcorrente("Moldávia", "Pasha Parfeni", "Soarale si Luna", 0, 109);
-            Eurovisao s1f6 = gestaoSemi1.NovoConcorrente("Noruega", "Alessandra", "Queen of Kings", 0, 102);
-            Eurovisao s1f7 = gestaoSemi1.NovoConcorrente("Suiça", "Remo Forrer", "Watergun", 0, 97);
-            Eurovisao s1f8 = gestaoSemi1.NovoConcorrente("Croácia", "Let 3", "Mama SC!", 0, 76);
-            Eurovisao s1f9 = gestaoSemi1.NovoConcorrente("Portugal", "Mimicat", "Ai Coração", 0, 74);
-            Eurovisao s1f10 = gestaoSemi1.NovoConcorrente("Sérvia", "Luke Black", "Samo mi se spava", 0, 37);
-            Eurovisao s1f11 = gestaoSemi1.NovoConcorrente("Letónia", "Sudden Lights", "Aijã", 0, 34);
-            Eurovisao s1f12 = gestaoSemi1.NovoConcorrente("Irlanda", "Wild Youth", "We Are One", 0, 10);
-            Eurovisao s1f13 = gestaoSemi1.NovoConcorrente("Países Baixos", "Mia Nicolai & Dion Cooper", "Burning Daylight", 0, 7);
-            Eurovisao s1f14 = gestaoSemi1.NovoConcorrente("Azerbeijão", "TuralTuranX", "Tell Me More", 0, 4);
-            Eurovisao s1f15 = gestaoSemi1.NovoConcorrente("Malta", "The Busker", "Dance (Our Own Party)", 0, 3);
+            Eurovisao s1f1 = gestaoSemi1.NovoConcorrente("Finlândia", "Kaarija", "Cha Cha Cha", Enum.Parse<Ronda>("SemiFinal1"), 0, 177);
+            Eurovisao s1f2 = gestaoSemi1.NovoConcorrente("Suécia", "Loreen", "Tattoo", Enum.Parse<Ronda>("SemiFinal1"), 0, 135);
+            Eurovisao s1f3 = gestaoSemi1.NovoConcorrente("Israel", "Noa Kirel", "Unicorn", Enum.Parse<Ronda>("SemiFinal1"), 0, 127);
+            Eurovisao s1f4 = gestaoSemi1.NovoConcorrente("Chéquia", "Vesna", "My Sister's Crown", Enum.Parse<Ronda>("SemiFinal1"), 0, 110);
+            Eurovisao s1f5 = gestaoSemi1.NovoConcorrente("Moldávia", "Pasha Parfeni", "Soarale si Luna", Enum.Parse<Ronda>("SemiFinal1"), 0, 109);
+            Eurovisao s1f6 = gestaoSemi1.NovoConcorrente("Noruega", "Alessandra", "Queen of Kings", Enum.Parse<Ronda>("SemiFinal1"), 0, 102);
+            Eurovisao s1f7 = gestaoSemi1.NovoConcorrente("Suiça", "Remo Forrer", "Watergun", Enum.Parse<Ronda>("SemiFinal1"), 0, 97);
+            Eurovisao s1f8 = gestaoSemi1.NovoConcorrente("Croácia", "Let 3", "Mama SC!", Enum.Parse<Ronda>("SemiFinal1"), 0, 76);
+            Eurovisao s1f9 = gestaoSemi1.NovoConcorrente("Portugal", "Mimicat", "Ai Coração", Enum.Parse<Ronda>("SemiFinal1"), 0, 74);
+            Eurovisao s1f10 = gestaoSemi1.NovoConcorrente("Sérvia", "Luke Black", "Samo mi se spava", Enum.Parse<Ronda>("SemiFinal1"), 0, 37);
+            Eurovisao s1f11 = gestaoSemi1.NovoConcorrente("Letónia", "Sudden Lights", "Aijã", Enum.Parse<Ronda>("SemiFinal1"), 0, 34);
+            Eurovisao s1f12 = gestaoSemi1.NovoConcorrente("Irlanda", "Wild Youth", "We Are One", Enum.Parse<Ronda>("SemiFinal1"), 0, 10);
+            Eurovisao s1f13 = gestaoSemi1.NovoConcorrente("Países Baixos", "Mia Nicolai & Dion Cooper", "Burning Daylight", Enum.Parse<Ronda>("SemiFinal1"), 0, 7);
+            Eurovisao s1f14 = gestaoSemi1.NovoConcorrente("Azerbeijão", "TuralTuranX", "Tell Me More", Enum.Parse<Ronda>("SemiFinal1"), 0, 4);
+            Eurovisao s1f15 = gestaoSemi1.NovoConcorrente("Malta", "The Busker", "Dance (Our Own Party)", Enum.Parse<Ronda>("SemiFinal1"), 0, 3);
 
             if (!gestaoSemi1.ImportarDados()) //adicionar concorrentes da semi final 1 à lista e importa os dados
             {
@@ -82,22 +83,22 @@ namespace Eurovisao_Console
 
             Eurovisao_BR gestaoSemi2 = new Eurovisao_BR();
 
-            Eurovisao s2f1 = gestaoSemi2.NovoConcorrente("Austrália", "Voyager", "Promise", 0, 149);
-            Eurovisao s2f2 = gestaoSemi2.NovoConcorrente("Áustria", "Teya & Salena", "Who The Hell Is Edgar?", 0, 137);
-            Eurovisao s2f3 = gestaoSemi2.NovoConcorrente("Polónia", "Blanka", "Solo", 0, 124);
-            Eurovisao s2f4 = gestaoSemi2.NovoConcorrente("Lituânia", "Monika Linkyté", "Stay", 0, 110);
-            Eurovisao s2f5 = gestaoSemi2.NovoConcorrente("Eslovénia", "Joker Out", "Carpe Diem", 0, 103);
-            Eurovisao s2f6 = gestaoSemi2.NovoConcorrente("Arménia", "Brunette", "Future Lover", 0, 99);
-            Eurovisao s2f7 = gestaoSemi2.NovoConcorrente("Chipre", "Andrew Lambrou", "Break a Broken Heart", 0, 94);
-            Eurovisao s2f8 = gestaoSemi2.NovoConcorrente("Bélgica", "Gustaph", "Because of You", 0, 90);
-            Eurovisao s2f9 = gestaoSemi2.NovoConcorrente("Albânia", "Albina & Familija Kelmendi", "Duje", 0, 83);
-            Eurovisao s2f10 = gestaoSemi2.NovoConcorrente("Estónia", "Alika", "Bridges", 0, 74);
-            Eurovisao s2f11 = gestaoSemi2.NovoConcorrente("Islândia", "Diljá", "Power", 0, 44);
-            Eurovisao s2f12 = gestaoSemi2.NovoConcorrente("Geórgia", "Iru", "Echo", 0, 33);
-            Eurovisao s2f13 = gestaoSemi2.NovoConcorrente("Grécia", "Victor Vernicos", "What They Say", 0, 14);
-            Eurovisao s2f14 = gestaoSemi2.NovoConcorrente("Dinamarca", "Reiley", "Breaking My Heart", 0, 6);
-            Eurovisao s2f15 = gestaoSemi2.NovoConcorrente("Roménia", "Theodor Andrei", "D.G.T. (Off and On)", 0, 0);
-            Eurovisao s2f16 = gestaoSemi2.NovoConcorrente("San Marino", "Piqued Jacks", "Like An Animal", 0, 0);
+            Eurovisao s2f1 = gestaoSemi2.NovoConcorrente("Austrália", "Voyager", "Promise", Enum.Parse<Ronda>("SemiFinal2"), 0, 149);
+            Eurovisao s2f2 = gestaoSemi2.NovoConcorrente("Áustria", "Teya & Salena", "Who The Hell Is Edgar?", Enum.Parse<Ronda>("SemiFinal2"), 0, 137);
+            Eurovisao s2f3 = gestaoSemi2.NovoConcorrente("Polónia", "Blanka", "Solo", Enum.Parse<Ronda>("SemiFinal2"), 0, 124);
+            Eurovisao s2f4 = gestaoSemi2.NovoConcorrente("Lituânia", "Monika Linkyté", "Stay", Enum.Parse<Ronda>("SemiFinal2"), 0, 110);
+            Eurovisao s2f5 = gestaoSemi2.NovoConcorrente("Eslovénia", "Joker Out", "Carpe Diem", Enum.Parse<Ronda>("SemiFinal2"), 0, 103);
+            Eurovisao s2f6 = gestaoSemi2.NovoConcorrente("Arménia", "Brunette", "Future Lover", Enum.Parse<Ronda>("SemiFinal2"), 0, 99);
+            Eurovisao s2f7 = gestaoSemi2.NovoConcorrente("Chipre", "Andrew Lambrou", "Break a Broken Heart", Enum.Parse<Ronda>("SemiFinal2"), 0, 94);
+            Eurovisao s2f8 = gestaoSemi2.NovoConcorrente("Bélgica", "Gustaph", "Because of You", Enum.Parse<Ronda>("SemiFinal2"), 0, 90);
+            Eurovisao s2f9 = gestaoSemi2.NovoConcorrente("Albânia", "Albina & Familija Kelmendi", "Duje", Enum.Parse<Ronda>("SemiFinal2"), 0, 83);
+            Eurovisao s2f10 = gestaoSemi2.NovoConcorrente("Estónia", "Alika", "Bridges", Enum.Parse<Ronda>("SemiFinal2"), 0, 74);
+            Eurovisao s2f11 = gestaoSemi2.NovoConcorrente("Islândia", "Diljá", "Power", Enum.Parse<Ronda>("SemiFinal2"), 0, 44);
+            Eurovisao s2f12 = gestaoSemi2.NovoConcorrente("Geórgia", "Iru", "Echo", Enum.Parse<Ronda>("SemiFinal2"), 0, 33);
+            Eurovisao s2f13 = gestaoSemi2.NovoConcorrente("Grécia", "Victor Vernicos", "What They Say", Enum.Parse<Ronda>("SemiFinal2"), 0, 14);
+            Eurovisao s2f14 = gestaoSemi2.NovoConcorrente("Dinamarca", "Reiley", "Breaking My Heart", Enum.Parse<Ronda>("SemiFinal2"), 0, 6);
+            Eurovisao s2f15 = gestaoSemi2.NovoConcorrente("Roménia", "Theodor Andrei", "D.G.T. (Off and On)", Enum.Parse<Ronda>("SemiFinal2"), 0, 0);
+            Eurovisao s2f16 = gestaoSemi2.NovoConcorrente("San Marino", "Piqued Jacks", "Like An Animal", Enum.Parse<Ronda>("SemiFinal2"), 0, 0);
 
             if (!gestaoSemi2.ImportarDados()) //adicionar concorrentes da semi final 2 à lista e importa os dados
             {
@@ -151,12 +152,12 @@ namespace Eurovisao_Console
             Eurovisao_BR gestaoEurovisao = new Eurovisao_BR();
 
             //Adicionar os concorrentes que já estavam automaticamente qualificados para a final:
-            Eurovisao conc4 = gestaoEurovisao.NovoConcorrente("Itália", "Marco Mengoni", "Due Vite", 176, 174);
-            Eurovisao conc6 = gestaoEurovisao.NovoConcorrente("Ucrânia", "Tvorchi", "Heart of Steel", 54, 189);
-            Eurovisao conc16 = gestaoEurovisao.NovoConcorrente("França", "La Zarra", "Évidemment", 54, 50);
-            Eurovisao conc17 = gestaoEurovisao.NovoConcorrente("Espanha", "Blanca Paloma", "Eaea", 95, 5);
-            Eurovisao conc25 = gestaoEurovisao.NovoConcorrente("Reino Unido", "Mae Muller", "I Wrote A Song", 15, 9);
-            Eurovisao conc26 = gestaoEurovisao.NovoConcorrente("Alemanha", "Lord Of The Lost", "Blood & Glitter", 3, 15);
+            Eurovisao conc4 = gestaoEurovisao.NovoConcorrente("Itália", "Marco Mengoni", "Due Vite", Enum.Parse<Ronda>("Final"), 176, 174);
+            Eurovisao conc6 = gestaoEurovisao.NovoConcorrente("Ucrânia", "Tvorchi", "Heart of Steel", Enum.Parse<Ronda>("Final"), 54, 189);
+            Eurovisao conc16 = gestaoEurovisao.NovoConcorrente("França", "La Zarra", "Évidemment", Enum.Parse<Ronda>("Final"), 54, 50);
+            Eurovisao conc17 = gestaoEurovisao.NovoConcorrente("Espanha", "Blanca Paloma", "Eaea", Enum.Parse<Ronda>("Final"), 95, 5);
+            Eurovisao conc25 = gestaoEurovisao.NovoConcorrente("Reino Unido", "Mae Muller", "I Wrote A Song", Enum.Parse<Ronda>("Final"), 15, 9);
+            Eurovisao conc26 = gestaoEurovisao.NovoConcorrente("Alemanha", "Lord Of The Lost", "Blood & Glitter", Enum.Parse<Ronda>("Final"), 3, 15);
 
             if (!gestaoEurovisao.ImportarDados())
             {
@@ -230,26 +231,59 @@ namespace Eurovisao_Console
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
             MostrarLista(gestaoEurovisao.GetConcorrentesList());
 
-            /*--------------------------Se quiser apagar concorrentes da lista:--------------------------------------*/
+            /*--------------------------Alterar Ronda para final:--------------------------------------*/
 
-            /*
-            Console.WriteLine($"\nA apagar concorrente \"{conc23.Pais}\"...");
-            Console.WriteLine("Lista atualizada: ");
-
-            if (gestaoEurovisao.ApagarConcorrente("Portugal"))
+            Console.WriteLine($"\nA alterar as rondas dos países qualificados para a final....");
+            if (gestaoEurovisao.ExisteConcorrente(s1f1.Pais))
             {
-                Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Júri\t|Televoto\t|Total Pontos\t|Classificação Final");
-                Console.WriteLine("----------------------------------------------------------------------------------------------------");
-                MostrarLista(gestaoEurovisao.GetConcorrentesList());
+                s1f1.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Finlândia", Enum.Parse <Ronda>("SemiFinal1"), s1f1);
+                s1f2.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Suécia", Enum.Parse<Ronda>("SemiFinal1"), s1f2);
+                s1f3.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Israel", Enum.Parse<Ronda>("SemiFinal1"), s1f3);
+                s1f4.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Chéquia", Enum.Parse<Ronda>("SemiFinal1"), s1f4);
+                s1f5.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Moldávia", Enum.Parse<Ronda>("SemiFinal1"), s1f5);
+                s1f6.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Noruega", Enum.Parse<Ronda>("SemiFinal1"), s1f6);
+                s1f7.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Suiça", Enum.Parse<Ronda>("SemiFinal1"), s1f7);
+                s1f8.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Croácia", Enum.Parse<Ronda>("SemiFinal1"), s1f8);
+                s1f9.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Portugal", Enum.Parse<Ronda>("SemiFinal1"), s1f9);
+                s1f10.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Sériva", Enum.Parse<Ronda>("SemiFinal1"), s1f10);
+                s2f1.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Austrália", Enum.Parse<Ronda>("SemiFinal1"), s2f1);
+                s2f2.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Áustria", Enum.Parse<Ronda>("SemiFinal1"), s2f2);
+                s2f3.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Polónia", Enum.Parse<Ronda>("SemiFinal1"), s2f3);
+                s2f4.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Lituânia", Enum.Parse<Ronda>("SemiFinal1"), s2f4);
+                s2f5.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Eslovénia", Enum.Parse<Ronda>("SemiFinal1"), s2f5);
+                s2f6.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Arménia", Enum.Parse<Ronda>("SemiFinal1"), s2f6);
+                s2f7.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Chipre", Enum.Parse<Ronda>("SemiFinal1"), s2f7);
+                s2f8.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Bélgica", Enum.Parse<Ronda>("SemiFinal1"), s2f8);
+                s2f9.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Albânia", Enum.Parse<Ronda>("SemiFinal1"), s2f9);
+                s2f10.Ronda = Enum.Parse<Ronda>("Final");
+                gestaoEurovisao.ModificarRondaConcorrente("Estónia", Enum.Parse<Ronda>("SemiFinal1"), s2f10);
             }
             else
             {
-                Console.WriteLine("Concorrente não encontrado, possivelmente já eliminado.");
+                Console.WriteLine("Concorrente não encontrado.");
             }
-            */
 
             /*--------------------------Se quiser alterar Pontos do Júri:--------------------------------------*/
-            
+
             Console.WriteLine($"\nA verificar a existência do país \"{s1f1.Pais}\"...");
 
             if (gestaoEurovisao.ExisteConcorrente(s1f1.ID))
