@@ -51,7 +51,7 @@ Mais informações:
 
 **Descrição do modelo de negócio/atividade do tema do trabalho prático:**
 
-O objetivo do projeto é implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão. Neste projeto vai ser usado o padrão de arquitetura **N-tier**, para dividir o sistema em camadas lógicas e físicas e assim dividir responsabilidades e gerir dependências.
+O objetivo do projeto é implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão. Neste projeto vai ser usado o padrão de arquitetura N-tier, para dividir o sistema em camadas lógicas e físicas e assim dividir responsabilidades e gerir dependências.  Também vai ser usado o padrão de design singleton na classe GetNewId (que está na biblioteca de classes ToolBox). O padrão Singleton garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Neste projeto isto é importante pois tem de haver apenas uma instância da classe GetNewId, o que garante controlo sobre os IDs, evitando assim duplicações. 
 
 **Estruturas de dados que vão ser utilizadas:**
 
@@ -63,7 +63,6 @@ A classe *Eurovisao* (que está na biblioteca de classes **Eurovisao_BO** – bu
 - PontosJuri: int
 - PontosPublico: int
 - TotalPontos: int => PontosJuri + PontosTelevoto; TotalPontos é uma Propriedade - Read-only: só leitura, que get/recebe PontosJuri + PontosTelevoto
-- ClassificacaoFinal int (?) 
 
 Depois foram criadas as seguintes bibliotecas de classes em concordância com o padrão de arquitetura N-tier: 
 
@@ -85,7 +84,7 @@ Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armaz
 1. Inserir concorrentes: O sistema deve permitir a inserção dos 37 países concorrentes da Eurovisão 2023, fornecendo as informações necessárias, como nome do país, nome do representante, nome da música, etc.
 2. Atribuir pontos do júri e televoto: O sistema deve permitir a atribuição ou modificação dos pontos obtidos por cada concorrente nas semi-finais, tanto pelo júri quanto pelo televoto. Apesar de que, este ano, não houve votações do júri nas semi-finais, e por isso nesta fase vão ser colocados 0 pontos de júri em todas as músicas.
 3. Calcular total de pontos: Com base nos pontos atribuídos pelo júri e televoto, o sistema deve calcular o total de pontos de cada concorrente, somando os dois valores.
-4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semi-final para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os big 5: Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da último edição da Eurovisão, a Ucrânia).
+4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semi-final para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os big 5: Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da última edição da Eurovisão, a Ucrânia).
 5. Ordenar lista por total de pontos: Após a realização da final, o sistema deve ordenar a lista de concorrentes por ordem decrescente de total de pontos, para determinar a classificação final.
 6. Identificar vencedor: Com a lista ordenada por total de pontos, o sistema deve identificar o concorrente com a maior pontuação como o vencedor da Eurovisão. 
 
