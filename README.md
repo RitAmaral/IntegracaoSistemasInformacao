@@ -25,7 +25,7 @@ ___
 * [Task 04](Task04), aula: 15/06/2023, 19/06/2023
   - [Anotações v1](Task04/Anotacoes_v01)
 * [Task 05](Task05), aula: 23/06/2023 - serialização
-* [Projeto Final](ProjetoFinal_Rita)
+* [Projeto Final](ProjF_Rita)
 
 ---
 
