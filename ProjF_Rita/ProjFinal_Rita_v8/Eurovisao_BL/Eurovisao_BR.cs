@@ -76,11 +76,13 @@ namespace Eurovisao_BL
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarPontosTelevoto(pontosTelevoto, concorrente);
         }
+        /*
         public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente) //modifica ronda
         {
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarRondaConcorrente(pais, ronda, concorrente);
         }
+        */
         public List<string> Historico() //mostra historico
         {
             return _eurovisaoDAO.Historico();

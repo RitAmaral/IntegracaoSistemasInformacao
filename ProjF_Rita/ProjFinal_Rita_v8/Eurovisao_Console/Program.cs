@@ -172,10 +172,34 @@ namespace Eurovisao_Console
             else
             {
                 Console.WriteLine("Dados já previamente carregados!");
-            }        
+            }
 
             /*--------------------------Alterar Ronda para final:--------------------------------------*/
+            
+            Console.WriteLine($"\nA alterar as rondas dos países das semi-finais qualificados para a final....");
 
+            s1f1.Ronda = Enum.Parse<Ronda>("Final");
+            s1f2.Ronda = Enum.Parse<Ronda>("Final");
+            s1f3.Ronda = Enum.Parse<Ronda>("Final");
+            s1f4.Ronda = Enum.Parse<Ronda>("Final");
+            s1f5.Ronda = Enum.Parse<Ronda>("Final");
+            s1f6.Ronda = Enum.Parse<Ronda>("Final");
+            s1f7.Ronda = Enum.Parse<Ronda>("Final");
+            s1f8.Ronda = Enum.Parse<Ronda>("Final");
+            s1f9.Ronda = Enum.Parse<Ronda>("Final");
+            s1f10.Ronda = Enum.Parse<Ronda>("Final");
+            s2f1.Ronda = Enum.Parse<Ronda>("Final");
+            s2f2.Ronda = Enum.Parse<Ronda>("Final");
+            s2f3.Ronda = Enum.Parse<Ronda>("Final");
+            s2f4.Ronda = Enum.Parse<Ronda>("Final");
+            s2f5.Ronda = Enum.Parse<Ronda>("Final");
+            s2f6.Ronda = Enum.Parse<Ronda>("Final");
+            s2f7.Ronda = Enum.Parse<Ronda>("Final");
+            s2f8.Ronda = Enum.Parse<Ronda>("Final");
+            s2f9.Ronda = Enum.Parse<Ronda>("Final");
+            s2f10.Ronda = Enum.Parse<Ronda>("Final");
+
+            /*
             Console.WriteLine($"\nA alterar as rondas dos países das semi-finais qualificados para a final....");
             if (gestaoEurovisao.ExisteConcorrente(s1f1.Pais))
             {
@@ -224,6 +248,7 @@ namespace Eurovisao_Console
             {
                 Console.WriteLine("Concorrente não encontrado.");
             }
+            */
 
             /*--------------------------Se quiser alterar Pontos do Júri:--------------------------------------*/
 

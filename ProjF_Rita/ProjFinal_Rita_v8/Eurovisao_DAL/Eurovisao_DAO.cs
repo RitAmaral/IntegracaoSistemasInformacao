@@ -150,6 +150,7 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+        /*
         public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente) //modifica as rondas: semifinal1, semifinal2, final
         {
             if(ReferenceEquals(concorrente, null)) return false;
@@ -161,6 +162,7 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+        */
         public bool OrdenarLista() //ordena a lista por ordem descendente de total pontos
         {
             _eurovisaoList.Items = _eurovisaoList.Items.OrderByDescending(concorrente => concorrente.TotalPontos).ToList();

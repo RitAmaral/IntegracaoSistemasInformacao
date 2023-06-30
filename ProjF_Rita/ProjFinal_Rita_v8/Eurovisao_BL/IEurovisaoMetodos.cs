@@ -20,7 +20,7 @@ namespace Eurovisao_BL
         bool ExisteConcorrente(int id);
         bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente);
         bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente);
-        bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente);
+        //bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente);
         List<string> Historico();
 
     }
