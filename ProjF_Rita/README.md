@@ -55,6 +55,8 @@ O objetivo do projeto é implementar um Sistema de Informação para gestão de 
 
 **Estruturas de dados que vão ser utilizadas:**
 
+Neste projeto foram criadas diversas Bibliotecas de classes, três Aplicativos de console, e um API Web do ASP.NET Core. Começando pelas bibliotecas de classes, e seguindo o padrão de arquitetura N-tier:
+
 A classe *Eurovisao* (que está na biblioteca de classes **Eurovisao_BO** – business object, onde definimos as estruturas de dados) possui as seguintes propriedades:  
 - ID: (get new id) int
 - NomePais: string
@@ -67,17 +69,35 @@ A classe *Eurovisao* (que está na biblioteca de classes **Eurovisao_BO** – bu
 Depois foram criadas as seguintes bibliotecas de classes em concordância com o padrão de arquitetura N-tier: 
 
 - Camada de Apresentação: biblioteca de classes **Eurovisao_Console** - responsável pela interação com o utilizador, é a camada que mostra informações.
-- Business Logic: biblioteca de classes **Eurovisao_BL** - é a camada da lógica e das regras de negócio, que define classes e métodos (que interagem com a camada Data Access Layer) para lidar com as operações e regras de negócio relacionadas com os objetos da classe *Eurovisao*.
+- Business Logic: biblioteca de classes **Eurovisao_BL** - é a camada da lógica e das regras de negócio, que define classes e métodos (que interagem com a camada Data Access Layer) para lidar com as operações e regras de negócio relacionadas com os objetos da classe *Eurovisao*. Nesta biblioteca temos uma classe Eurovisao_BR (regras do negócio) e uma interface IEurovisaoMetodos, que define os métodos que devem ser implementados pelas classes que a utilizam, neste caso Eurovisao_BR. 
 - Data Access Layer: biblioteca de classes **Eurovisao_DAL** - é a camada de dados que é responsável por aceder e manipular os dados. Contém métodos para executar operações nos objetos da classe *Eurovisao* (como por exemplo: AdicionarConcorrente, ModificarPontos, ExisteConcorrente, ApagarConcorrente). 
 
 Neste projeto também foram criadas as seguintes bibliotecas de classes: 
-- **Eurovisao_Constantes** - para ser possível a serialização
-- **ToolBox** - para ser possível atribuir um id automático
-- **SerializeTools** - para ser possível a serialização 
+- **Eurovisao_Constantes** - com a classe Constantes que torna possível a serialização em XML, e com o Enum Ronda (semifinal1, semifinal2, final).
+- **ToolBox** - com a classe GetNewID, que utiliza o padrão de design Singleton, para ser possível atribuir um id automático, e não haver duplicações de IDs neste projeto.
+- **SerializeTools** - para ser possível a serialização em XML
 
-Posteriormente, foi criada uma estrutura (struct) chamada *RegistoConcorrente* para possibilitar a serialização dos dados. 
+Posteriormente, foi criada uma estrutura (struct) chamada *RegistoConcorrente* dentro da classe Eurovisao, para possibilitar a serialização dos dados. 
 
 Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armazenar os objetos da classe *Eurovisao* e realizar operações de adição, remoção e manipulação dos dados que mencionei acima na biblioteca de classes **DAL**. 
+
+Para ser possível a serialização em JSON: 
+
+Foi criada uma nova solução API Web do ASP.NET Core: Eurovisao_WebAPI. Depois criado um novo Controller: EurovisaoController.  
+
+Foram criadas 2 bibliotecas de classes: 
+- Eurovisao_Models2Api - Contêm 2 classes:
+  - EuroRegistoRequest
+  - EuroRegistoResponse
+- Eurovisao_Services2Api - Contêm 1 classe:
+  - EurovisaoServices 
+
+Foram criados novos métodos: GetConcorrenteListResponse() em Eurovisao_BR e GetConcorrentes em Eurovisao_DAO. 
+
+Também foi criada outra nova solução: aplicativo de console: EuroConsole2Api. Que permite vermos na consola o formato JSON que aparece no swagger.  
+
+Estas são as principais estruturas de dados e serializações envolvidas no projeto, abrangendo a serialização em XML e em JSON. 
+
 
 **Requisitos funcionais:** 
 
@@ -86,8 +106,9 @@ Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armaz
 3. Calcular total de pontos: Com base nos pontos atribuídos pelo júri e televoto, o sistema deve calcular o total de pontos de cada concorrente, somando os dois valores.
 4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semi-final para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os big 5: Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da última edição da Eurovisão, a Ucrânia).
 5. Ordenar lista por total de pontos: Após a realização da final, o sistema deve ordenar a lista de concorrentes por ordem decrescente de total de pontos, para determinar a classificação final.
-6. Identificar vencedor: Com a lista ordenada por total de pontos, o sistema deve identificar o concorrente com a maior pontuação como o vencedor da Eurovisão. 
+6. Identificar vencedor: Com a lista ordenada por total de pontos, o sistema deve identificar o concorrente com a maior pontuação como o vencedor da Eurovisão.
+7. Serialização dos dados: O sistema deve suportar a serialização dos dados em formatos XML e JSON, permitindo a exportação e importação dos dados do concurso da Eurovisão. Isto garante a portabilidade dos dados, facilitando a integração com outros sistemas ou a realização de backups. 
 
 **Estrutura pensada para o desenvolvimento do projeto:**
 
-A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes. Vão ser colocados os pontos obtidos (júri, televoto), em cada semi-final, e vão ser calculados o total de pontos. No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser 0. Depois, passam para a final os 10 concorrentes de cada semi-final, e juntam-se a eles, 6 países já automaticamente qualificados para final. No fim a lista é ordenada por total pontos, e quem tiver mais pontos será o vencedor da Eurovisão 2023. 
+A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes. Vão ser colocados os pontos obtidos (júri, televoto), em cada semi-final, e vão ser calculados o total de pontos. No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser 0. Depois, passam para a final os 10 concorrentes de cada semi-final, e juntam-se a eles, 6 países já automaticamente qualificados para final. No fim a lista é ordenada por total pontos, e quem tiver mais pontos será o vencedor da Eurovisão 2023. Esta lista será depois guardada em ficheiros XML e JSON.
