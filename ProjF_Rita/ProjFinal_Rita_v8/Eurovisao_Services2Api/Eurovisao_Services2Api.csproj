@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Eurovisao_BO\Eurovisao_BO.csproj" />
-    <ProjectReference Include="..\Eurovisao_DAL\Eurovisao_DAL.csproj" />
-    <ProjectReference Include="..\Eurovisao_Models2Api\Eurovisao_Models2Api.csproj" />
+    <ProjectReference Include="..\Eurovisao_BL\Eurovisao_BL.csproj" />
   </ItemGroup>
 
 </Project>

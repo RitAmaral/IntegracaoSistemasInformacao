@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eurovisao_Constantes\Eurovisao_Constantes.csproj" />
+    <ProjectReference Include="..\Eurovisao_Models2Api\Eurovisao_Models2Api.csproj" />
     <ProjectReference Include="..\ToolBox\ToolBox.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
 ﻿using Eurovisao_BO;
 using Eurovisao_Constantes;
 using Eurovisao_DAL;
+using Eurovisao_Models2Api;
 
 namespace Eurovisao_BL
 {
@@ -95,6 +96,7 @@ namespace Eurovisao_BL
         {
             return _eurovisaoDAO.Vencedor();
         }
+        //XML
         public void ExportarDados()
         {
             _eurovisaoDAO.ExportarDados();
@@ -103,6 +105,15 @@ namespace Eurovisao_BL
         {
             return _eurovisaoDAO.ImportarDados();
         }
-        
+        //serviços para o API
+        public List<EuroRegistoResponse> GetConcorrenteListResponse() //adicionar dependencia do eurovisao Models
+        {
+            List<EuroRegistoResponse> lista = new List<EuroRegistoResponse>();
+            foreach (var c in _eurovisaoDAO.GetConcorrentes()) // é preciso criar este método na Eurovisao_DAO
+            {
+                lista.Add(c.RegistoConcorrenteResponse());
+            }
+            return lista;
+        }
     }
 }

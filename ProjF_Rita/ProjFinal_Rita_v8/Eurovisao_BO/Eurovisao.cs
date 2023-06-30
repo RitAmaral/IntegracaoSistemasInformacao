@@ -3,6 +3,7 @@ using ToolBox;
 using Eurovisao_Constantes;
 using System.ComponentModel;
 using System.Reflection;
+using Eurovisao_Models2Api;
 
 namespace Eurovisao_BO
 {
@@ -80,10 +81,23 @@ namespace Eurovisao_BO
                 NomeMusica = this.NomeMusica,
                 Ronda = this.Ronda,
                 PontosJuri = this.PontosJuri,
-                PontosTelevoto = this.PontosTelevoto,
+                PontosTelevoto = this.PontosTelevoto
             };
         }
-        
+        public EuroRegistoResponse RegistoConcorrenteResponse() //adicionar dependencia do Eurovisao Models e adicionar o using lá em cima
+        {
+            return new EuroRegistoResponse
+            {
+                ID = this.ID,
+                Pais = this.Pais,
+                NomeRepresentante = this.NomeRepresentante,
+                NomeMusica = this.NomeMusica,
+                Ronda = this.Ronda,
+                PontosJuri = this.PontosJuri,
+                PontosTelevoto = this.PontosTelevoto
+            };
+        }
+
         public override string ToString()
         {
             return $"{ID}\t|{Pais}\t|{NomeRepresentante}\t|{NomeMusica}\t|{Ronda}\t|{PontosJuri}\t|{PontosTelevoto}\t|{TotalPontos}";

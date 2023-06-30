@@ -186,14 +186,15 @@ namespace Eurovisao_DAL
 
             return historico;
         }
-
+        //XML
         public void ExportarDados()
         {
-            if (!File.Exists(Constantes.NomeXmlEurovisao))
+            string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlEurovisao);
+            if (!File.Exists(ficheiro))
             {
                 try
                 {
-                    ExportarXml(Constantes.NomeXmlEurovisao);
+                    ExportarXml(ficheiro);
                 }
                 catch (Exception)
                 {
@@ -220,6 +221,7 @@ namespace Eurovisao_DAL
         }
         public bool ImportarDados()
         {
+            string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlEurovisao);
             return ImportarXml(Constantes.NomeXmlEurovisao);
         }
         public bool ImportarXml(string ficheiro)
@@ -247,6 +249,15 @@ namespace Eurovisao_DAL
             }
             return false;
         }
-        
+        //serviços para o API
+        public List<Eurovisao> GetConcorrentes()
+        {
+            List<Eurovisao> list = new List<Eurovisao>();
+            foreach (RegistoConcorrente c in _eurovisaoList.Items)
+            {
+                list.Add(new Eurovisao(c));
+            }
+            return list;
+        }
     }
 }
