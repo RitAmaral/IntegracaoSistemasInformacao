@@ -222,7 +222,7 @@ namespace Eurovisao_DAL
         public bool ImportarDados()
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlEurovisao);
-            return ImportarXml(Constantes.NomeXmlEurovisao);
+            return ImportarXml(ficheiro);
         }
         public bool ImportarXml(string ficheiro)
         {

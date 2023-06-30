@@ -1,11 +1,11 @@
 ﻿namespace ToolBox
 {
-    public class GetNewId
+    public class GetNewId //Implementa o padrão de design singleton
     {
         private static GetNewId instancia;
         private static int contador = 0;
 
-        private GetNewId() { }
+        private GetNewId() { } //construtor privado que evita que outras classes criem instâncias dele
 
         public int Proximo => ++contador; // => é o mesmo que get
 
