@@ -20,7 +20,8 @@ ___
 * [Work 01](Work01), aula: 14/06/2023, 19/06/2023
   - [Agenda v1](Work01/Agenda_v01)
   - [Agenda v2](Work01/Agenda_v02) - Início da aula sobre xml e serialização
-  - [Agenda v3](Work01/Agenda_v03) - Exercício finalizado: serialização
+  - [Agenda v3](Work01/Agenda_v03) - Exercício finalizado: serialização xml
+  - [Agenda v4](Work01/Agenda_v04) - Exercício serialização json
 * [Task 04](Task04), aula: 15/06/2023, 19/06/2023
   - [Anotações v1](Task04/Anotacoes_v01)
 * [Task 05](Task05), aula: 23/06/2023 - serialização
