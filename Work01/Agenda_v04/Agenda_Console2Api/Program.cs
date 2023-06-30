@@ -24,7 +24,7 @@ internal class Program
             {
                 foreach (var item in lista)
                 {
-                    Console.WriteLine($"{item.Id}\t{item.Data}\t{item.Nome}\t{item.Assunto}");
+                    Console.WriteLine($"{item.Id}\t{item.Data}\t{item.Nome}\t{item.Assunto}\t{item.Prioridade}");
                 }
             }
             else
