@@ -15,13 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anotacao_DAL", "Anotacao_DA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolBox", "ToolBox\ToolBox.csproj", "{86FD05F3-BF1E-486C-B72C-955A2E2E2495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializeTools", "SerializeTools\SerializeTools.csproj", "{E72B919B-D34A-4490-B4DB-6A043C569A2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerializeTools", "SerializeTools\SerializeTools.csproj", "{E72B919B-D34A-4490-B4DB-6A043C569A2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anotacoes_WebAPI", "Anotacoes_WebAPI\Anotacoes_WebAPI.csproj", "{B675663F-DA0B-4AF3-9829-3776088EE7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anotacoes_WebAPI", "Anotacoes_WebAPI\Anotacoes_WebAPI.csproj", "{B675663F-DA0B-4AF3-9829-3776088EE7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anotacoes_Models2Api", "Anotacoes_Models2Api\Anotacoes_Models2Api.csproj", "{3AE43A03-07BF-4686-8753-F831E106223A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anotacoes_Models2Api", "Anotacoes_Models2Api\Anotacoes_Models2Api.csproj", "{3AE43A03-07BF-4686-8753-F831E106223A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anotacoes_Services2Api", "Anotacoes_Services2Api\Anotacoes_Services2Api.csproj", "{B9D85E99-D969-46CC-806D-4126AB32FB98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anotacoes_Services2Api", "Anotacoes_Services2Api\Anotacoes_Services2Api.csproj", "{B9D85E99-D969-46CC-806D-4126AB32FB98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnotConsole2Api", "AnotConsole2Api\AnotConsole2Api.csproj", "{36E265BE-C18B-4BC1-86C7-FF1E1C252B60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{B9D85E99-D969-46CC-806D-4126AB32FB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9D85E99-D969-46CC-806D-4126AB32FB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9D85E99-D969-46CC-806D-4126AB32FB98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36E265BE-C18B-4BC1-86C7-FF1E1C252B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E265BE-C18B-4BC1-86C7-FF1E1C252B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E265BE-C18B-4BC1-86C7-FF1E1C252B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E265BE-C18B-4BC1-86C7-FF1E1C252B60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

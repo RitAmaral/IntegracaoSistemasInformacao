@@ -11,8 +11,8 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {//acrescentar isto
-            c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "AnotacoesAula_WebAPI", Version = "v1" }); //inclui o ficheiro no swagger doc
-            var fx = System.IO.Path.Combine(System.AppContext.BaseDirectory, "AnotacoesAula_WebAPI.xml"); // "" = nome do ficheiro em xml
+            c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Anotacoes_WebAPI", Version = "v1" }); //inclui o ficheiro no swagger doc
+            var fx = System.IO.Path.Combine(System.AppContext.BaseDirectory, "Anotacoes_WebAPI.xml"); // "" = nome do ficheiro em xml
             c.IncludeXmlComments(fx);
         });
 

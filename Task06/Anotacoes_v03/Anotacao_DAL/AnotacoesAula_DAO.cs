@@ -119,7 +119,7 @@ namespace Anotacao_DAL
         public void ExportarDados() //exporta dados
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlAnotacoes);
-            if (!File.Exists(Constantes.NomeXmlAnotacoes))
+            if (!File.Exists(ficheiro))
             {
                 try
                 {
@@ -151,7 +151,7 @@ namespace Anotacao_DAL
         public bool ImportarDados() //importa dados
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlAnotacoes);
-            return ImportarXml(Constantes.NomeXmlAnotacoes);
+            return ImportarXml(ficheiro);
         }
         public bool ImportarXml(string ficheiro)
         {
