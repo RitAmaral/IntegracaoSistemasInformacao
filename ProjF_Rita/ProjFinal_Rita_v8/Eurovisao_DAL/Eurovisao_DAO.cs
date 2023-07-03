@@ -71,11 +71,21 @@ namespace Eurovisao_DAL
             if (ExisteConcorrente(tPais, out obj))
             {
                 if (ReferenceEquals(obj, null)) return false;
-                // apagar todos os registos com o nome igual ao "país"
+                //apagar todos os registos com o nome igual ao "país"
                 if (_eurovisaoList.Items.RemoveAll(r => r.Pais.Equals(pais)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+        public bool ApagarConcorrente(int id) //apaga concorrente pelo id do país que representa
+        {
+            int tIndex = _eurovisaoList.Items.FindIndex(r => r.ID.Equals(id));
+            if (tIndex > -1)
+            {
+                _eurovisaoList.Items.RemoveAt(tIndex);
+                return true;
             }
             return false;
         }
@@ -127,6 +137,17 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+        public bool ExisteConcorrente(int id, out Eurovisao? obj) //este existe concorrente por id é necessário para JSON
+        {
+            obj = null;
+            int tIndex = _eurovisaoList.Items.FindIndex(r => r.ID.Equals(id));
+            if (tIndex > -1)
+            {
+                obj = new Eurovisao(_eurovisaoList.Items[tIndex]);
+                return true;
+            }
+            return false;
+        }
 
         public bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente) // modifica pontos do juri de um concorrente
         {
@@ -143,6 +164,17 @@ namespace Eurovisao_DAL
         {
             if (ReferenceEquals(concorrente, null)) return false;
             int tIndex = _eurovisaoList.Items.FindIndex(r => r.PontosTelevoto.Equals(pontosTelevoto));
+            if (tIndex > -1)
+            {
+                _eurovisaoList.Items[tIndex] = concorrente.RegistoConcorrentes();
+                return true;
+            }
+            return false;
+        }
+        public bool ModificarConcorrente(int id, Eurovisao concorrente)
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            int tIndex = _eurovisaoList.Items.FindIndex(r => r.ID.Equals(id));
             if (tIndex > -1)
             {
                 _eurovisaoList.Items[tIndex] = concorrente.RegistoConcorrentes();

@@ -77,8 +77,13 @@ namespace Eurovisao_BL
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarPontosTelevoto(pontosTelevoto, concorrente);
         }
+        public bool ModificarConcorrente(int id, Eurovisao concorrente)
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            return _eurovisaoDAO.ModificarConcorrente(id, concorrente);
+        }
         /*
-        public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente) //modifica ronda
+        public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente) //modifica ronda, nota: vou mudar por enum.parse no program
         {
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarRondaConcorrente(pais, ronda, concorrente);
@@ -114,6 +119,60 @@ namespace Eurovisao_BL
                 lista.Add(c.RegistoConcorrenteResponse());
             }
             return lista;
+        }
+        public bool ExisteConcorrente(int id, out Eurovisao? obj) // é preciso criar este método na Eurovisao_DAO
+        {
+            obj = null;
+            return _eurovisaoDAO.ExisteConcorrente(id, out obj);
+        }
+        public EuroRegistoResponse ObterConcorrenteResponse(int id)
+        {
+            EuroRegistoResponse? obj = null;
+            Eurovisao? concorrente = null;
+            if (ExisteConcorrente(id, out concorrente)) 
+            {
+                obj = new EuroRegistoResponse
+                {
+                    ID = concorrente.ID,
+                    Pais = concorrente.Pais,
+                    NomeRepresentante = concorrente.NomeRepresentante,
+                    NomeMusica = concorrente.NomeMusica,
+                    Ronda = concorrente.Ronda,
+                    PontosJuri = concorrente.PontosJuri,
+                    PontosTelevoto = concorrente.PontosTelevoto
+                };
+            }
+            return obj;
+        }
+        public bool AdicionarConcorrenteRequest(EuroRegistoRequest request)
+        {
+            Eurovisao concorrente = NovoConcorrente( //o id é gerado automaticamente, por isso não é preciso colocar aqui
+                request.Pais,
+                request.NomeRepresentante,
+                request.NomeMusica,
+                request.Ronda,
+                request.PontosJuri,
+                request.PontosTelevoto);
+            return AdicionarConcorrente(concorrente);
+        }
+        public bool ModificarConcorrenteRequest(int id, EuroRegistoRequest request)
+        {
+            Eurovisao? obj = null;
+            if (ExisteConcorrente(id, out obj)) //msm que só queira alterar alguns atributos, colocar todos, e depois colocar o msm nome nos que nao quero alterar
+            {
+                obj.Pais = request.Pais;
+                obj.NomeRepresentante = request.NomeRepresentante;
+                obj.NomeMusica = request.NomeMusica;
+                obj.Ronda = request.Ronda;
+                obj.PontosJuri = request.PontosJuri;
+                obj.PontosTelevoto = request.PontosTelevoto;
+                return ModificarConcorrente(id, obj);
+            }
+            return false;
+        }
+        public bool ApagarConcorrente(int id) 
+        {
+            return _eurovisaoDAO.ApagarConcorrente(id);
         }
     }
 }
