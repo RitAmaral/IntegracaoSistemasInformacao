@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Anotacoes_Constantes\Anotacoes_Constantes.csproj" />
-    <ProjectReference Include="..\Anotacoes_Models2Api\Anotacoes_Models2Api.csproj" />
-    <ProjectReference Include="..\ToolBox\ToolBox.csproj" />
+    <ProjectReference Include="..\Anotacao_BL\Anotacao_BL.csproj" />
   </ItemGroup>
 
 </Project>

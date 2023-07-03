@@ -1,6 +1,7 @@
 ﻿using Anotacoes_Constantes;
 using System.Xml.Serialization;
 using ToolBox;
+using Anotacoes_Models2Api;
 namespace Anotacao_BO
 {
     [Serializable]
@@ -51,6 +52,17 @@ namespace Anotacao_BO
         public RegistoAnotacao RegistoAnotacao() //metodo
         {
             return new RegistoAnotacao
+            {
+                Id = this.Id,
+                Nome = this.Nome,
+                Aula = this.Aula,
+                Tipo = this.Tipo,
+                Revisado = this.Revisado
+            };
+        }
+        public AnotRegistoResponse RegistoAnotacaoResponse() 
+        {
+            return new AnotRegistoResponse
             {
                 Id = this.Id,
                 Nome = this.Nome,

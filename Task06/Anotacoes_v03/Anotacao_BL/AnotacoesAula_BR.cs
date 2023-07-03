@@ -1,6 +1,7 @@
 ﻿using Anotacao_BO;
 using Anotacao_DAL;
 using Anotacoes_Constantes;
+using Anotacoes_Models2Api;
 
 namespace Anotacao_BL
 {
@@ -54,6 +55,64 @@ namespace Anotacao_BL
         public bool ImportarDados() //importa os dados
         {
             return _AnotacoesDao.ImportarDados();
+        }
+        //serviços para o API
+        public List<AnotRegistoResponse> GetAnotacoesListResponse()
+        {
+            List<AnotRegistoResponse> lista = new List<AnotRegistoResponse>();
+            foreach (var c in _AnotacoesDao.GetAnotacoes()) // é preciso criar depois
+            {
+                lista.Add(c.RegistoAnotacaoResponse());
+            }
+            return lista;
+        }
+        public bool ExisteAnotacao(int id, out AnotacoesAula? obj)
+        {
+            obj = null;
+            return _AnotacoesDao.ExisteAnotacao(id, out obj);
+        }
+        public AnotRegistoResponse ObterAnotacaoResponse(int id)
+        {
+            AnotRegistoResponse? obj = null;
+            AnotacoesAula? anotacao = null;
+            if (ExisteAnotacao(id, out anotacao)) //se nao tiver Existe compromisso por id, é preciso criar novo método
+            {
+                obj = new AnotRegistoResponse
+                {
+                    Id = anotacao.Id,
+                    Nome = anotacao.Nome,
+                    Aula = anotacao.Aula,
+                    Tipo = anotacao.Tipo,
+                    Revisado = anotacao.Revisado
+                };
+            }
+            return obj;
+        }
+        public bool AdicionarAnotacaoRequest(AnotRegistoRequest request)
+        {
+            AnotacoesAula anotacao = NovaAnotacao(
+                request.Nome,
+                request.Aula,
+                request.Tipo,
+                request.Revisado);
+            return AdicionarAnotacao(anotacao);
+        }
+        public bool ModificarAnotacaoRequest(int id, AnotRegistoRequest request)
+        {
+            AnotacoesAula? obj = null;
+            if (ExisteAnotacao(id, out obj)) //msm que só queira alterar alguns atributos, colocar todos
+            {
+                obj.Nome = request.Nome;
+                obj.Aula = request.Aula;
+                obj.Tipo = request.Tipo;
+                obj.Revisado = request.Revisado;
+                return ModificarAnotacao(id, obj);
+            }
+            return false;
+        }
+        public bool ApagarAnotacao(int id) //nao precisa de request porque pode ser um método global
+        {
+            return _AnotacoesDao.ApagarAnotacao(id);
         }
     }
 }

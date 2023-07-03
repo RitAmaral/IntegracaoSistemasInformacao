@@ -65,13 +65,34 @@ namespace Anotacao_DAL
             }
             return false;
         }
+        public bool ApagarAnotacao(int id) //apagar pelo id
+        {
+            int tIndex = _anotacoesList.Items.FindIndex(r => r.Id.Equals(id));
+            if (tIndex > -1)
+            {
+                _anotacoesList.Items.RemoveAt(tIndex);
+                return true;
+            }
+            return false;
+        }
         public bool ExisteAnotacao(string nome) //existe anotação pelo nome
         {
             AnotacoesAula? obj = null;
             return ExisteAnotacao(nome, out obj);
         }
+        public bool ExisteAnotacao(int id, out AnotacoesAula? obj) //existe anotação pelo id
+        {
+            obj = null;
+            int tIndex = _anotacoesList.Items.FindIndex(r => r.Id.Equals(id));
+            if (tIndex > -1)
+            {
+                obj = new AnotacoesAula(_anotacoesList.Items[tIndex]);
+                return true;
+            }
+            return false;
+        }
 
-        public bool ExisteAnotacao(string nome, out AnotacoesAula? obj)
+        public bool ExisteAnotacao(string nome, out AnotacoesAula? obj) //acrescentar
         {
             obj = null;
             string tNome = nome.Trim();
@@ -97,6 +118,7 @@ namespace Anotacao_DAL
         }
         public void ExportarDados() //exporta dados
         {
+            string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlAnotacoes);
             if (!File.Exists(Constantes.NomeXmlAnotacoes))
             {
                 try
@@ -128,6 +150,7 @@ namespace Anotacao_DAL
         }
         public bool ImportarDados() //importa dados
         {
+            string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlAnotacoes);
             return ImportarXml(Constantes.NomeXmlAnotacoes);
         }
         public bool ImportarXml(string ficheiro)
@@ -156,6 +179,16 @@ namespace Anotacao_DAL
                 }
             }
             return false;
+        }
+        //serviços para o API
+        public List<AnotacoesAula> GetAnotacoes()
+        {
+            List<AnotacoesAula> list = new List<AnotacoesAula>();
+            foreach (RegistoAnotacao c in _anotacoesList.Items)
+            {
+                list.Add(new AnotacoesAula(c));
+            }
+            return list;
         }
     }
 }
