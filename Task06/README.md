@@ -1,4 +1,4 @@
-# Task 05
+# Task 06
 
 ## Enunciado:
 
@@ -11,7 +11,7 @@ Deverá incluir todas as aprendizagens até ao momento. O “único” output da
 
 ---
 
-### Resposta Task 05:
+### Resposta Task 06:
 
 Primeiro comecei por adicionar mais bibliotecas de classes às já existentes que foram feitas na Task04. Como a **ToolBox** e a **SerializeTools**, onde na primeira foi criada a classe *GetNewId*, que permite atribuir um ID automático. Na segunda foi criada uma classe chamada *XmlMethods*, onde foram criados 4 métodos, 2 para serializar e 2 para desserializar. 
 Esta biblioteca é essencial em todos os projetos em que seja necessário para serializar os dados.
