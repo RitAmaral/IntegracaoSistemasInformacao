@@ -24,7 +24,8 @@ ___
   - [Agenda v4](Work01/Agenda_v04) - Exercício serialização json
 * [Task 04](Task04), aula: 15/06/2023, 19/06/2023
   - [Anotações v1](Task04/Anotacoes_v01)
-* [Task 05](Task05), aula: 23/06/2023 - serialização
+* [Task 05](Task05), aula: 23/06/2023 - serialização xml
+* [Task 06](Task06), aula: 03/07/2023 - serialização json finalizada
 * [Projeto Final](ProjF_Rita)
 
 ---
