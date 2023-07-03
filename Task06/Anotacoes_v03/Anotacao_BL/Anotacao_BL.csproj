@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Anotacao_BO\Anotacao_BO.csproj" />
+    <ProjectReference Include="..\Anotacao_DAL\Anotacao_DAL.csproj" />
+  </ItemGroup>
+
+</Project>
