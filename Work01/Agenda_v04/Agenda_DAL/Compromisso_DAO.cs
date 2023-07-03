@@ -173,7 +173,7 @@ namespace Agenda_DAL
         }
 
         public bool ImportarDados()
-        {
+        { //acrescentar
         	string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlCompromissos);
             return ImportarXml(ficheiro);
         }
