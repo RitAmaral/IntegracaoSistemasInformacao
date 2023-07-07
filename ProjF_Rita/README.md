@@ -79,7 +79,7 @@ Depois foram criadas as seguintes bibliotecas de classes em concordância com o 
 Neste projeto também foram criadas as seguintes bibliotecas de classes: 
 - **Eurovisao_Constantes** - com a classe Constantes que torna possível a serialização em XML, e com o Enum Ronda (semifinal1, semifinal2, final).
 - **ToolBox** - com a classe GetNewID, que utiliza o padrão de design Singleton, para ser possível atribuir um id automático, e não haver duplicações de IDs neste projeto.
-- **SerializeTools** - para ser possível a serialização em XML
+- **SerializeTools** - com a classe XmlMethods, fornece os métodos necessários para a serialização em XML.
 
 Posteriormente, foi criada uma estrutura (struct) chamada *RegistoConcorrente* dentro da classe Eurovisao, para possibilitar a serialização dos dados. 
 
