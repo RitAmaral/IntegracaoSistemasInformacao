@@ -49,9 +49,12 @@ Mais informações:
 
 ### Notas do Projeto Final:
 
+**Versão Final (de momento): [v8](ProjFinal_Rita_v8)**
+
 **Descrição do modelo de negócio/atividade do tema do trabalho prático:**
 
-O objetivo do projeto é implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão. Neste projeto vai ser usado o padrão de arquitetura N-tier, para dividir o sistema em camadas lógicas e físicas e assim dividir responsabilidades e gerir dependências.  Também vai ser usado o padrão de design singleton na classe GetNewId (que está na biblioteca de classes ToolBox). O padrão Singleton garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Neste projeto isto é importante pois tem de haver apenas uma instância da classe GetNewId, o que garante controlo sobre os IDs, evitando assim duplicações. 
+O objetivo do projeto é implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão. A Eurovisão é uma competição de músicas entre países da Europa e também a Austrália. Cada país tem 3 minutos para impressionar o público e o júri com a sua música, para obter votos/pontos e ser coroado o vencedor da Eurovisão.
+Neste projeto vai ser usado o padrão de arquitetura N-tier, para dividir o sistema em camadas lógicas e físicas e assim dividir responsabilidades e gerir dependências.  Também vai ser usado o padrão de design singleton na classe GetNewId (que está na biblioteca de classes ToolBox). O padrão Singleton garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Neste projeto isto é importante pois tem de haver apenas uma instância da classe GetNewId, o que garante controlo sobre os IDs, evitando assim duplicações. 
 
 **Estruturas de dados que vão ser utilizadas:**
 
@@ -62,6 +65,7 @@ A classe *Eurovisao* (que está na biblioteca de classes **Eurovisao_BO** – bu
 - NomePais: string
 - NomeRepresentante: string
 - NomeMusica: string
+- Ronda:  string (vem do enum Ronda que está na biblioteca de classes **Eurovisao_Constantes** que vai ser mencionada mais à frente)
 - PontosJuri: int
 - PontosPublico: int
 - TotalPontos: int => PontosJuri + PontosTelevoto; TotalPontos é uma Propriedade - Read-only: só leitura, que get/recebe PontosJuri + PontosTelevoto
@@ -101,7 +105,7 @@ Estas são as principais estruturas de dados e serializações envolvidas no pro
 
 **Requisitos funcionais:** 
 
-1. Inserir concorrentes: O sistema deve permitir a inserção dos 37 países concorrentes da Eurovisão 2023, fornecendo as informações necessárias, como nome do país, nome do representante, nome da música, etc.
+1. Inserir concorrentes: O sistema deve permitir a inserção dos 37 países concorrentes da Eurovisão 2023 numa lista, fornecendo as informações necessárias, como o nome do país, nome do representante, nome da música, etc.
 2. Atribuir pontos do júri e televoto: O sistema deve permitir a atribuição ou modificação dos pontos obtidos por cada concorrente nas semi-finais, tanto pelo júri quanto pelo televoto. Apesar de que, este ano, não houve votações do júri nas semi-finais, e por isso nesta fase vão ser colocados 0 pontos de júri em todas as músicas.
 3. Calcular total de pontos: Com base nos pontos atribuídos pelo júri e televoto, o sistema deve calcular o total de pontos de cada concorrente, somando os dois valores.
 4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semi-final para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os big 5: Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da última edição da Eurovisão, a Ucrânia).
@@ -111,4 +115,6 @@ Estas são as principais estruturas de dados e serializações envolvidas no pro
 
 **Estrutura pensada para o desenvolvimento do projeto:**
 
-A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes. Vão ser colocados os pontos obtidos (júri, televoto), em cada semi-final, e vão ser calculados o total de pontos. No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser 0. Depois, passam para a final os 10 concorrentes de cada semi-final, e juntam-se a eles, 6 países já automaticamente qualificados para final. No fim a lista é ordenada por total pontos, e quem tiver mais pontos será o vencedor da Eurovisão 2023. Esta lista será depois guardada em ficheiros XML e JSON.
+A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes por fases. Primeiro serão adicionados 15 concorrentes da primeira semi-final, depois mais 16 concorrentes para a segunda semi-final, e finalmente serão adicionados mais 6 países já automaticamente qualificados para a final.  
+
+Em cada semi-final, vão ser colocados os pontos obtidos (júri e televoto), e vão ser calculados o total de pontos (Pontos do Júri + Pontos do Televoto). No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser colocados a 0. Concluído o período de votação, passam para a final os 10 concorrentes de cada semi-final (20 no total) que obtiveram mais votos, e juntam-se a eles os 6 países já automaticamente qualificados para a final (Alemanha, Espanha, Itália, França, Reino Unido e Ucrânia). No fim, a lista é ordenada pelo total de pontos obtidos (soma dos pontos do júri e televoto), e quem tiver mais pontos será o vencedor da Eurovisão 2023. Esta lista será depois guardada em ficheiros XML e JSON. 
