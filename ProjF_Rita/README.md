@@ -87,7 +87,7 @@ Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armaz
 
 Para ser possível a serialização em JSON: 
 
-Foi criada uma nova solução API Web do ASP.NET Core: Eurovisao_WebAPI. Depois criado um novo Controller: EurovisaoController.  
+Foi criada uma nova solução API Web do ASP.NET Core: Eurovisao_WebAPI. E logo de seguida foi criado um novo Controller: EurovisaoController.  
 
 Foram criadas 2 bibliotecas de classes: 
 - Eurovisao_Models2Api - Contêm 2 classes:
@@ -98,7 +98,7 @@ Foram criadas 2 bibliotecas de classes:
 
 Foram criados novos métodos: GetConcorrenteListResponse() em Eurovisao_BR e GetConcorrentes em Eurovisao_DAO. 
 
-Também foi criada outra nova solução: aplicativo de console: EuroConsole2Api. Que permite vermos na consola o formato JSON que aparece no swagger.  
+Também foi criada outra nova solução: aplicativo de console: EuroConsole2Api. Que permite vermos na consola o formato JSON que aparece no 'swagger'.  
 
 Estas são as principais estruturas de dados e serializações envolvidas no projeto, abrangendo a serialização em XML e em JSON. 
 
@@ -106,15 +106,15 @@ Estas são as principais estruturas de dados e serializações envolvidas no pro
 **Requisitos funcionais:** 
 
 1. Inserir concorrentes: O sistema deve permitir a inserção dos 37 países concorrentes da Eurovisão 2023 numa lista, fornecendo as informações necessárias, como o nome do país, nome do representante, nome da música, etc.
-2. Atribuir pontos do júri e televoto: O sistema deve permitir a atribuição ou modificação dos pontos obtidos por cada concorrente nas semi-finais, tanto pelo júri quanto pelo televoto. Apesar de que, este ano, não houve votações do júri nas semi-finais, e por isso nesta fase vão ser colocados 0 pontos de júri em todas as músicas.
+2. Atribuir pontos do júri e televoto: O sistema deve permitir a atribuição ou modificação dos pontos obtidos por cada concorrente nas semifinais, tanto pelo júri quanto pelo televoto. Apesar de que, este ano, não houve votações do júri nas semifinais, e por isso nesta fase vão ser colocados 0 pontos de júri em todas as músicas.
 3. Calcular total de pontos: Com base nos pontos atribuídos pelo júri e televoto, o sistema deve calcular o total de pontos de cada concorrente, somando os dois valores.
-4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semi-final para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os big 5: Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da última edição da Eurovisão, a Ucrânia).
+4. Selecionar finalistas: O sistema deve identificar os 10 concorrentes com maior pontuação em cada semifinal para avançarem para a final. Além disso, devem ser adicionados automaticamente os 6 países já qualificados para a final (os 'big 5': Reino Unido, Itália, Espanha, França e Alemanha; e o país vencedor da última edição da Eurovisão, a Ucrânia).
 5. Ordenar lista por total de pontos: Após a realização da final, o sistema deve ordenar a lista de concorrentes por ordem decrescente de total de pontos, para determinar a classificação final.
 6. Identificar vencedor: Com a lista ordenada por total de pontos, o sistema deve identificar o concorrente com a maior pontuação como o vencedor da Eurovisão.
 7. Serialização dos dados: O sistema deve suportar a serialização dos dados em formatos XML e JSON, permitindo a exportação e importação dos dados do concurso da Eurovisão. Isto garante a portabilidade dos dados, facilitando a integração com outros sistemas ou a realização de backups. 
 
 **Estrutura pensada para o desenvolvimento do projeto:**
 
-A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes por fases. Primeiro serão adicionados 15 concorrentes da primeira semi-final, depois mais 16 concorrentes para a segunda semi-final, e finalmente serão adicionados mais 6 países já automaticamente qualificados para a final.  
+A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes por fases. Primeiro serão adicionados 15 concorrentes da primeira semifinal, depois mais 16 concorrentes para a segunda semifinal, e finalmente serão adicionados mais 6 países já automaticamente qualificados para a final.  
 
-Em cada semi-final, vão ser colocados os pontos obtidos (júri e televoto), e vão ser calculados o total de pontos (Pontos do Júri + Pontos do Televoto). No entanto, nas semi-finais, o júri não votou, por isso todos os votos do júri vão ser colocados a 0. Concluído o período de votação, passam para a final os 10 concorrentes de cada semi-final (20 no total) que obtiveram mais votos, e juntam-se a eles os 6 países já automaticamente qualificados para a final (Alemanha, Espanha, Itália, França, Reino Unido e Ucrânia). No fim, a lista é ordenada pelo total de pontos obtidos (soma dos pontos do júri e televoto), e quem tiver mais pontos será o vencedor da Eurovisão 2023. Esta lista será depois guardada em ficheiros XML e JSON. 
+Em cada semifinal, vão ser colocados os pontos obtidos (júri e televoto), e vão ser calculados o total de pontos (Pontos do Júri + Pontos do Televoto). No entanto, nas semifinais, o júri não votou, por isso todos os votos do júri vão ser colocados a 0. Concluído o período de votação, passam para a final os 10 concorrentes de cada semifinal (20 no total) que obtiveram mais votos, e juntam-se a eles os 6 países já automaticamente qualificados para a final (Alemanha, Espanha, Itália, França, Reino Unido e Ucrânia). No fim, a lista é ordenada pelo total de pontos obtidos (soma dos pontos do júri e televoto), e quem tiver mais pontos será o vencedor da Eurovisão 2023. Esta lista será depois guardada em ficheiros XML e JSON. 
