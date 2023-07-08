@@ -220,7 +220,7 @@ namespace Eurovisao_DAL
         public List<string> Historico() //mostra o historico, no entanto so dos paises que estão na final, não os que já foram eliminados da lista..
         {
             List<string> historico = new List<string>();
-            Console.WriteLine($"País\t| Ronda\t| Júri\t| Televoto\t| Total de Pontos");
+            Console.WriteLine($"País\t| Ronda\t| Júri\t| Televoto\t| Total Pontos");
             Console.WriteLine("---------------------------------------------------------");
             foreach (RegistoConcorrente concorrente in _eurovisaoList.Items)
             {

@@ -176,7 +176,7 @@ namespace Eurovisao_Console
 
             /*--------------------------Alterar Ronda para final:--------------------------------------*/
             
-            Console.WriteLine($"\nA alterar as rondas dos países das semifinais qualificados para a final....");
+            Console.WriteLine("\nA alterar as rondas dos países das semifinais qualificados para a final....");
 
             s1f1.Ronda = Enum.Parse<Ronda>("Final");
             s1f2.Ronda = Enum.Parse<Ronda>("Final");
@@ -385,7 +385,7 @@ namespace Eurovisao_Console
             Console.WriteLine($"\nE o vencedor da Eurovisão 2023 é.... {vencedor.Pais.ToUpper()}!!!"); //ToUpper para colocar o vencedor em letras maiúsculas
 
             Console.WriteLine("\nA serializar a lista...");
-            gestaoEurovisao.ExportarDados(); //exporar lista em formato XML
+            gestaoEurovisao.ExportarDados(); //exportar lista em formato XML
 
             Console.WriteLine("\nHistórico:\n");
             MostrarHistorico(gestaoEurovisao.Historico()); //-----------------------ainda não está a funcionar direito

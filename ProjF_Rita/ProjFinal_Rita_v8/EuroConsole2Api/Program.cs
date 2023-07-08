@@ -8,7 +8,7 @@ internal class Program
     //forma disfarçada de usar o singleton dentro do program; apenas uma instancia 
     private static async Task Main(string[] args)
     { // foi criado um novo projeto aplicativo de console: EuroConsole2Api
-        //quando corremos esta consola, vai aparecer o mesmo que aparece no swagger, a lista de compromissos em json (nota: a webAPI deve tar aberta ao mesmo tempo)
+        //quando corremos esta consola, vai aparecer o mesmo que aparece no swagger, a lista de concorrentes em json (nota: a webAPI deve tar aberta ao mesmo tempo)
         try
         {
             string a = "https://localhost:7042"; //copiar o link do swagger para aqui
@@ -21,6 +21,8 @@ internal class Program
             List<EuroRegistoResponse> lista = JsonConvert.DeserializeObject<List<EuroRegistoResponse>>(responseBody);
             if (lista != null && lista.Count > 0)
             {
+                Console.WriteLine("\nID\t|País\t|Representante\t|Música\t|Ronda\t|Júri\t|Televoto\t|Total Pontos");
+                Console.WriteLine("----------------------------------------------------------------------------------------------------");
                 foreach (var item in lista)
                 {
                     Console.WriteLine($"{item.ID}\t|{item.Pais}\t|{item.NomeRepresentante}\t|{item.NomeMusica}\t|{item.Ronda}\t|{item.PontosJuri}\t|{item.PontosTelevoto}\t|{item.TotalPontos}");
