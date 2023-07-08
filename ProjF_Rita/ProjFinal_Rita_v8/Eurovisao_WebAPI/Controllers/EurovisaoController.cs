@@ -26,6 +26,12 @@ namespace Eurovisao_WebAPI.Controllers
             _servicos.Concorrentes.ImportarDados();
             return new ObjectResult(_servicos.Concorrentes.GetConcorrenteListResponse()); //faz ligaçao entre o api e a nossa libraria principal
         }
+
+        /// <summary>
+        /// obter concorrente por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")] //temos id como parâmetro
         [Produces("application/json")] //este endpoint produz um objeto json
         [ProducesResponseType(typeof(EuroRegistoResponse), StatusCodes.Status200OK)]
@@ -41,7 +47,12 @@ namespace Eurovisao_WebAPI.Controllers
             }
             return new NotFoundResult(); //se o ID não existir vai mandar o erro 404
         }
-        //Acrescentar:
+        
+        /// <summary>
+        /// inserir concorrente
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post([FromBody] EuroRegistoRequest value)
         {
@@ -52,10 +63,16 @@ namespace Eurovisao_WebAPI.Controllers
                 _servicos.Concorrentes.ExportarDados();
                 return new OkResult();
             }
-            return new BadRequestResult(); //se nao conseguir adicionar, devolve erro bad request
+            return new BadRequestResult(); //se nao conseguir adicionar concorrente, devolve erro bad request
         }
-        //Acrescentar:
-        [HttpPut("{id}")] //fornecer o id o queremos alterar, e damos o valor que queremos alterar
+        
+        /// <summary>
+        /// modificar concorrente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")] //fornecer o id do concorrente que queremos alterar, e inserimos os valores que queremos alterar (os que não queremos alterar, deixamos igual)
         public IActionResult Post(int id, [FromBody] EuroRegistoRequest value)
         {
             EurovisaoServices _servicos = new EurovisaoServices();
@@ -65,9 +82,14 @@ namespace Eurovisao_WebAPI.Controllers
                 _servicos.Concorrentes.ExportarDados();
                 return new OkResult();
             }
-            return new BadRequestResult(); //se nao conseguir modificar, devolve erro bad request
+            return new BadRequestResult(); //se nao conseguir modificar o concorrente, devolve erro bad request
         }
-        //Acrescentar:
+        
+        /// <summary>
+        /// apagar concorrente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -78,7 +100,7 @@ namespace Eurovisao_WebAPI.Controllers
                 _servicos.Concorrentes.ExportarDados();
                 return new OkResult();
             }
-            return new BadRequestResult(); //se nao conseguir modificar, devolve erro bad request
+            return new BadRequestResult(); //se nao conseguir eliminar concorrente, devolve erro bad request
         }
     }
 }

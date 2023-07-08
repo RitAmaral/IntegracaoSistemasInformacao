@@ -9,8 +9,8 @@ namespace Eurovisao_Constantes
     [Serializable] //se o enum não for serializado vai dar erro.
     public enum Ronda: byte
     {
-        SemiFinal1 = 1,
-        SemiFinal2 = 2,
+        Semifinal1 = 1,
+        Semifinal2 = 2,
         Final = 3
     }
 }

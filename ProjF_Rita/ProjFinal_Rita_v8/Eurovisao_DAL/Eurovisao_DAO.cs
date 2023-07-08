@@ -37,6 +37,7 @@ namespace Eurovisao_DAL
             _eurovisaoList.Items.Add(concorrente.RegistoConcorrentes());
             return true;
         }
+
         public bool AdicionarConcorrente(RegistoConcorrente concorrente)
         {
             _eurovisaoList.Items.Add(concorrente); //adiciona à lista
@@ -52,6 +53,7 @@ namespace Eurovisao_DAL
             }
             return list;
         }
+
         public List<string> GetConcorrentesList(Ronda ronda) //mostra lista de concorrentes por ronda
         {
             List<string> list = new List<string>();
@@ -64,6 +66,7 @@ namespace Eurovisao_DAL
             }
             return list;
         }
+
         public bool ApagarConcorrente(string pais) //apaga concorrente pelo nome do país que representa
         {
             Eurovisao? obj = null;
@@ -79,6 +82,7 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+
         public bool ApagarConcorrente(int id) //apaga concorrente pelo id do país que representa
         {
             int tIndex = _eurovisaoList.Items.FindIndex(r => r.ID.Equals(id));
@@ -89,6 +93,7 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+
         public bool ApagarConcClassificacaoFinal() //apagar concorrentes com menores pontuações
         {
             int inicial = _eurovisaoList.Items.Count;
@@ -120,10 +125,12 @@ namespace Eurovisao_DAL
         {
             return _eurovisaoList.Items.Any(e => e.Pais.Equals(pais));
         }
+
         public bool ExisteConcorrente(int id) //verifica se existe concorrente pelo id
         {
             return _eurovisaoList.Items.Any(e => e.ID.Equals(id));
         }
+
         public bool ExisteConcorrente(string pais, out Eurovisao? obj) //este existe concorrente é necessário para o método apagar concorrente em cima
         {
             obj = null;
@@ -137,6 +144,7 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+
         public bool ExisteConcorrente(int id, out Eurovisao? obj) //este existe concorrente por id é necessário para JSON
         {
             obj = null;
@@ -160,6 +168,7 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+
         public bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente) //modifica pontos do televoto de um concorrente
         {
             if (ReferenceEquals(concorrente, null)) return false;
@@ -171,7 +180,8 @@ namespace Eurovisao_DAL
             }
             return false;
         }
-        public bool ModificarConcorrente(int id, Eurovisao concorrente)
+
+        public bool ModificarConcorrente(int id, Eurovisao concorrente) //necessário por causa do método ModificarConcorrenteRequest em Eurovisao_BR
         {
             if (ReferenceEquals(concorrente, null)) return false;
             int tIndex = _eurovisaoList.Items.FindIndex(r => r.ID.Equals(id));
@@ -200,16 +210,18 @@ namespace Eurovisao_DAL
             _eurovisaoList.Items = _eurovisaoList.Items.OrderByDescending(concorrente => concorrente.TotalPontos).ToList();
             return true;
         }
+
         public RegistoConcorrente Vencedor() //diz o vencedor da eurovisão após lista ordenada por ordem descendente de total pontos
         {
             OrdenarLista();
             return _eurovisaoList.Items.FirstOrDefault();
         }
+
         public List<string> Historico() //mostra o historico, no entanto so dos paises que estão na final, não os que já foram eliminados da lista..
         {
             List<string> historico = new List<string>();
             Console.WriteLine($"País\t| Ronda\t| Júri\t| Televoto\t| Total de Pontos");
-
+            Console.WriteLine("---------------------------------------------------------");
             foreach (RegistoConcorrente concorrente in _eurovisaoList.Items)
             {
                 string resultado = $"{concorrente.Pais}\t| {concorrente.Ronda}\t| {concorrente.PontosJuri}\t| {concorrente.PontosTelevoto}\t| {concorrente.TotalPontos}";
@@ -218,7 +230,8 @@ namespace Eurovisao_DAL
 
             return historico;
         }
-        //XML
+
+        /*---------------------XML--------------------*/
         public void ExportarDados()
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlEurovisao);
@@ -234,6 +247,7 @@ namespace Eurovisao_DAL
                 }
             }
         }
+
         public bool ExportarXml(string ficheiro)
         {
             if (ficheiro != null)
@@ -251,11 +265,13 @@ namespace Eurovisao_DAL
             }
             return false;
         }
+
         public bool ImportarDados()
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlEurovisao);
             return ImportarXml(ficheiro);
         }
+
         public bool ImportarXml(string ficheiro)
         {
             if (ficheiro != null && File.Exists(ficheiro))
@@ -281,7 +297,8 @@ namespace Eurovisao_DAL
             }
             return false;
         }
-        //serviços para o API
+
+        /*---------------------Serviçõs para o API--------------------*/
         public List<Eurovisao> GetConcorrentes()
         {
             List<Eurovisao> list = new List<Eurovisao>();

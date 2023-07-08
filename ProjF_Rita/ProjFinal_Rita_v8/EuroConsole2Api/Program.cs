@@ -4,11 +4,11 @@ using Eurovisao_Constantes;
 
 internal class Program
 {
-    static readonly HttpClient client = new HttpClient(); //Acrescentar isto
+    static readonly HttpClient client = new HttpClient(); 
     //forma disfarçada de usar o singleton dentro do program; apenas uma instancia 
     private static async Task Main(string[] args)
     { // foi criado um novo projeto aplicativo de console: EuroConsole2Api
-        //quando corremos esta consola, vai aparecer o mesmo que aparece no swagger, a lista de compromissos em json
+        //quando corremos esta consola, vai aparecer o mesmo que aparece no swagger, a lista de compromissos em json (nota: a webAPI deve tar aberta ao mesmo tempo)
         try
         {
             string a = "https://localhost:7042"; //copiar o link do swagger para aqui

@@ -40,18 +40,22 @@ namespace Eurovisao_BL
         {
             return _eurovisaoDAO.GetConcorrentesList();
         }
+
         public List<string> GetConcorrentesList(Ronda ronda) //obter lista de concorrentes por ronda
         {
             return _eurovisaoDAO.GetConcorrentesList(ronda);
         }
+
         public bool ApagarConcorrente(string pais) //apaga concorrente pelo país
         {
             return _eurovisaoDAO.ApagarConcorrente(pais);
         }
+
         public bool ApagarConcClassificacaoFinal() //apaga concorrentes com menores pontuações
         {
             return _eurovisaoDAO.ApagarConcClassificacaoFinal();
         }
+
         public bool ApagarConcRonda(Ronda ronda) //apaga concorrentes por ronda, por semifinal1 ou por semifinal2
         {
             return _eurovisaoDAO.ApagarConcRonda(ronda);
@@ -61,6 +65,7 @@ namespace Eurovisao_BL
         {
             return _eurovisaoDAO.ExisteConcorrente(pais);
         }
+
         public bool ExisteConcorrente(int id) //verifica se existe concorrente pelo id
         {
             return _eurovisaoDAO.ExisteConcorrente(id);
@@ -77,7 +82,8 @@ namespace Eurovisao_BL
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarPontosTelevoto(pontosTelevoto, concorrente);
         }
-        public bool ModificarConcorrente(int id, Eurovisao concorrente)
+
+        public bool ModificarConcorrente(int id, Eurovisao concorrente) //necessário por causo do método ModificarConcorrenteRequest em baixo
         {
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarConcorrente(id, concorrente);
@@ -93,24 +99,29 @@ namespace Eurovisao_BL
         {
             return _eurovisaoDAO.Historico();
         }
+
         public bool OrdernarLista()
         {
             return _eurovisaoDAO.OrdenarLista();
         }
-        public RegistoConcorrente Vencedor()
+
+        public RegistoConcorrente Vencedor() //mostra vencendor da eurovisão
         {
             return _eurovisaoDAO.Vencedor();
         }
-        //XML
+
+        /*---------------------XML--------------------*/
         public void ExportarDados()
         {
             _eurovisaoDAO.ExportarDados();
         }
+
         public bool ImportarDados()
         {
             return _eurovisaoDAO.ImportarDados();
         }
-        //serviços para o API
+
+        /*---------------------Serviçõs para o API--------------------*/
         public List<EuroRegistoResponse> GetConcorrenteListResponse() //adicionar dependencia do eurovisao Models
         {
             List<EuroRegistoResponse> lista = new List<EuroRegistoResponse>();
@@ -120,11 +131,13 @@ namespace Eurovisao_BL
             }
             return lista;
         }
+
         public bool ExisteConcorrente(int id, out Eurovisao? obj) // é preciso criar este método na Eurovisao_DAO
         {
             obj = null;
             return _eurovisaoDAO.ExisteConcorrente(id, out obj);
         }
+
         public EuroRegistoResponse ObterConcorrenteResponse(int id)
         {
             EuroRegistoResponse? obj = null;
@@ -144,6 +157,7 @@ namespace Eurovisao_BL
             }
             return obj;
         }
+
         public bool AdicionarConcorrenteRequest(EuroRegistoRequest request)
         {
             Eurovisao concorrente = NovoConcorrente( //o id é gerado automaticamente, por isso não é preciso colocar aqui
@@ -155,10 +169,11 @@ namespace Eurovisao_BL
                 request.PontosTelevoto);
             return AdicionarConcorrente(concorrente);
         }
+
         public bool ModificarConcorrenteRequest(int id, EuroRegistoRequest request)
         {
             Eurovisao? obj = null;
-            if (ExisteConcorrente(id, out obj)) //msm que só queira alterar alguns atributos, colocar todos, e depois colocar o msm nome nos que nao quero alterar
+            if (ExisteConcorrente(id, out obj)) //mesmo que só queira alterar alguns atributos, colocar todos, e depois colocar o mesmo nome nos que não quero alterar
             {
                 obj.Pais = request.Pais;
                 obj.NomeRepresentante = request.NomeRepresentante;
@@ -170,6 +185,7 @@ namespace Eurovisao_BL
             }
             return false;
         }
+
         public bool ApagarConcorrente(int id) 
         {
             return _eurovisaoDAO.ApagarConcorrente(id);
