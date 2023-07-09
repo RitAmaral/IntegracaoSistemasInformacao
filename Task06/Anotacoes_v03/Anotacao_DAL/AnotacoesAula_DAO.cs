@@ -122,7 +122,7 @@ namespace Anotacao_DAL
             {
                 try
                 {
-                    ExportarXml(Constantes.NomeXmlAnotacoes);
+                    ExportarXml(ficheiro);
                 }
                 catch (Exception)
                 {
