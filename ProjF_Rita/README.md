@@ -85,9 +85,9 @@ Depois foram criadas as seguintes bibliotecas de classes em concordância com o 
 - Data Access Layer: biblioteca de classes **Eurovisao_DAL** - é a camada de dados que é responsável por aceder e manipular os dados. Contém métodos para executar operações nos objetos da classe *Eurovisao* (como por exemplo: AdicionarConcorrente, ModificarPontos, ExisteConcorrente, ApagarConcorrente, entre outros). 
 
 Neste projeto também foram criadas as seguintes bibliotecas de classes: 
-- **Eurovisao_Constantes** - com a classe Constantes que torna possível a serialização em XML, e com o Enum Ronda (semifinal1, semifinal2, final).
-- **ToolBox** - com a classe GetNewID, que utiliza o padrão de design Singleton, para ser possível atribuir um id automático, e não haver duplicações de IDs neste projeto.
-- **SerializeTools** - com a classe XmlMethods, fornece os métodos necessários para a serialização em formato XML.
+- **Eurovisao_Constantes** - com a classe *Constantes* que torna possível a serialização em XML, e com o Enum Ronda (semifinal1, semifinal2, final).
+- **ToolBox** - com a classe *GetNewID*, que utiliza o padrão de design Singleton, para ser possível atribuir um id automático, e não haver duplicações de IDs neste projeto.
+- **SerializeTools** - com a classe *XmlMethods*, fornece os métodos necessários para a serialização em formato XML.
 
 Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armazenar os objetos da classe *Eurovisao* e realizar operações de adição, remoção e manipulação dos dados que mencionei acima na biblioteca de classes **DAL**. 
 
@@ -97,11 +97,11 @@ Para ser possível a serialização em formato JSON:
 
 Foi criada uma nova solução API Web do ASP.NET Core: Eurovisao_WebAPI. E logo de seguida foi criado um novo Controller: EurovisaoController. No Controller foi colocada a estrutura fundamental que permite executar o CRUD (Create, Read, Update, Delete) na lista de concorrentes da Eurovisão em formato JSON, através do [swagger](https://editor.swagger.io/). O swagger é uma ferramenta que nos permite visualizar, documentar e testar APIs. Neste projeto, será possível visualizar no swagger a lista de concorrentes da eurovisão (o nome dos países, representantes, músicas e pontos obtidos na final), sendo que também podemos pesquisar e obter dados de um determinado concorrente por id. Será também possível editar e apagar concorrentes. Mas para isso acontecer, foi também preciso criar as seguintes bibliotecas de classes: 
 
-- Eurovisao_Models2Api - Contêm 2 classes:
-  - EuroRegistoRequest
-  - EuroRegistoResponse
-- Eurovisao_Services2Api - Contêm 1 classe:
-  - EurovisaoServices 
+- **Eurovisao_Models2Api** - Contêm 2 classes:
+  - *EuroRegistoRequest*
+  - *EuroRegistoResponse*
+- **Eurovisao_Services2Api** - Contêm 1 classe:
+  - *EurovisaoServices* 
 
 Também tiveram de ser criados novos métodos, como por exemplo GetConcorrenteListResponse() e ModificarConcorrenteRequest() em Eurovisao_BR e GetConcorrentes em Eurovisao_DAO. 
 
