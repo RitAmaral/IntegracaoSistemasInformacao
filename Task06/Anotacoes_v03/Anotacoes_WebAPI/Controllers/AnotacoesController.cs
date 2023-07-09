@@ -40,10 +40,10 @@ namespace Anotacoes_WebAPI.Controllers
         {
             AnotacoesServicos _servicos = new AnotacoesServicos();
             _servicos.Anotacoes.ImportarDados();
-            AnotRegistoResponse? agendaRegistoResponse = _servicos.Anotacoes.ObterAnotacaoResponse(id); //vamos criar este método em AnotacoesAula BR
-            if (agendaRegistoResponse != null)
+            AnotRegistoResponse? anotRegistoResponse = _servicos.Anotacoes.ObterAnotacaoResponse(id); //vamos criar este método em AnotacoesAula BR
+            if (anotRegistoResponse != null)
             {
-                return new ObjectResult(agendaRegistoResponse);
+                return new ObjectResult(anotRegistoResponse);
             }
             return new NotFoundResult(); //se o ID não existir vai mandar o erro 404
         }
