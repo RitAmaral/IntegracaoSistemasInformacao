@@ -54,7 +54,15 @@ Mais informações:
 **Descrição do modelo de negócio/atividade do tema do trabalho prático:**
 
 O objetivo do projeto é implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão. A Eurovisão é uma competição de músicas entre países da Europa e também a Austrália. Cada país tem 3 minutos para impressionar o público e o júri com a sua música, para obter votos/pontos e ser coroado o vencedor da Eurovisão.
+Neste sistema será possível criar concorrentes que vão participar na Eurovisão, sendo que, foram utilizados os dados e resultados obtidos na [Eurovisão 2023](https://eurovision.tv/story/swedens-loreen-wins-eurovision-song-contest-2023). Vão ser inseridos os países, o nome dos representantes e das músicas, os pontos obtidos por cada música pelo júri e pelo televoto em cada ronda (semifinal1, semifinal2 e final). Além da adição de concorrentes e da modificação dos pontos nas respetivas rondas, será também possível eliminar os concorrentes que não obtiveram pontos suficientes para se qualificarem para a final. Vai também ser possível ordenar os concorrentes por total de pontos obtidos (pontos júri + pontos televoto) para ser possível saber quem é o vencedor da Eurovisão 2023.
 Neste projeto vai ser usado o padrão de arquitetura N-tier, para dividir o sistema em camadas lógicas e físicas e assim dividir responsabilidades e gerir dependências.  Também vai ser usado o padrão de design singleton na classe GetNewId (que está na biblioteca de classes ToolBox). O padrão Singleton garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Neste projeto isto é importante pois tem de haver apenas uma instância da classe GetNewId, o que garante controlo sobre os IDs, evitando assim duplicações. 
+
+Sites consultados para verificação dos resultados obtidos na Eurovisão 2023: 
+
+- [Site Oficial da Eurovisão](https://eurovision.tv/story/swedens-loreen-wins-eurovision-song-contest-2023)
+- [Resultados da Final](https://eurovisionworld.com/eurovision/2023)
+- [Resultados da Semifinal 1](https://eurovisionworld.com/eurovision/2023/semi-final-1)
+- [Resultados da Semifinal2](https://eurovisionworld.com/eurovision/2023/semi-final-2) 
 
 **Estruturas de dados que vão ser utilizadas:**
 
@@ -67,40 +75,39 @@ A classe *Eurovisao* (que está na biblioteca de classes **Eurovisao_BO** – bu
 - NomeMusica: string
 - Ronda:  string (vem do enum Ronda que está na biblioteca de classes **Eurovisao_Constantes** que vai ser mencionada mais à frente)
 - PontosJuri: int
-- PontosPublico: int
+- PontosTelevoto: int
 - TotalPontos: int => PontosJuri + PontosTelevoto; TotalPontos é uma Propriedade - Read-only: só leitura, que get/recebe PontosJuri + PontosTelevoto
 
 Depois foram criadas as seguintes bibliotecas de classes em concordância com o padrão de arquitetura N-tier: 
 
 - Camada de Apresentação: biblioteca de classes **Eurovisao_Console** - responsável pela interação com o utilizador, é a camada que mostra informações.
 - Business Logic: biblioteca de classes **Eurovisao_BL** - é a camada da lógica e das regras de negócio, que define classes e métodos (que interagem com a camada Data Access Layer) para lidar com as operações e regras de negócio relacionadas com os objetos da classe *Eurovisao*. Nesta biblioteca temos uma classe Eurovisao_BR (regras do negócio) e uma interface IEurovisaoMetodos, que define os métodos que devem ser implementados pelas classes que a utilizam, neste caso Eurovisao_BR. 
-- Data Access Layer: biblioteca de classes **Eurovisao_DAL** - é a camada de dados que é responsável por aceder e manipular os dados. Contém métodos para executar operações nos objetos da classe *Eurovisao* (como por exemplo: AdicionarConcorrente, ModificarPontos, ExisteConcorrente, ApagarConcorrente). 
+- Data Access Layer: biblioteca de classes **Eurovisao_DAL** - é a camada de dados que é responsável por aceder e manipular os dados. Contém métodos para executar operações nos objetos da classe *Eurovisao* (como por exemplo: AdicionarConcorrente, ModificarPontos, ExisteConcorrente, ApagarConcorrente, entre outros). 
 
 Neste projeto também foram criadas as seguintes bibliotecas de classes: 
 - **Eurovisao_Constantes** - com a classe Constantes que torna possível a serialização em XML, e com o Enum Ronda (semifinal1, semifinal2, final).
 - **ToolBox** - com a classe GetNewID, que utiliza o padrão de design Singleton, para ser possível atribuir um id automático, e não haver duplicações de IDs neste projeto.
-- **SerializeTools** - com a classe XmlMethods, fornece os métodos necessários para a serialização em XML.
-
-Posteriormente, foi criada uma estrutura (struct) chamada *RegistoConcorrente* dentro da classe Eurovisao, para possibilitar a serialização dos dados. 
+- **SerializeTools** - com a classe XmlMethods, fornece os métodos necessários para a serialização em formato XML.
 
 Além disso, foi criada a lista *_eurovisaoList*, que será utilizada para armazenar os objetos da classe *Eurovisao* e realizar operações de adição, remoção e manipulação dos dados que mencionei acima na biblioteca de classes **DAL**. 
 
-Para ser possível a serialização em JSON: 
+Posteriormente, foi criada uma estrutura (struct) chamada *RegistoConcorrente* dentro da classe Eurovisao, para possibilitar a serialização dos dados em formato XML. 
 
-Foi criada uma nova solução API Web do ASP.NET Core: Eurovisao_WebAPI. E logo de seguida foi criado um novo Controller: EurovisaoController.  
+Para ser possível a serialização em formato JSON: 
 
-Foram criadas 2 bibliotecas de classes: 
+Foi criada uma nova solução API Web do ASP.NET Core: Eurovisao_WebAPI. E logo de seguida foi criado um novo Controller: EurovisaoController. No Controller foi colocada a estrutura fundamental que permite executar o CRUD (Create, Read, Update, Delete) na lista de concorrentes da Eurovisão em formato JSON, através do [swagger](https://editor.swagger.io/). O swagger é uma ferramenta que nos permite visualizar, documentar e testar APIs. Neste projeto, será possível visualizar no swagger a lista de concorrentes da eurovisão (o nome dos países, representantes, músicas e pontos obtidos na final), sendo que também podemos pesquisar e obter dados de um determinado concorrente por id. Será também possível editar e apagar concorrentes. Mas para isso acontecer, foi também preciso criar as seguintes bibliotecas de classes: 
+
 - Eurovisao_Models2Api - Contêm 2 classes:
   - EuroRegistoRequest
   - EuroRegistoResponse
 - Eurovisao_Services2Api - Contêm 1 classe:
   - EurovisaoServices 
 
-Foram criados novos métodos: GetConcorrenteListResponse() em Eurovisao_BR e GetConcorrentes em Eurovisao_DAO. 
+Também tiveram de ser criados novos métodos, como por exemplo GetConcorrenteListResponse() e ModificarConcorrenteRequest() em Eurovisao_BR e GetConcorrentes em Eurovisao_DAO. 
 
 Também foi criada outra nova solução: aplicativo de console: EuroConsole2Api. Que permite vermos na consola o formato JSON que aparece no 'swagger'.  
 
-Estas são as principais estruturas de dados e serializações envolvidas no projeto, abrangendo a serialização em XML e em JSON. 
+Estas são as principais estruturas de dados e serializações envolvidas no projeto, abrangendo a serialização em formato XML e em formato JSON. 
 
 
 **Requisitos funcionais:** 
