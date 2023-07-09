@@ -47,11 +47,11 @@ Mais informações:
 
 ---
 
-### Notas do Projeto Final:
+## Notas do Projeto Final:
 
 **Versão Final (de momento): [v8](ProjFinal_Rita_v8)**
 
-**Descrição do modelo de negócio/atividade do tema do trabalho prático:**
+### Descrição do modelo de negócio/atividade do tema do trabalho prático:
 
 O objetivo do projeto é implementar um Sistema de Informação para gestão de concurso "tipo" festival da canção da eurovisão. A Eurovisão é uma competição de músicas entre países da Europa e também a Austrália. Cada país tem 3 minutos para impressionar o público e o júri com a sua música, para obter votos/pontos e ser coroado o vencedor da Eurovisão.
 Neste sistema será possível criar concorrentes que vão participar na Eurovisão, sendo que, foram utilizados os dados e resultados obtidos na [Eurovisão 2023](https://eurovision.tv/story/swedens-loreen-wins-eurovision-song-contest-2023). Vão ser inseridos os países, o nome dos representantes e das músicas, os pontos obtidos por cada música pelo júri e pelo televoto em cada ronda (semifinal1, semifinal2 e final). Além da adição de concorrentes e da modificação dos pontos nas respetivas rondas, será também possível eliminar os concorrentes que não obtiveram pontos suficientes para se qualificarem para a final. Vai também ser possível ordenar os concorrentes por total de pontos obtidos (pontos júri + pontos televoto) para ser possível saber quem é o vencedor da Eurovisão 2023.
@@ -64,7 +64,7 @@ Sites consultados para verificação dos resultados obtidos na Eurovisão 2023:
 - [Resultados da Semifinal 1](https://eurovisionworld.com/eurovision/2023/semi-final-1)
 - [Resultados da Semifinal2](https://eurovisionworld.com/eurovision/2023/semi-final-2) 
 
-**Estruturas de dados que vão ser utilizadas:**
+### Estruturas de dados que vão ser utilizadas:
 
 Neste projeto foram criadas diversas Bibliotecas de classes, três Aplicativos de console, e um API Web do ASP.NET Core. Começando pelas bibliotecas de classes, e seguindo o padrão de arquitetura N-tier:
 
@@ -110,7 +110,7 @@ Também foi criada outra nova solução: aplicativo de console: EuroConsole2Api.
 Estas são as principais estruturas de dados e serializações envolvidas no projeto, abrangendo a serialização em formato XML e em formato JSON. 
 
 
-**Requisitos funcionais:** 
+### Requisitos funcionais:
 
 1. Inserir concorrentes: O sistema deve permitir a inserção dos 37 países concorrentes da Eurovisão 2023 numa lista, fornecendo as informações necessárias, como o nome do país, nome do representante, nome da música, etc.
 2. Atribuir pontos do júri e televoto: O sistema deve permitir a atribuição ou modificação dos pontos obtidos por cada concorrente nas semifinais, tanto pelo júri quanto pelo televoto. Apesar de que, este ano, não houve votações do júri nas semifinais, e por isso nesta fase vão ser colocados 0 pontos de júri em todas as músicas.
@@ -120,7 +120,7 @@ Estas são as principais estruturas de dados e serializações envolvidas no pro
 6. Identificar vencedor: Com a lista ordenada por total de pontos, o sistema deve identificar o concorrente com a maior pontuação como o vencedor da Eurovisão.
 7. Serialização dos dados: O sistema deve suportar a serialização dos dados em formatos XML e JSON, permitindo a exportação e importação dos dados do concurso da Eurovisão. Isto garante a portabilidade dos dados, facilitando a integração com outros sistemas ou a realização de backups. 
 
-**Estrutura pensada para o desenvolvimento do projeto:**
+### Estrutura pensada para o desenvolvimento do projeto:
 
 A gestão do sistema da Eurovisão vai ser feita por uma lista, onde inserimos todos os 37 concorrentes por fases. Primeiro serão adicionados 15 concorrentes da primeira semifinal, depois mais 16 concorrentes para a segunda semifinal, e finalmente serão adicionados mais 6 países já automaticamente qualificados para a final.  
 
