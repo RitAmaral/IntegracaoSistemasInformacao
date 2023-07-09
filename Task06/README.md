@@ -10,8 +10,10 @@ Utilizando todo o trabalho produzido na “Task05” (duplicando a pasta utiliza
 
 ### Resposta Task 06:
 
+Para ser feita a serialização em formato JSON:
+
 Primeiro foi criado um novo projeto WEB API: **Anotacoes_WebAPI**. Dentro deste projeto, existe uma pasta Controllers, onde foi criado um novo Controller: *AnotacoesController*.
-De seguida foram criadas 2 bibliotcas de classes:
+De seguida foram criadas 2 bibliotecas de classes:
 - Anotacoes_Models2Api
   - Contêm 2 classes: AnotRegistoRequest e AnotRegistoResponse
 - Anotacoes_Services2Api
@@ -19,9 +21,9 @@ De seguida foram criadas 2 bibliotcas de classes:
  
 Foram criados novos métodos em **AnotacoesAula_BR** para poder ser feito o CRUD (Create, Read, Update e Delete). E por isso, também foram adicionados os métodos correspondentes em **AnotacoesAula_DAO** (se estivessem em falta).
 
-Depois, no Agenda Controller foi colocada a estrutura necessária (*Get, Post, Put, Delete*) para aceder ao swagger onde vemos os dados em formato json.
+Depois, no Agenda Controller foi colocada a estrutura necessária que permite executar o CRUD (que aparece como *Get, Post, Put, Delete*) na lista de anotações. Quando acedermos ao swagger (que é um site que nos permite visualizar, documentar e testar APIs), vai aparecer a lista em formato JSON e depois podemos aplicar as alterações que quisermos na lista de anotações (inserir, modificar, apagar).
 
-Também foi criado um outro projeto, aplicativo de console: **AnotConsole2Api**. Que permite vermos na consola o formato json que aparece no swagger. Em cima da Console2Api devemos clicar no gerir nuget, e instalar o Newtonsoft.Json.
+Também foi criado um outro projeto, aplicativo de console: **AnotConsole2Api**. Que permite vermos na consola o formato JSON que aparece no swagger. Em cima da Console2Api devemos clicar no gerir nuget, e instalar o Newtonsoft.Json.
 
 **Nota:** Um dos outputs da solução está no Projeto chamado **“Task04App”**.
   
