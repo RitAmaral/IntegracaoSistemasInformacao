@@ -22,7 +22,6 @@ namespace Anotacao_DAL
         }
 
         //Criação da lista
-        //private List<AnotacoesAula> _anotacoesList;
         private AnotacoesBD _anotacoesList;
 
         public AnotacoesAula_DAO()

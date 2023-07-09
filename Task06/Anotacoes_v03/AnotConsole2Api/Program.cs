@@ -5,9 +5,8 @@ internal class Program
 {
     static readonly HttpClient client = new HttpClient();
     private static async Task Main(string[] args)
-    { //quando corremos esta consola, vai aparecer o mesmo que aparece no swagger, a lista de compromissos em json
+    { //quando corremos esta consola, vai aparecer o mesmo que aparece no swagger, a lista de anotações em json
         //nota: precisamos de ter outra solução aberta, onde está a correr na consola anotacoes_webapi
-        Console.WriteLine("Hello, World!");
         try
         {
             string a = "https://localhost:7110"; //copiar o link do swagger para aqui
@@ -22,7 +21,7 @@ internal class Program
             {
                 foreach (var item in lista)
                 {
-                    Console.WriteLine($"{item.Id}\t{item.Nome}\t{item.Aula}\t{item.Tipo}\t{item.Revisado}");
+                    Console.WriteLine($"{item.Id}\t{item.Nome}\t{item.Aula}\t{item.Tipo}\t{item.Revisado}"); //assim aparece a lista de forma mais organizada
                 }
             }
             else

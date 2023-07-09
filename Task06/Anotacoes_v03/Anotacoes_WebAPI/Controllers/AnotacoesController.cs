@@ -13,7 +13,7 @@ namespace Anotacoes_WebAPI.Controllers
     public class AnotacoesController : ControllerBase
     {
         /// <summary>
-        /// devolve a lista de anotacoes
+        /// devolve a lista de anotações
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -28,6 +28,11 @@ namespace Anotacoes_WebAPI.Controllers
         }
 
         //Acrescentar para CRUD:
+        /// <summary>
+        /// obter anotação por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")] //fornecer id, colocar minusculas
         [Produces("application/json")] //este endpoint produz um objeto json
         [ProducesResponseType(typeof(AnotRegistoResponse), StatusCodes.Status200OK)]
@@ -35,7 +40,7 @@ namespace Anotacoes_WebAPI.Controllers
         {
             AnotacoesServicos _servicos = new AnotacoesServicos();
             _servicos.Anotacoes.ImportarDados();
-            AnotRegistoResponse? agendaRegistoResponse = _servicos.Anotacoes.ObterAnotacaoResponse(id); //vamos criar este método em Compromisso BR
+            AnotRegistoResponse? agendaRegistoResponse = _servicos.Anotacoes.ObterAnotacaoResponse(id); //vamos criar este método em AnotacoesAula BR
             if (agendaRegistoResponse != null)
             {
                 return new ObjectResult(agendaRegistoResponse);
@@ -43,6 +48,11 @@ namespace Anotacoes_WebAPI.Controllers
             return new NotFoundResult(); //se o ID não existir vai mandar o erro 404
         }
         //Acrescentar:
+        /// <summary>
+        /// inserir anotação
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post([FromBody] AnotRegistoRequest value)
         {
@@ -56,6 +66,12 @@ namespace Anotacoes_WebAPI.Controllers
             return new BadRequestResult(); //se nao conseguir adicionar, devolve erro bad request
         }
         //Acrescentar:
+        /// <summary>
+        /// modificar anotação
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpPut("{id}")] //fornecer o id o queremos alterar, e damos o valor que queremos alterar
         public IActionResult Post(int id, [FromBody] AnotRegistoRequest value)
         {
@@ -69,6 +85,11 @@ namespace Anotacoes_WebAPI.Controllers
             return new BadRequestResult(); //se nao conseguir modificar, devolve erro bad request
         }
         //Acrescentar:
+        /// <summary>
+        /// apagar anotação
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

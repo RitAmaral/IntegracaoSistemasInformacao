@@ -61,7 +61,7 @@ internal class Program
         /*-------------------------------------Serializar a lista----------------------------------*/
 
         Console.WriteLine("A serializar a lista.....");
-        gestaoAnotacoes.ExportarDados(); //ver o ficheiro xml criado em Task04App -> bin -> Debug -> net6.0 -> ListaAnotacoes.xml
+        gestaoAnotacoes.ExportarDados(); //ver o ficheiro xml criado em Task04App -> bin -> Debug -> net7.0 -> ListaAnotacoes.xml
 
     }
     private static void MostrarLista(List<string> lista) //método criado para mostrar todos os objetos da lista

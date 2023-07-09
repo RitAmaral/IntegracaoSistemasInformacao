@@ -56,6 +56,7 @@ namespace Anotacao_BL
         {
             return _AnotacoesDao.ImportarDados();
         }
+
         //serviços para o API
         public List<AnotRegistoResponse> GetAnotacoesListResponse()
         {
@@ -75,7 +76,7 @@ namespace Anotacao_BL
         {
             AnotRegistoResponse? obj = null;
             AnotacoesAula? anotacao = null;
-            if (ExisteAnotacao(id, out anotacao)) //se nao tiver Existe compromisso por id, é preciso criar novo método
+            if (ExisteAnotacao(id, out anotacao)) //se nao tiver Existe anotação por id, é preciso criar novo método
             {
                 obj = new AnotRegistoResponse
                 {
@@ -100,7 +101,7 @@ namespace Anotacao_BL
         public bool ModificarAnotacaoRequest(int id, AnotRegistoRequest request)
         {
             AnotacoesAula? obj = null;
-            if (ExisteAnotacao(id, out obj)) //msm que só queira alterar alguns atributos, colocar todos
+            if (ExisteAnotacao(id, out obj)) //mesmo que só queira alterar alguns atributos, colocar todos
             {
                 obj.Nome = request.Nome;
                 obj.Aula = request.Aula;
