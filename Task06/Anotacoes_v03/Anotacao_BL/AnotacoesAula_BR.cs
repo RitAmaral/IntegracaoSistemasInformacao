@@ -72,7 +72,7 @@ namespace Anotacao_BL
             obj = null;
             return _AnotacoesDao.ExisteAnotacao(id, out obj);
         }
-        public AnotRegistoResponse ObterAnotacaoResponse(int id)
+        public AnotRegistoResponse? ObterAnotacaoResponse(int id)
         {
             AnotRegistoResponse? obj = null;
             AnotacoesAula? anotacao = null;
