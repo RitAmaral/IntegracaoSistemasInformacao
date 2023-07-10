@@ -26,7 +26,7 @@ internal class Program
                 foreach (var item in lista)
                 {
                     Console.WriteLine($"{item.ID}\t|{item.Pais}\t|{item.NomeRepresentante}\t|{item.NomeMusica}\t|{item.Ronda}\t|{item.PontosJuri}\t|{item.PontosTelevoto}\t|{item.TotalPontos}");
-                }
+                } //aqui aparece a lista de forma mais organizada/separada
             }
             else
             {

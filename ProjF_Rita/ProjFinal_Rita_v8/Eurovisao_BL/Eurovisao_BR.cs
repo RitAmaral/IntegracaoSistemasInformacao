@@ -74,7 +74,7 @@ namespace Eurovisao_BL
         public bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente) //modifica pontos de juri
         {
             if (ReferenceEquals(concorrente, null)) return false;
-            return _eurovisaoDAO.ModificarPontosJuri(pontosJuri, concorrente); //nota, gostava que este método e o de baixo fossem ModificarPontos, mas dá erro..
+            return _eurovisaoDAO.ModificarPontosJuri(pontosJuri, concorrente); 
         }
         
         public bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente) //modifica pontos de televoto

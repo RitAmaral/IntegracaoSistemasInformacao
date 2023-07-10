@@ -73,7 +73,7 @@ namespace Eurovisao_WebAPI.Controllers
         /// <param name="value"></param>
         /// <returns></returns>
         [HttpPut("{id}")] //fornecer o id do concorrente que queremos alterar, e inserimos os valores que queremos alterar (os que não queremos alterar, deixamos igual)
-        public IActionResult Post(int id, [FromBody] EuroRegistoRequest value)
+        public IActionResult Put(int id, [FromBody] EuroRegistoRequest value)
         {
             EurovisaoServices _servicos = new EurovisaoServices();
             _servicos.Concorrentes.ImportarDados();
