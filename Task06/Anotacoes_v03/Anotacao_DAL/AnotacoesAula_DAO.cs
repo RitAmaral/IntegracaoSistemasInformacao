@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 using Anotacoes_Constantes;
 using SerializeTools;
-using static Anotacao_BO.RegistoAnotacao;
 using ToolBox;
 
 namespace Anotacao_DAL
@@ -57,7 +56,7 @@ namespace Anotacao_DAL
             {
                 if (ReferenceEquals(obj, null)) return false;
                 // apagar todos os registos com o nome igual ao "nome"
-                if (_anotacoesList.Items.RemoveAll(r => r.Nome.Equals(nome)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
+                if (_anotacoesList.Items.RemoveAll(r => r.Nome.Equals(tNome)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
                 {
                     return true;
                 }
@@ -96,7 +95,7 @@ namespace Anotacao_DAL
             obj = null;
             string tNome = nome.Trim();
             if (tNome.Length == 0) return false;
-            int tIndex = _anotacoesList.Items.FindIndex(r => r.Nome.Equals(nome));
+            int tIndex = _anotacoesList.Items.FindIndex(r => r.Nome.Equals(tNome));
             if (tIndex > -1)
             {
                 obj = new AnotacoesAula(_anotacoesList.Items[tIndex]);

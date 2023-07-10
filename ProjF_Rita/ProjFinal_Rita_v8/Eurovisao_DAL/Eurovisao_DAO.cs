@@ -75,7 +75,7 @@ namespace Eurovisao_DAL
             {
                 if (ReferenceEquals(obj, null)) return false;
                 //apagar todos os registos com o nome igual ao "país"
-                if (_eurovisaoList.Items.RemoveAll(r => r.Pais.Equals(pais)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
+                if (_eurovisaoList.Items.RemoveAll(r => r.Pais.Equals(tPais)) > 0) //se for maior que 0, significa que eliminou pelo menos 1 registo.
                 {
                     return true;
                 }
@@ -136,7 +136,7 @@ namespace Eurovisao_DAL
             obj = null;
             string tPais = pais.Trim();
             if (tPais.Length == 0) return false;
-            int tIndex = _eurovisaoList.Items.FindIndex(r => r.Pais.Equals(pais));
+            int tIndex = _eurovisaoList.Items.FindIndex(r => r.Pais.Equals(tPais));
             if (tIndex > -1)
             {
                 obj = new Eurovisao(_eurovisaoList.Items[tIndex]);
