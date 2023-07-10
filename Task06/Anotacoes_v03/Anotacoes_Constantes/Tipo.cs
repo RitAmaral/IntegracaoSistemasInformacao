@@ -8,5 +8,5 @@
         Sessao = 3,
         Leitura = 4,
         GrupoDeEstudo = 5
-    };
+    }
 }
