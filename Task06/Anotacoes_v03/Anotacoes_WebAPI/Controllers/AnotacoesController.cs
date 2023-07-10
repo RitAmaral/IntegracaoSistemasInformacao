@@ -73,7 +73,7 @@ namespace Anotacoes_WebAPI.Controllers
         /// <param name="value"></param>
         /// <returns></returns>
         [HttpPut("{id}")] //fornecer o id o queremos alterar, e damos o valor que queremos alterar
-        public IActionResult Post(int id, [FromBody] AnotRegistoRequest value)
+        public IActionResult Put(int id, [FromBody] AnotRegistoRequest value) //-------------------Put aqui em vez de Post
         {
             AnotacoesServicos _servicos = new AnotacoesServicos();
             _servicos.Anotacoes.ImportarDados();
