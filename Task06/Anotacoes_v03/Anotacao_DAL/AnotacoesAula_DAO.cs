@@ -23,6 +23,9 @@ namespace Anotacao_DAL
         //Criação da lista
         private AnotacoesBD _anotacoesList;
 
+        private DateTime _loaded;
+        private DateTime _modified;
+
         public AnotacoesAula_DAO()
         {
             _anotacoesList = new AnotacoesBD();
@@ -117,11 +120,12 @@ namespace Anotacao_DAL
         public void ExportarDados() //exporta dados
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlAnotacoes);
-            if (!File.Exists(ficheiro))
+            if (_modified > _loaded || !File.Exists(ficheiro))
             {
                 try
                 {
                     ExportarXml(ficheiro);
+                    _modified = _loaded = DateTime.Now;
                 }
                 catch (Exception)
                 {
@@ -158,6 +162,8 @@ namespace Anotacao_DAL
                 try
                 {
                     _anotacoesList = XmlMethods.DeserializeXmlToObject<AnotacoesBD>(ficheiro);
+                    _loaded = DateTime.Now;
+                    _modified = DateTime.Now;
                     // uma proposta de solução para evitar duplicação de Id's
                     // estratégia para se atualizar o gerador de Id's
                     if (_anotacoesList.Items.Count > 0)
