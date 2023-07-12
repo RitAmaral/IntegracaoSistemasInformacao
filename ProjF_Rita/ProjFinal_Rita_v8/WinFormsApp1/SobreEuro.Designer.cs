@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SobreEuro));
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            buttonVoltar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -47,18 +48,33 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Location = new Point(28, 49);
+            label1.BackColor = Color.DeepSkyBlue;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(22, 30);
             label1.Name = "label1";
-            label1.Size = new Size(347, 90);
+            label1.Size = new Size(363, 140);
             label1.TabIndex = 1;
             label1.Text = resources.GetString("label1.Text");
+            // 
+            // buttonVoltar
+            // 
+            buttonVoltar.BackColor = Color.FromArgb(255, 255, 128);
+            buttonVoltar.Cursor = Cursors.Hand;
+            buttonVoltar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonVoltar.Location = new Point(677, 12);
+            buttonVoltar.Name = "buttonVoltar";
+            buttonVoltar.Size = new Size(111, 31);
+            buttonVoltar.TabIndex = 2;
+            buttonVoltar.Text = "Página Inicial";
+            buttonVoltar.UseVisualStyleBackColor = false;
+            buttonVoltar.Click += buttonVoltar_Click;
             // 
             // SobreEuro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonVoltar);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "SobreEuro";
@@ -72,5 +88,6 @@
 
         private PictureBox pictureBox1;
         private Label label1;
+        private Button buttonVoltar;
     }
 }

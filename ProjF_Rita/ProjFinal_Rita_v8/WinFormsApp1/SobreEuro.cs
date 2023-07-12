@@ -16,5 +16,12 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void buttonVoltar_Click(object sender, EventArgs e)
+        {
+            var Form1 = new Form1();
+            Form1.Show();
+            this.Visible = false;
+        }
     }
 }
