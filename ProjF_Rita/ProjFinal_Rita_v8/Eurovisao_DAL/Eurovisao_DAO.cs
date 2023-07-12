@@ -23,8 +23,12 @@ namespace Eurovisao_DAL
             [XmlElement(ElementName = "Concorrente")]
             public List<RegistoConcorrente> Items { get; set; }
         }
-
+        //criação da lista
         private EurovisaoBD _eurovisaoList;
+
+        //variáveis importantes para editar lista pelo swagger e os dados serem atualizados no ficheiro xml
+        private DateTime _loaded;
+        private DateTime _modified;
 
         public Eurovisao_DAO()
         {
@@ -235,11 +239,12 @@ namespace Eurovisao_DAL
         public void ExportarDados()
         {
             string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlEurovisao);
-            if (!File.Exists(ficheiro))
+            if (_modified > _loaded || !File.Exists(ficheiro))
             {
                 try
                 {
                     ExportarXml(ficheiro);
+                    _modified = _loaded = DateTime.Now;
                 }
                 catch (Exception)
                 {
@@ -279,6 +284,8 @@ namespace Eurovisao_DAL
                 try
                 {
                     _eurovisaoList = XmlMethods.DeserializeXmlToObject<EurovisaoBD>(ficheiro);
+                    _loaded = DateTime.Now;
+                    _modified = DateTime.Now;
                     if (_eurovisaoList.Items.Count > 0)
                     {
                         int tID = _eurovisaoList.Items[0].ID;
