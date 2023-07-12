@@ -17,11 +17,16 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void buttonVoltar_Click(object sender, EventArgs e)
+        private void buttonVoltar_Click(object sender, EventArgs e) //ir para página principal Form1
         {
             var Form1 = new Form1();
             Form1.Show();
             this.Visible = false;
+        }
+
+        private void buttonSair_Click(object sender, EventArgs e) //fechar aplicação
+        {
+            Application.Exit();
         }
     }
 }

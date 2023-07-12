@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class SobreEuro
+    partial class Paises
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SobreEuro));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Paises));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            buttonVoltar = new Button();
             buttonSair = new Button();
+            buttonVoltar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, -1);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(802, 451);
+            pictureBox1.Size = new Size(800, 451);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -49,54 +49,55 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.DeepSkyBlue;
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(22, 30);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.DodgerBlue;
+            label1.Location = new Point(120, 69);
             label1.Name = "label1";
-            label1.Size = new Size(363, 140);
+            label1.Size = new Size(545, 36);
             label1.TabIndex = 1;
-            label1.Text = resources.GetString("label1.Text");
-            // 
-            // buttonVoltar
-            // 
-            buttonVoltar.BackColor = Color.FromArgb(255, 255, 128);
-            buttonVoltar.Cursor = Cursors.Hand;
-            buttonVoltar.FlatStyle = FlatStyle.Flat;
-            buttonVoltar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonVoltar.ForeColor = Color.DodgerBlue;
-            buttonVoltar.Location = new Point(677, 12);
-            buttonVoltar.Name = "buttonVoltar";
-            buttonVoltar.Size = new Size(111, 31);
-            buttonVoltar.TabIndex = 2;
-            buttonVoltar.Text = "Página Inicial";
-            buttonVoltar.UseVisualStyleBackColor = false;
-            buttonVoltar.Click += buttonVoltar_Click;
+            label1.Text = "Países Participantes na Eurovisão 2023";
             // 
             // buttonSair
             // 
             buttonSair.BackColor = Color.Fuchsia;
             buttonSair.Cursor = Cursors.Hand;
             buttonSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSair.Location = new Point(677, 407);
+            buttonSair.Location = new Point(689, 403);
             buttonSair.Name = "buttonSair";
-            buttonSair.Size = new Size(111, 31);
-            buttonSair.TabIndex = 3;
+            buttonSair.Size = new Size(99, 35);
+            buttonSair.TabIndex = 2;
             buttonSair.Text = "Sair";
             buttonSair.UseVisualStyleBackColor = false;
             buttonSair.Click += buttonSair_Click;
             // 
-            // SobreEuro
+            // buttonVoltar
+            // 
+            buttonVoltar.BackColor = Color.DodgerBlue;
+            buttonVoltar.Cursor = Cursors.Hand;
+            buttonVoltar.FlatStyle = FlatStyle.Flat;
+            buttonVoltar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonVoltar.ForeColor = Color.Yellow;
+            buttonVoltar.Location = new Point(689, 12);
+            buttonVoltar.Name = "buttonVoltar";
+            buttonVoltar.Size = new Size(99, 33);
+            buttonVoltar.TabIndex = 3;
+            buttonVoltar.Text = "Página Inicial";
+            buttonVoltar.UseVisualStyleBackColor = false;
+            buttonVoltar.Click += buttonVoltar_Click;
+            // 
+            // Paises
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(buttonSair);
             Controls.Add(buttonVoltar);
+            Controls.Add(buttonSair);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-            Name = "SobreEuro";
+            Name = "Paises";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SobreEuro";
+            Text = "Paises";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -106,7 +107,7 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private Button buttonVoltar;
         private Button buttonSair;
+        private Button buttonVoltar;
     }
 }

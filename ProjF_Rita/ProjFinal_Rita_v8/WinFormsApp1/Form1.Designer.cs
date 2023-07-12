@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             buttonSobre = new Button();
+            buttonSair = new Button();
+            buttonPaises = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -48,9 +50,10 @@
             // 
             buttonSobre.BackColor = Color.FromArgb(255, 255, 128);
             buttonSobre.Cursor = Cursors.Hand;
+            buttonSobre.FlatStyle = FlatStyle.Flat;
             buttonSobre.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSobre.ForeColor = Color.DodgerBlue;
-            buttonSobre.Location = new Point(668, 12);
+            buttonSobre.Location = new Point(12, 12);
             buttonSobre.Name = "buttonSobre";
             buttonSobre.Size = new Size(120, 31);
             buttonSobre.TabIndex = 1;
@@ -58,14 +61,45 @@
             buttonSobre.UseVisualStyleBackColor = false;
             buttonSobre.Click += buttonSobre_Click;
             // 
+            // buttonSair
+            // 
+            buttonSair.BackColor = Color.Fuchsia;
+            buttonSair.Cursor = Cursors.Hand;
+            buttonSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSair.Location = new Point(668, 407);
+            buttonSair.Name = "buttonSair";
+            buttonSair.Size = new Size(120, 31);
+            buttonSair.TabIndex = 2;
+            buttonSair.Text = "Sair";
+            buttonSair.UseVisualStyleBackColor = false;
+            buttonSair.Click += buttonSair_Click;
+            // 
+            // buttonPaises
+            // 
+            buttonPaises.BackColor = Color.DodgerBlue;
+            buttonPaises.Cursor = Cursors.Hand;
+            buttonPaises.FlatStyle = FlatStyle.Flat;
+            buttonPaises.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonPaises.ForeColor = Color.Yellow;
+            buttonPaises.Location = new Point(153, 12);
+            buttonPaises.Name = "buttonPaises";
+            buttonPaises.Size = new Size(120, 31);
+            buttonPaises.TabIndex = 3;
+            buttonPaises.Text = "Países";
+            buttonPaises.UseVisualStyleBackColor = false;
+            buttonPaises.Click += buttonPaises_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonPaises);
+            Controls.Add(buttonSair);
             Controls.Add(buttonSobre);
             Controls.Add(pictureBox1);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -75,5 +109,7 @@
 
         private PictureBox pictureBox1;
         private Button buttonSobre;
+        private Button buttonSair;
+        private Button buttonPaises;
     }
 }
