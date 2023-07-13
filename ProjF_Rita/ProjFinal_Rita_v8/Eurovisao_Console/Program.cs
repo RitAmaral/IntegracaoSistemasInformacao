@@ -10,7 +10,8 @@ namespace Eurovisao_Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("BEM-VINDO À EUROVISÃO 2023!");
+            Console.WriteLine("Nota: Antes de começar, aconselho que primeiro seja compilada a solução: WinFormsApp, para ler um pouco sobre a Eurovisão");
+            Console.WriteLine("\nBEM-VINDO À EUROVISÃO 2023!");
             Console.WriteLine("----------------------------\n");
 
             /*-------------------------------Lista dos concorrentes da primeira semifinal--------------------------------*/
@@ -66,7 +67,7 @@ namespace Eurovisao_Console
 
             /*--------------------------Apagar os 5 concorrentes com menos pontos da lista:--------------------------------------*/
 
-            Console.WriteLine("\nA apagar os 5 concorrentes que obtiveram menos pontos do televoto...");
+            Console.WriteLine("\nInfelizmente, apenas 10 países da primeira Semifinal passam para a grande Final, por isso, vão ser apagados os 5 concorrentes que obtiveram menos pontos do televoto...");
             Console.WriteLine("\nLista atualizada: ");
 
             if (gestaoEurovisao.ApagarConcRonda(Enum.Parse<Ronda>("Semifinal1"))) //apaga os 5 últimos concorrentes da lista da primeira semifinal
@@ -133,7 +134,7 @@ namespace Eurovisao_Console
 
             /*--------------------------Apagar os 6 concorrentes com menos pontos da lista:--------------------------------------*/
 
-            Console.WriteLine("\nA apagar os 6 concorrentes que obtiveram menos pontos do televoto...");
+            Console.WriteLine("\nInfelizmente, apenas 10 países da segunda Semifinal passam para a grande Final, por isso, vão ser apagados os 6 concorrentes que obtiveram menos pontos do televoto...");
             Console.WriteLine("\nLista atualizada: ");
 
             if (gestaoEurovisao.ApagarConcRonda(Enum.Parse<Ronda>("Semifinal2"))) //apaga os 6 últimos concorrentes da lista da segunda semifinal
@@ -150,7 +151,7 @@ namespace Eurovisao_Console
             /*-------------------------------Lista dos concorrentes da Final:-------------------------------------------*/
 
             Console.WriteLine("\n----------------------Final da Eurovisão 2023----------------------");
-            Console.WriteLine("\nA adicionar os países já qualificados para a final: Itália, Ucrânia, França, Espanha, Reino Unido e Alemanha....");
+            Console.WriteLine("\nAos 20 concorrentes que participaram nas Semifinais, juntam-se os 6 países já automaticamente qualificados para a final: Ucrânia (vencedora da última edição), Itália, França, Espanha, Reino Unido e Alemanha....");
 
             //Adicionar os concorrentes que já estavam automaticamente qualificados para a final:
             Eurovisao conc4 = gestaoEurovisao.NovoConcorrente("Itália", "Marco Mengoni", "Due Vite", Enum.Parse<Ronda>("Final"), 176, 174);
@@ -255,7 +256,7 @@ namespace Eurovisao_Console
             Console.WriteLine($"\nA verificar a existência dos seguintes países qualificados para a final: \n- {s1f1.Pais} \n- {s1f2.Pais} \n- {s1f3.Pais} " +
                 $"\n- {s1f4.Pais} \n- {s1f5.Pais} \n- {s1f6.Pais} \n- {s1f7.Pais} \n- {s1f8.Pais} \n- {s1f9.Pais} \n- {s1f10.Pais} \n- {s2f1.Pais} " +
                 $"\n- {s2f2.Pais} \n- {s2f3.Pais} \n- {s2f4.Pais} \n- {s2f5.Pais} \n- {s2f6.Pais} \n- {s2f7.Pais} \n- {s2f8.Pais} \n- {s2f9.Pais} " +
-                $"\n- {s2f10.Pais} \nSe existirerem, a alterar pontos do Júri de todas as músicas....");
+                $"\n- {s2f10.Pais} \nSe existirerem, a alterar pontos do Júri de todas as músicas, pois na final há uma nova votação....");
             
             if (gestaoEurovisao.ExisteConcorrente(s1f1.ID) && gestaoEurovisao.ExisteConcorrente(s1f2.ID) && gestaoEurovisao.ExisteConcorrente(s1f3.ID) 
                 && gestaoEurovisao.ExisteConcorrente(s1f4.ID) && gestaoEurovisao.ExisteConcorrente(s1f5.ID) && gestaoEurovisao.ExisteConcorrente(s1f6.ID) 
@@ -317,7 +318,7 @@ namespace Eurovisao_Console
             Console.WriteLine($"\nA verificar a existência dos seguintes países qualificados para a final: \n- {s1f1.Pais} \n- {s1f2.Pais} \n- {s1f3.Pais} " +
                 $"\n- {s1f4.Pais} \n- {s1f5.Pais} \n- {s1f6.Pais} \n- {s1f7.Pais} \n- {s1f8.Pais} \n- {s1f9.Pais} \n- {s1f10.Pais} \n- {s2f1.Pais} " +
                 $"\n- {s2f2.Pais} \n- {s2f3.Pais} \n- {s2f4.Pais} \n- {s2f5.Pais} \n- {s2f6.Pais} \n- {s2f7.Pais} \n- {s2f8.Pais} \n- {s2f9.Pais} " +
-                $"\n- {s2f10.Pais} \nSe existirem, a alterar pontos do Televoto de todas as músicas....");
+                $"\n- {s2f10.Pais} \nSe existirem, a alterar pontos do Televoto de todas as músicas, pois na final há uma nova votação....");
 
             if (gestaoEurovisao.ExisteConcorrente(s1f1.ID) && gestaoEurovisao.ExisteConcorrente(s1f2.ID) && gestaoEurovisao.ExisteConcorrente(s1f3.ID) 
                 && gestaoEurovisao.ExisteConcorrente(s1f4.ID) && gestaoEurovisao.ExisteConcorrente(s1f5.ID) && gestaoEurovisao.ExisteConcorrente(s1f6.ID) 
