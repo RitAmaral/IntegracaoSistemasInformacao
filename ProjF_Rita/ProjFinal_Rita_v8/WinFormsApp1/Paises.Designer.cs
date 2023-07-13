@@ -33,6 +33,8 @@
             label1 = new Label();
             buttonSair = new Button();
             buttonVoltar = new Button();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -86,11 +88,42 @@
             buttonVoltar.UseVisualStyleBackColor = false;
             buttonVoltar.Click += buttonVoltar_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = SystemColors.Window;
+            comboBox1.Cursor = Cursors.Cross;
+            comboBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBox1.ForeColor = Color.DodgerBlue;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Finlândia", "Suécia", "Israel", "Chéquia", "Moldávia", "Noruega", "Suiça", "Croácia", "Portugal", "Sérvia", "Letónia", "Irlanda", "Países Baixos", "Azerbeijão", "Malta" });
+            comboBox1.Location = new Point(0, 0);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 4;
+            comboBox1.Text = "1ª Semifinal";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // comboBox2
+            // 
+            comboBox2.BackColor = SystemColors.Window;
+            comboBox2.Cursor = Cursors.Cross;
+            comboBox2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBox2.ForeColor = Color.DodgerBlue;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Austrália", "Áustria", "Polónia", "Lituânia", "Eslovénia", "Arménia", "Chipre", "Bélgica", "Albânia", "Estónia", "Islândia", "Geórgia", "Grécia", "Dinamarca", "Roménia", "San Marino" });
+            comboBox2.Location = new Point(136, 0);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 5;
+            comboBox2.Text = "2ª Semifinal";
+            // 
             // Paises
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
             Controls.Add(buttonVoltar);
             Controls.Add(buttonSair);
             Controls.Add(label1);
@@ -109,5 +142,7 @@
         private Label label1;
         private Button buttonSair;
         private Button buttonVoltar;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
     }
 }

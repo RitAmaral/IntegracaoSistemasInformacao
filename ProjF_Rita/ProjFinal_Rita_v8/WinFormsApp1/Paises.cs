@@ -28,5 +28,10 @@ namespace WinFormsApp1
             Form1.Show();
             this.Visible = false;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
