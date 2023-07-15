@@ -1,14 +1,11 @@
-﻿using Agenda_BO;
+﻿using Agenda_BOpg;
 using Agenda_Consts;
-using SerializeTools;
 using System.Xml.Serialization;
-using ToolBox;
 
-namespace Agenda_DAL
+namespace Agenda_DALpg
 {
     public class Compromisso_DAO
     {
-        [XmlRoot(ElementName = "Compromissos")]
         public class CompromissosBD
         {
             public CompromissosBD()
@@ -16,7 +13,6 @@ namespace Agenda_DAL
                 Items = new List<RegistoCompromisso>();
             }
 
-            [XmlElement(ElementName = "Compromisso")]
             public List<RegistoCompromisso> Items { get; set; }
         }
 

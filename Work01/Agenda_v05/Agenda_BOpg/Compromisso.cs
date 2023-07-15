@@ -2,43 +2,9 @@
 using Agenda_Consts;
 using Agenda_Models2Api;
 using System.Xml.Serialization;
-using ToolBox;
 
-namespace Agenda_BO
+namespace Agenda_BOpg
 {
-    /// <summary>
-    /// estrutura para serialização
-    /// </summary>
-    [Serializable]
-    public struct RegistoCompromisso
-    {
-        [XmlElement]
-        public int Id { get; set; }
-        [XmlElement]
-        public DateTime Data { get; set; }
-        [XmlElement]
-        public int Bloco { get; set; }
-        [XmlElement]
-        public Prioridade Prioridade { get; set; }
-        [XmlElement]
-        public string Nome { get; set; }
-        [XmlElement]
-        public string Assunto { get; set; }
-        [XmlElement]
-        public TipoAgendamento TipoAgendamento { get; set; }
-        [XmlElement]
-        public bool Concluido { get; set; }
-        [XmlElement]
-        public DateTime Conclusao { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public override string? ToString()
-        {
-            return $"{Id}, {Data}\t{Nome}, {Assunto}";
-        }
-    }
 
     public class Compromisso
     {
@@ -51,6 +17,7 @@ namespace Agenda_BO
         public TipoAgendamento TipoAgendamento { get; set; }
         public bool Concluido { get; set; }
         public DateTime Conclusao { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -60,55 +27,46 @@ namespace Agenda_BO
         /// <param name="nome"></param>
         /// <param name="assunto"></param>
         /// <param name="tipoAgendamento"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public Compromisso(DateTime data, int bloco, Prioridade prioridade, 
             string nome, string assunto, TipoAgendamento tipoAgendamento)
         {
-            Id = GetNewId.Instancia.Proximo;
             Bloco = bloco;
             Data = data;
             Prioridade = prioridade;
-            Nome = nome;
-            Assunto = assunto;
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            Assunto = assunto ?? throw new ArgumentNullException(nameof(assunto));
             TipoAgendamento = tipoAgendamento;
             Concluido = false;
             Conclusao = new DateTime();
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="registo"></param>
-        public Compromisso(RegistoCompromisso registo)
+        /// <param name="id"></param>
+        /// <param name="data"></param>
+        /// <param name="bloco"></param>
+        /// <param name="prioridade"></param>
+        /// <param name="nome"></param>
+        /// <param name="assunto"></param>
+        /// <param name="tipoAgendamento"></param>
+        /// <param name="concluido"></param>
+        /// <param name="conclusao"></param>
+        public Compromisso(int id, DateTime data, int bloco, Prioridade prioridade,
+             string nome, string assunto, TipoAgendamento tipoAgendamento,
+             bool concluido, DateTime conclusao) : this(data, bloco, prioridade,
+             nome, assunto, tipoAgendamento)
         {
-            Id = registo.Id;
-            Nome = registo.Nome;
-            Assunto = registo.Assunto;
-            Bloco = registo.Bloco;
-            Prioridade = registo.Prioridade;
-            Data = registo.Data;
-            TipoAgendamento = registo.TipoAgendamento;
-            Concluido = registo.Concluido;
-            Conclusao = registo.Conclusao;
+            Id = id;
+            Concluido = concluido;
+            Conclusao = conclusao;
         }
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public RegistoCompromisso RegistoCompromisso()
-        {
-            return new RegistoCompromisso
-            {
-                Id = this.Id,
-                Data = this.Data,
-                Nome = this.Nome,
-                Assunto = this.Assunto,
-                Prioridade = this.Prioridade,
-                TipoAgendamento = this.TipoAgendamento,
-                Bloco = this.Bloco,
-                Conclusao = this.Conclusao,
-                Concluido = this.Concluido
-            };
-        }
-        
         public AgendaRegistoResponse RegistoCompromissoResponse()
         {
             return new AgendaRegistoResponse

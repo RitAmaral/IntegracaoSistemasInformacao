@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Agenda_Consts\Agenda_Consts.csproj" />
     <ProjectReference Include="..\Agenda_Models2Api\Agenda_Models2Api.csproj" />
-    <ProjectReference Include="..\ToolBox\ToolBox.csproj" />
   </ItemGroup>
 
 </Project>

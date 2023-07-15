@@ -1,7 +1,7 @@
 ﻿using Agenda_Consts;
 using SerializeTools;
 using System.Xml.Serialization;
-using static Agenda_Configuration.GlobalConfig;
+
 
 namespace Agenda_Configuration
 {
@@ -11,20 +11,20 @@ namespace Agenda_Configuration
         /// classe para serializar
         /// NOTA: caso seja necessário, pode/deve-se adicionar variáveis deconfiguração global
         /// </summary>
-    public class GlobalConfigXml
-    {
+        [Serializable]
+        public class GlobalConfigXml
+        {
             [XmlElement]
             public string NpgsqlConnection { get; set; }
             public GlobalConfigXml()
             {
-
-            NpgsqlConnection = "";
+                NpgsqlConnection = "";
             }
             public GlobalConfigXml(string npgsqlConnection)
             {
                 NpgsqlConnection = npgsqlConnection;
             }
-    }
+        }
         /// <summary>
         /// variáveis privadas estáticas
         /// </summary>
@@ -36,9 +36,8 @@ namespace Agenda_Configuration
         private GlobalConfig()
         {
             // inicializa a configuração com os valores por omissão
-            _config = new
-           GlobalConfigXml("Server=127.0.0.1;Port=5432;Database=AGENDA5DB;User Id = postgres; Password = postgres; ");
-        if (File.Exists(GlobalConfigFileName))
+            _config = new GlobalConfigXml("Server=127.0.0.1;Port=5432;Database=AGENDA5DB;User Id = postgres; Password = postgres; ");
+            if (File.Exists(GlobalConfigFileName))
             {
                 // carrega o ficheiro se existir
                 LoadGlobalConfig();
@@ -52,9 +51,7 @@ namespace Agenda_Configuration
         /// <summary>
         /// 
         /// </summary>
-        public string GlobalConfigFileName =>
-       System.IO.Path.Combine(System.AppContext.BaseDirectory,
-       Constantes.NomeXmlConfiguration);
+        public string GlobalConfigFileName => System.IO.Path.Combine(System.AppContext.BaseDirectory,Constantes.NomeXmlConfiguration);
         /// <summary>
         /// 
         /// </summary>
@@ -64,7 +61,7 @@ namespace Agenda_Configuration
             set
             {
 
-            if (value.Trim().Length < 1)
+                if (value.Trim().Length < 1)
                 {
                     throw new ArgumentException("NpgsqlConnection can't be empty!...");
                 }
@@ -81,8 +78,7 @@ namespace Agenda_Configuration
             {
                 try
                 {
-                    _config =
-                   XmlMethods.DeserializeXmlToObject<GlobalConfigXml>(GlobalConfigFileName);
+                    _config = XmlMethods.DeserializeXmlToObject<GlobalConfigXml>(GlobalConfigFileName);
                 }
                 catch (Exception)
                 {
@@ -97,8 +93,7 @@ namespace Agenda_Configuration
         {
             try
             {
-                XmlMethods.SerializeToXml<GlobalConfigXml>(_config,
-               GlobalConfigFileName);
+                XmlMethods.SerializeToXml<GlobalConfigXml>(_config, GlobalConfigFileName);
             }
             catch (Exception)
             {

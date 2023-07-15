@@ -1,20 +1,36 @@
-﻿using Agenda_BO;
-using Agenda_DAL;
+﻿using Agenda_BOpg;
+using Agenda_DALpg;
 using Agenda_Consts;
 using Agenda_Models2Api;
+using Npgsql;
+using Agenda_Configuration; //É para adicionar o nuget Npgsql? Notas: já adicionei no item group, primeiro deve ser melhor retirar, instalar ... ?
+using System.Data;
 
-namespace Agenda_BL
+
+namespace Agenda_BLpg //BL ou BR? Na página 19 aparece BR no ponto 1..
 {
     public class Compromisso_BR
     {
+        private NpgsqlConnection _conn;
         private Compromisso_DAO _CompromissoDao;
+
         /// <summary>
-        /// 
+        /// construtor
         /// </summary>
         public Compromisso_BR()
         {
-            _CompromissoDao = new Compromisso_DAO();
+            _conn = new NpgsqlConnection(GlobalConfig.Instancia.NpgsqlConnection);
+            _CompromissoDao = new Compromisso_DAO(_conn);
         }
+        /// <summary>
+        /// destrutor é necessário para terminar a ligação com a base de dados
+        /// </summary>
+        ~Compromisso_BR()
+        {
+            if (_conn.State == ConnectionState.Open) _conn.Close();
+            _conn.Dispose();
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -24,6 +40,7 @@ namespace Agenda_BL
         {
             return bloco < 1 ? 1 : (bloco > 4 ? 4 : bloco);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -33,6 +50,7 @@ namespace Agenda_BL
         {
             return hora < 0 ? 0 : (hora > 23 ? 23 : hora);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -43,8 +61,9 @@ namespace Agenda_BL
         private DateTime CalcularData(DateTime data, int hora, int bloco)
         {
             return new DateTime(data.Year, data.Month, data.Day,
-                ValidarHora(hora), (ValidarBloco(bloco) - 1) * 15, 0);
+            ValidarHora(hora), (ValidarBloco(bloco) - 1) * 15, 0);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -57,8 +76,8 @@ namespace Agenda_BL
         /// <param name="tipoAgendamento"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public Compromisso NovoCompromisso(DateTime data, int hora, int bloco, 
-            Prioridade prioridade, string nomeCliente, string assunto, 
+        public Compromisso NovoCompromisso(DateTime data, int hora, int bloco,
+            Prioridade prioridade, string nomeCliente, string assunto,
             TipoAgendamento tipoAgendamento)
         {
             int tBloco = ValidarBloco(bloco);
@@ -66,11 +85,13 @@ namespace Agenda_BL
             Prioridade tPrioridade = prioridade;
             string tNome = nomeCliente.Trim();
             if (tNome.Length == 0) throw new ArgumentNullException(nameof(tNome));
-            string tAssunto = assunto ?? throw new ArgumentNullException(nameof(assunto));
+            string tAssunto = assunto.Trim();
+            if (tAssunto.Length == 0) throw new ArgumentNullException(nameof(assunto));
             TipoAgendamento tTipoAgendamento = tipoAgendamento;
-            return new Compromisso(tData, tBloco, tPrioridade, tNome, 
-                tAssunto, tTipoAgendamento);
+
+            return new Compromisso(tData, tBloco, tPrioridade, tNome, tAssunto, tTipoAgendamento);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -85,9 +106,9 @@ namespace Agenda_BL
             Prioridade prioridade = Prioridade.Media,
             TipoAgendamento tipoAgendamento = TipoAgendamento.Profissional)
         {
-            return NovoCompromisso(DateTime.Now, hora, bloco, 
-                prioridade, nomeCliente, assunto, tipoAgendamento);
+            return NovoCompromisso(DateTime.Now, hora, bloco,prioridade, nomeCliente, assunto, tipoAgendamento);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -98,6 +119,7 @@ namespace Agenda_BL
             if (ReferenceEquals(compromisso, null)) return false;
             return _CompromissoDao.AdicionarCompromisso(compromisso);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -107,6 +129,7 @@ namespace Agenda_BL
         {
             return _CompromissoDao.ApagarCompromisso(nomeCliente);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -116,6 +139,7 @@ namespace Agenda_BL
         {
             return _CompromissoDao.ExisteCompromisso(nomeCliente);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -125,12 +149,25 @@ namespace Agenda_BL
             return _CompromissoDao.GetCompromissoList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="compromisso"></param>
+        /// <returns></returns>
         public bool ModificarCompromisso(int id, Compromisso compromisso)
         {
             if (ReferenceEquals(compromisso, null)) return false;
             return _CompromissoDao.ModificarCompromisso(id, compromisso);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compromisso"></param>
+        /// <param name="novaHora"></param>
+        /// <param name="novoBloco"></param>
+        /// <returns></returns>
         public bool ModificarCompromisso(Compromisso compromisso, int novaHora, int novoBloco)
         {
             if (ReferenceEquals(compromisso, null)) return false;
@@ -138,17 +175,12 @@ namespace Agenda_BL
             return _CompromissoDao.ModificarCompromisso(compromisso.Id, compromisso);
         }
 
-        public void ExportarDados()
-        {
-            _CompromissoDao.ExportarDados();
-        }
-
-        public bool ImportarDados()
-        {
-            return _CompromissoDao.ImportarDados();
-        }
 
         // serviços para o API
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<AgendaRegistoResponse> GetCompromissoListResponse()
         {
             List<AgendaRegistoResponse> lista = new List<AgendaRegistoResponse>();
@@ -159,12 +191,35 @@ namespace Agenda_BL
             return lista;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public bool ExisteCompromisso(int id, out Compromisso? obj)
         {
             obj = null;
             return _CompromissoDao.ExisteCompromisso(id, out obj);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nomeCliente"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public bool ExisteCompromisso(string nomeCliente, out Compromisso? obj)
+        {
+            obj = null;
+            return _CompromissoDao.ExisteCompromisso(nomeCliente, out obj);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public AgendaRegistoResponse? ObterCompromissoResponse(int id)
         {
             AgendaRegistoResponse? obj = null;
@@ -187,6 +242,11 @@ namespace Agenda_BL
             return obj;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public bool AdicionarCompromissoRequest(AgendaRegistoRequest request)
         {
             Compromisso compromisso = NovoCompromisso(
@@ -202,6 +262,12 @@ namespace Agenda_BL
             return AdicionarCompromisso(compromisso);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public bool ModificarCompromissoRequest(int id, AgendaRegistoRequest request)
         {
             Compromisso? obj = null;
@@ -220,6 +286,11 @@ namespace Agenda_BL
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool ApagarCompromisso(int id)
         {
             return _CompromissoDao.ApagarCompromisso(id);
