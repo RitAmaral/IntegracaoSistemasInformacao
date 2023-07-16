@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Agenda_BL\Agenda_BL.csproj" />
-    <ProjectReference Include="..\Agenda_BO\Agenda_BO.csproj" />
+    <ProjectReference Include="..\Agenda_BLpg\Agenda_BLpg.csproj" />
+    <ProjectReference Include="..\Agenda_BOpg\Agenda_BOpg.csproj" />
   </ItemGroup>
 
 </Project>

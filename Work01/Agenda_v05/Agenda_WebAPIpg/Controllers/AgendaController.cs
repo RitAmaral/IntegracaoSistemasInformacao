@@ -1,5 +1,5 @@
 ﻿using Agenda_Models2Api;
-using Agenda_Services2Api;
+using Agenda_Services2Apipg;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda_WebAPI.Controllers
@@ -21,7 +21,6 @@ namespace Agenda_WebAPI.Controllers
         public IActionResult Index()
         {
             AgendaServices _servicos = new AgendaServices();
-            _servicos.Compromissos.ImportarDados();
             return new ObjectResult(_servicos.Compromissos.GetCompromissoListResponse());
         }
 
@@ -36,7 +35,6 @@ namespace Agenda_WebAPI.Controllers
         public IActionResult GetId(int id)
         {
             AgendaServices _servicos = new AgendaServices();
-            _servicos.Compromissos.ImportarDados();
             AgendaRegistoResponse? agendaRegistoResponse =
                 _servicos.Compromissos.ObterCompromissoResponse(id);
             if (agendaRegistoResponse != null)
@@ -55,10 +53,8 @@ namespace Agenda_WebAPI.Controllers
         public IActionResult Post([FromBody] AgendaRegistoRequest value)
         {
             AgendaServices _servicos = new AgendaServices();
-            _servicos.Compromissos.ImportarDados();
             if (_servicos.Compromissos.AdicionarCompromissoRequest(value))
             {
-                _servicos.Compromissos.ExportarDados();
                 return new OkResult();
             }
             return new BadRequestResult();
@@ -74,10 +70,8 @@ namespace Agenda_WebAPI.Controllers
         public IActionResult Put(int id, [FromBody] AgendaRegistoRequest value)
         {
             AgendaServices _servicos = new AgendaServices();
-            _servicos.Compromissos.ImportarDados();
             if (_servicos.Compromissos.ModificarCompromissoRequest(id, value))
             {
-                _servicos.Compromissos.ExportarDados();
                 return new OkResult();
             }
             return new BadRequestResult();
@@ -92,10 +86,8 @@ namespace Agenda_WebAPI.Controllers
         public IActionResult Delete(int id)
         {
             AgendaServices _servicos = new AgendaServices();
-            _servicos.Compromissos.ImportarDados();
             if (_servicos.Compromissos.ApagarCompromisso(id))
             {
-                _servicos.Compromissos.ExportarDados();
                 return new OkResult();
             }
             return new BadRequestResult();

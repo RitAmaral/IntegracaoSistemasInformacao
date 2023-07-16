@@ -12,11 +12,11 @@ internal class Program
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { 
-                Title = "Agenda_WebAPI", 
+                Title = "Agenda_WebAPIpg", 
                 Version = "v1" });
             var fx = System.IO.Path.Combine(
                 System.AppContext.BaseDirectory, 
-                "Agenda_WebAPI.xml");
+                "Agenda_WebAPIpg.xml");
             c.IncludeXmlComments(fx);
         });
 

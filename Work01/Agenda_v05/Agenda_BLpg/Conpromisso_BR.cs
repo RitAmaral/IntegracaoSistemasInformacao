@@ -3,7 +3,7 @@ using Agenda_DALpg;
 using Agenda_Consts;
 using Agenda_Models2Api;
 using Npgsql;
-using Agenda_Configuration; //É para adicionar o nuget Npgsql? Notas: já adicionei no item group, primeiro deve ser melhor retirar, instalar ... ?
+using Agenda_Configuration; 
 using System.Data;
 
 

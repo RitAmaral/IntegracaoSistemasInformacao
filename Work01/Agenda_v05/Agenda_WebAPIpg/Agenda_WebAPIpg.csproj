@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Agenda_Models2Api\Agenda_Models2Api.csproj" />
-    <ProjectReference Include="..\Agenda_Services2Api\Agenda_Services2Api.csproj" />
+    <ProjectReference Include="..\Agenda_Services2Apipg\Agenda_Services2Apipg.csproj" />
   </ItemGroup>
 
 </Project>

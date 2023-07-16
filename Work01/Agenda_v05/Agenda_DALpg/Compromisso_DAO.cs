@@ -1,221 +1,363 @@
 ﻿using Agenda_BOpg;
 using Agenda_Consts;
-using System.Xml.Serialization;
+using Npgsql;
+using System.Data;
+
+
 
 namespace Agenda_DALpg
 {
     public class Compromisso_DAO
     {
-        public class CompromissosBD
-        {
-            public CompromissosBD()
-            {
-                Items = new List<RegistoCompromisso>();
-            }
 
-            public List<RegistoCompromisso> Items { get; set; }
-        }
+        private NpgsqlConnection _conn;
 
-
-        private CompromissosBD _compromissoList;
-        private DateTime _loaded;
-        private DateTime _modified;
         /// <summary>
         /// 
         /// </summary>
-        public Compromisso_DAO()
+        /// <param name="_conn"></param>
+        public Compromisso_DAO(NpgsqlConnection _conn)
         {
-            _compromissoList = new CompromissosBD();
+            this._conn = _conn;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public NpgsqlConnection Db => _conn;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DbOpen()
+        {
+            if (Db.State != ConnectionState.Open) Db.Open();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DbClose()
+        {
+            if (Db.State == ConnectionState.Open) Db.Close();
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="compromisso"></param>
         /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool AdicionarCompromisso(Compromisso compromisso)
         {
             if (ReferenceEquals(compromisso, null)) return false;
-            return AdicionarCompromisso(compromisso.RegistoCompromisso());
+            // ATENÇÃO: não deve ser incluído o ID na expressão SQL porque será gerado automaticamente...
+            string sqltxt = "INSERT INTO public.compromissos" + "(data, bloco, prioridade, nome, assunto, tipoagendamento, concluido, conclusao) " +
+                "VALUES (@data, @bloco, @prioridade, @nome, @assunto, @tipoagendamento, @concluido, @conclusao); ";
+            NpgsqlTransaction? tr = null;
+            try
+            {
+                DbOpen();
+                tr = Db.BeginTransaction();
+                NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@data", compromisso.Data);
+                com1.Parameters.AddWithValue("@bloco", compromisso.Bloco);
+                com1.Parameters.AddWithValue("@prioridade", (int)compromisso.Prioridade);
+                com1.Parameters.AddWithValue("@nome", compromisso.Nome);
+                com1.Parameters.AddWithValue("@assunto", compromisso.Assunto);
+                com1.Parameters.AddWithValue("@tipoagendamento", (int)compromisso.TipoAgendamento);
+                com1.Parameters.AddWithValue("@concluido", compromisso.Concluido);
+                com1.Parameters.AddWithValue("@conclusao", compromisso.Conclusao);
+                int resultado = com1.ExecuteNonQuery();
+                tr.Commit();
+                tr.Dispose();
+                tr = null;
+                com1.Dispose();
+                return resultado != -1;
+            }
+            catch (Exception e)
+            {
+                if (tr != null)
+                {
+                    tr.Rollback();
+                    tr.Dispose();
+                }
+                throw new Exception("Erro ao adicionar compromisso!", e);
+            }
         }
+
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="compromisso"></param>
         /// <returns></returns>
-        public bool AdicionarCompromisso(RegistoCompromisso compromisso)
-        {
-            _compromissoList.Items.Add(compromisso);
-            _modified = DateTime.Now;
-            return true;
-        }
-
+        /// <exception cref="Exception"></exception>
         public bool ModificarCompromisso(int id, Compromisso compromisso)
         {
             if (ReferenceEquals(compromisso, null)) return false;
-            int tIndex = _compromissoList.Items.FindIndex(r => r.Id.Equals(id));
-            if (tIndex > -1)
+            string sqltxt = "UPDATE public.compromissos " + "SET data=@data, bloco=@bloco, prioridade=@prioridade, nome=@nome, assunto = @assunto, " +
+                "tipoagendamento=@tipoagendamento, concluido=@concluido, conclusao = @conclusao "+ "WHERE id=@id;";
+            NpgsqlTransaction? tr = null;
+            try
             {
-                _compromissoList.Items[tIndex] = compromisso.RegistoCompromisso();
-                _modified = DateTime.Now;
-                return true;
+                DbOpen();
+                tr = Db.BeginTransaction();
+                NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@id", compromisso.Id);
+                com1.Parameters.AddWithValue("@data", compromisso.Data);
+                com1.Parameters.AddWithValue("@bloco", compromisso.Bloco);
+                com1.Parameters.AddWithValue("@prioridade", (int)compromisso.Prioridade);
+                com1.Parameters.AddWithValue("@nome", compromisso.Nome);
+                com1.Parameters.AddWithValue("@assunto", compromisso.Assunto);
+                com1.Parameters.AddWithValue("@tipoagendamento", (int)compromisso.TipoAgendamento);
+                com1.Parameters.AddWithValue("@concluido", compromisso.Concluido);
+                com1.Parameters.AddWithValue("@conclusao", compromisso.Conclusao);
+                int resultado = com1.ExecuteNonQuery();
+                tr.Commit();
+                tr.Dispose();
+                tr = null;
+                com1.Dispose();
+                return resultado == 1;
             }
-            return false;
+            catch (Exception e)
+            {
+                if (tr != null)
+                {
+                    tr.Rollback();
+                    tr.Dispose();
+                }
+                throw new Exception("Erro ao modificar compromisso!", e);
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nomeCliente"></param>
+        /// <returns></returns>
         public bool ApagarCompromisso(string nomeCliente)
         {
             Compromisso? obj = null;
             string tNome = nomeCliente.Trim();
-            if (ExisteCompromisso(tNome, out obj))
+            int contador = 0;
+            while (ExisteCompromisso(tNome, out obj))
             {
-                if (ReferenceEquals(obj, null)) return false;
-                // apagar todos os registos com o nome igual ao "nome"
-                if (_compromissoList.Items.RemoveAll(r => r.Nome.Equals(tNome)) > 0)
+                if (ApagarCompromisso(obj.Id))
                 {
-                    _modified = DateTime.Now;
-                    return true;
+                    contador++;
+                }
+                else
+                {
+                    // não conseguiu apagar, deve-se interromper para evitar loop infinito...
+                    break;
                 }
             }
-            return false;
+            return contador > 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool ApagarCompromisso(int id)
         {
-            int tIndex = _compromissoList.Items.FindIndex(r => r.Id.Equals(id));
-            if (tIndex > -1)
+            string sqltxt = "DELETE FROM public.compromissos WHERE id=@id;";
+            NpgsqlTransaction? tr = null;
+            try
             {
-                _compromissoList.Items.RemoveAt(tIndex);
-                _modified = DateTime.Now;
-                return true;
+                DbOpen();
+                tr = Db.BeginTransaction();
+                NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@id", id);
+                int resultado = com1.ExecuteNonQuery();
+                tr.Commit();
+                tr.Dispose();
+                tr = null;
+                com1.Dispose();
+                return resultado != -1;
             }
-            return false;
+            catch (Exception e)
+            {
+                if (tr != null)
+                {
+                    tr.Rollback();
+                    tr.Dispose();
+                }
+                throw new Exception("Erro ao apagar compromisso!", e);
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nomeCliente"></param>
+        /// <returns></returns>
         public bool ExisteCompromisso(string nomeCliente)
         {
             Compromisso? obj = null;
             return ExisteCompromisso(nomeCliente, out obj);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nomeCliente"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool ExisteCompromisso(string nomeCliente, out Compromisso? obj)
         {
             obj = null;
             string tNome = nomeCliente.Trim();
             if (tNome.Length == 0) return false;
-            int tIndex = _compromissoList.Items.FindIndex(r => r.Nome.Equals(tNome));
-            if (tIndex > -1)
+            string sqltxt = "SELECT id FROM public.compromissos WHERE nome=@nome;";
+            try
             {
-                obj = new Compromisso(_compromissoList.Items[tIndex]);
-                return true;
+                DbOpen();
+                NpgsqlCommand qry1 = new NpgsqlCommand(sqltxt, Db);
+                qry1.Parameters.AddWithValue("@nome", tNome);
+                NpgsqlDataReader res1 = qry1.ExecuteReader();
+                if (res1.HasRows && res1.Read())
+                {
+                    int id = res1.GetInt32(res1.GetOrdinal("id"));
+                    res1.Close();
+                    return ExisteCompromisso(id, out obj);
+                }
+                if (!res1.IsClosed) res1.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao obter compromisso por nome!", e);
             }
             return false;
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool ExisteCompromisso(int id, out Compromisso? obj)
         {
+            bool resultado = false;
             obj = null;
-            int tIndex = _compromissoList.Items.FindIndex(r => r.Id.Equals(id));
-            if (tIndex > -1)
+            string sqltxt = "SELECT id, data, bloco, prioridade, nome, assunto, " +
+            "tipoagendamento, concluido, conclusao FROM public.compromissos WHERE id = @id; ";
+            try
             {
-                obj = new Compromisso(_compromissoList.Items[tIndex]);
-                return true;
+                DbOpen();
+                NpgsqlCommand qry1 = new NpgsqlCommand(sqltxt, Db);
+                qry1.Parameters.AddWithValue("@id", id);
+                NpgsqlDataReader res1 = qry1.ExecuteReader();
+                if (res1.HasRows && res1.Read())
+                {
+                    DateTime tmpData = res1.GetDateTime(res1.GetOrdinal("data"));
+                    byte tmpBloco = res1.GetByte(res1.GetOrdinal("bloco"));
+                    Prioridade tmpPrioridade = (Prioridade)res1.GetByte(res1.GetOrdinal("prioridade"));
+                    string tmpNome = res1["nome"].ToString();
+                    string tmpAssunto = res1["assunto"].ToString();
+                    TipoAgendamento tmpTipoAgendamento = (TipoAgendamento)res1.GetByte(res1.GetOrdinal("tipoagendamento")); ;
+                    bool tmpConcluido = res1.GetBoolean(res1.GetOrdinal("concluido"));
+                    DateTime tmpConclusao = res1.GetDateTime(res1.GetOrdinal("conclusao"));
+                    res1.Close();
+                    obj = new Compromisso(id, tmpData, tmpBloco, tmpPrioridade, tmpNome, tmpAssunto, tmpTipoAgendamento, tmpConcluido, tmpConclusao);
+                    resultado = true;
+                }
+                if (!res1.IsClosed) res1.Close();
             }
-            return false;
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao obter compromisso por id!", e);
+            }
+            return resultado;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public List<string> GetCompromissoList()
         {
-            List<string> list = new List<string>();
-            foreach (RegistoCompromisso c in _compromissoList.Items)
-            {
-                list.Add(c.ToString());
-            }
-            return list;
+             List<string> list = new List<string>();
+             string sqltxt = "SELECT id, data, nome, assunto FROM public.compromissos;";
+             try
+             {
+                 DbOpen();
+                 NpgsqlCommand qry1 = new NpgsqlCommand(sqltxt, Db);
+                 NpgsqlDataReader res1 = qry1.ExecuteReader();
+                 if (res1.HasRows)
+                 {
+                     while (res1.Read())
+                     {
+                        int tmpId = res1.GetInt32(res1.GetOrdinal("id"));
+                        DateTime tmpData = res1.GetDateTime(res1.GetOrdinal("data"));
+                        string tmpNome = res1["nome"].ToString();
+                        string tmpAssunto = res1["assunto"].ToString();
+
+                        list.Add($"{tmpId}, {tmpData}\t{tmpNome}, {tmpAssunto}");
+                     }
+                 }
+                 if (!res1.IsClosed) res1.Close();
+             }
+             catch (Exception e)
+             {
+                 throw new Exception("Erro ao obter lista<string> de compromissos!", e);
+             }
+             return list;
         }
 
-        public void ExportarDados()
-        {
-        	string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlCompromissos);
-            if (_modified > _loaded || !File.Exists(ficheiro))
-            {
-                try
-                {
-                    ExportarXml(ficheiro);
-                    _modified = _loaded = DateTime.Now;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-        }
-
-        public bool ExportarXml(string ficheiro)
-        {
-            if (ficheiro != null)
-            {
-                try
-                {
-                    XmlMethods.SerializeToXml<CompromissosBD>(_compromissoList, ficheiro);
-
-                    return true;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-            return false;
-        }
-
-        public bool ImportarDados()
-        {
-        	string ficheiro = System.IO.Path.Combine(System.AppContext.BaseDirectory, Constantes.NomeXmlCompromissos);
-            return ImportarXml(ficheiro);
-        }
-
-        public bool ImportarXml(string ficheiro)
-        {
-            if (ficheiro != null && File.Exists(ficheiro))
-            {
-                try
-                {
-                    _compromissoList = XmlMethods.DeserializeXmlToObject<CompromissosBD>(ficheiro);
-                    _loaded = DateTime.Now;
-                    _modified = DateTime.Now;
-                    // uma proposta de solução para evitar duplicação de Id's
-                    // estratégia para se atualizar o gerador de Id's
-                    if (_compromissoList.Items.Count > 0)
-                    {
-                        int tId = _compromissoList.Items[0].Id;
-                        foreach (RegistoCompromisso r in _compromissoList.Items)
-                        {
-                            if (r.Id > tId) tId = r.Id;
-                        }
-                        GetNewId.Instancia.ResetProximo(tId);
-                    }
-                    return true;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-            return false;
-        }
-
-        // serviços para o API
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public List<Compromisso> GetCompromissos()
         {
             List<Compromisso> list = new List<Compromisso>();
-            foreach (RegistoCompromisso c in _compromissoList.Items)
+            string sqltxt = "SELECT id, data, nome, assunto FROM public.compromissos;";
+
+            try
             {
-                list.Add(new Compromisso(c));
+                // passo 1
+                // é necessário obter uma lista de id da tabela
+                List<int> listaIds = new List<int>();
+                DbOpen();
+                NpgsqlCommand qry1 = new NpgsqlCommand(sqltxt, Db);
+                NpgsqlDataReader res1 = qry1.ExecuteReader();
+                if (res1.HasRows)
+                {
+                    while (res1.Read())
+                    {
+                        int tmpId = res1.GetInt32(res1.GetOrdinal("id"));
+                        listaIds.Add(tmpId);
+                    }
+                }
+                if (!res1.IsClosed) res1.Close();
+                // passo 2
+                // obter objetos e criar a lista
+                Compromisso? obj;
+                foreach (int id in listaIds)
+                {
+                    if (ExisteCompromisso(id, out obj))
+                    {
+                        list.Add(obj);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao obter lista<string> de compromissos!",
+               e);
             }
             return list;
         }
-
-
-
     }
 }
+
+
