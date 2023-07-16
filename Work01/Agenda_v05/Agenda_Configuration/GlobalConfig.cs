@@ -9,7 +9,7 @@ namespace Agenda_Configuration
     {
         /// <summary>
         /// classe para serializar
-        /// NOTA: caso seja necessário, pode/deve-se adicionar variáveis deconfiguração global
+        /// NOTA: caso seja necessário, pode/deve-se adicionar variáveis de configuração global
         /// </summary>
         [Serializable]
         public class GlobalConfigXml
@@ -25,18 +25,21 @@ namespace Agenda_Configuration
                 NpgsqlConnection = npgsqlConnection;
             }
         }
+
         /// <summary>
         /// variáveis privadas estáticas
         /// </summary>
         private static GlobalConfig? instancia;
+
         private static GlobalConfigXml _config;
+
         /// <summary>
         /// construtor privado, inicializa e impede a criação de objetos desta classe
         /// </summary>
         private GlobalConfig()
         {
             // inicializa a configuração com os valores por omissão
-            _config = new GlobalConfigXml("Server=127.0.0.1;Port=5432;Database=AGENDA5DB;User Id = postgres; Password = postgres; ");
+            _config = new GlobalConfigXml("Server=127.0.0.1;Port=5432;Database=AGENDA5DB;User Id=postgres;Password=isilab;");
             if (File.Exists(GlobalConfigFileName))
             {
                 // carrega o ficheiro se existir
@@ -52,6 +55,7 @@ namespace Agenda_Configuration
         /// 
         /// </summary>
         public string GlobalConfigFileName => System.IO.Path.Combine(System.AppContext.BaseDirectory,Constantes.NomeXmlConfiguration);
+
         /// <summary>
         /// 
         /// </summary>
@@ -69,6 +73,7 @@ namespace Agenda_Configuration
                 SaveGlobalConfig();
             }
         }
+
         /// <summary>
         /// carregar as configurações globais para a memória
         /// </summary>
@@ -86,6 +91,7 @@ namespace Agenda_Configuration
                 }
             }
         }
+
         /// <summary>
         /// gravar as configurações globais para um ficheiro XML
         /// </summary>
@@ -100,6 +106,7 @@ namespace Agenda_Configuration
                 throw;
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -107,7 +114,7 @@ namespace Agenda_Configuration
 
         {
             get
- {
+            {
                 if (instancia == null)
                 {
                     instancia = new GlobalConfig();
