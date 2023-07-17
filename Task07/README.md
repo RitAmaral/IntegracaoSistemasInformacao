@@ -1,14 +1,16 @@
-# Task 06
+# Task 07
 
 ## Enunciado:
 
-Utilizando todo o trabalho produzido na “Task05” (duplicando a pasta utilizando os conselhos fornecidos em contexto de aula) e mantendo a imagem do modelo visual, pretende-se que seja acrescentado um novo projeto (tipo “ASP.NET Core Web API”) à solução acrescentando as funcionalidades necessárias para CRUD (acrónimo para CREATE, READ, UPDATE e DELETE). Para facilitar pode-se utilizar o mesmo método utilizado em aula. (incluindo um projeto “tipo” console para demonstrar o funcionamento utilizando a ligação ao API).
+<Em construção>
 
 ![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/dce2d556-99f3-4354-b9cf-cabd737ba4e0)
 
 ---
 
-### Resposta Task 06:
+### Resposta Task 07:
+
+<Em construção>
 
 Para ser feita a serialização em formato JSON:
 
