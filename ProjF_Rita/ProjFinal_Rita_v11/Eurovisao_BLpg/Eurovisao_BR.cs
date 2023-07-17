@@ -73,9 +73,15 @@ namespace Eurovisao_BLpg
         {
             return _eurovisaoDAO.GetConcorrentesList();
         }
+        /*
         public List<string> GetConcorrentesList(Ronda ronda) //obter lista de concorrentes
         {
             return _eurovisaoDAO.GetConcorrentesList(ronda);
+        }
+        */
+        public List<Eurovisao> GetConcorrentes(Ronda ronda) //obter lista de concorrentes
+        {
+            return _eurovisaoDAO.GetConcorrentes(ronda);
         }
 
         public bool ApagarConcorrente(string pais) //apaga concorrente pelo país
@@ -89,6 +95,18 @@ namespace Eurovisao_BLpg
             if (ReferenceEquals(concorrente, null)) return false;
             return _eurovisaoDAO.ModificarConcorrente(id, concorrente);
         }
+        public bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente) //necessário por causo do método ModificarConcorrenteRequest em baixo
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            return _eurovisaoDAO.ModificarConcorrente(pontosJuri, concorrente);
+        }
+
+        public bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente) //necessário por causo do método ModificarConcorrenteRequest em baixo
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            return _eurovisaoDAO.ModificarConcorrente(pontosTelevoto, concorrente);
+        }
+
         /*
         public bool ModificarRondaConcorrente(string pais, Ronda ronda, Eurovisao concorrente) //modifica ronda, nota: vou mudar por enum.parse no program
         {
@@ -102,7 +120,11 @@ namespace Eurovisao_BLpg
             obj = null;
             return _eurovisaoDAO.ExisteConcorrente(pais);
         }
-        
+
+        public bool ExisteConcorrente(int id)
+        {
+            return _eurovisaoDAO.ExisteConcorrente(id);
+        }
 
         /*---------------------Serviçõs para o API--------------------*/
         public List<EuroRegistoResponse> GetConcorrenteListResponse() //adicionar dependencia do eurovisao Models
@@ -125,7 +147,7 @@ namespace Eurovisao_BLpg
         {
             EuroRegistoResponse? obj = null;
             Eurovisao? concorrente = null;
-            if (ExisteConcorrente(id, out concorrente)) 
+            if (ExisteConcorrente(id, out concorrente))
             {
                 obj = new EuroRegistoResponse
                 {
@@ -169,9 +191,18 @@ namespace Eurovisao_BLpg
             return false;
         }
 
-        public bool ApagarConcorrente(int id) 
+        public bool ApagarConcorrente(int id)
         {
             return _eurovisaoDAO.ApagarConcorrente(id);
+        }
+
+        public bool OrdernarLista()
+        {
+            return _eurovisaoDAO.OrdenarLista();
+        }
+        public Eurovisao Vencedor() //mostra vencendor da eurovisão
+        {
+            return _eurovisaoDAO.Vencedor();
         }
     }
 }

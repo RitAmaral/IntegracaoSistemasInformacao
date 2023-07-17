@@ -1,13 +1,15 @@
 ﻿using Eurovisao_BOpg;
-using Eurovisao_Constantes;
 using Npgsql;
 using System.Data;
+using Eurovisao_Constantes;
+using System.Reflection;
 
 
 namespace Eurovisao_DALpg
 {
     public class Eurovisao_DAO
     {
+
         private NpgsqlConnection _conn;
 
         public Eurovisao_DAO(NpgsqlConnection _conn)
@@ -88,7 +90,7 @@ namespace Eurovisao_DALpg
                         list.Add($"{tmpID}, {tmpPais}\t{tmpNomeRepresentante}, {tmpNomeMusica}");
                     }
                 }
-                if (!res1.IsClosed) res1.Close();           
+                if (!res1.IsClosed) res1.Close();
             }
             catch (Exception e)
             {
@@ -96,6 +98,7 @@ namespace Eurovisao_DALpg
             }
             return list;
         }
+        /*
         public List<string> GetConcorrentesList(Ronda ronda) //mostra lista de concorrentes
         {
             List<string> list = new List<string>();
@@ -126,6 +129,7 @@ namespace Eurovisao_DALpg
             }
             return list;
         }
+        */
 
 
         public bool ApagarConcorrente(string pais) //apaga concorrente pelo nome do país que representa
@@ -184,7 +188,11 @@ namespace Eurovisao_DALpg
             return ExisteConcorrente(pais, out obj);
         }
 
-
+        public bool ExisteConcorrente(int id) //verifica se existe concorrente pelo nome do país
+        {
+            Eurovisao? obj = null;
+            return ExisteConcorrente(id, out obj);
+        }
 
         public bool ExisteConcorrente(string pais, out Eurovisao? obj) //este existe concorrente é necessário para o método apagar concorrente em cima
         {
@@ -246,7 +254,7 @@ namespace Eurovisao_DALpg
             return resultado;
         }
 
-        public bool ModificarConcorrente(int id, Eurovisao concorrente) //necessário por causa do método ModificarConcorrenteRequest em Eurovisao_BR
+        public bool ModificarConcorrente(int id, Eurovisao concorrente) 
         {
             if (ReferenceEquals(concorrente, null)) return false;
             string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica " +
@@ -283,6 +291,79 @@ namespace Eurovisao_DALpg
             }
         }
 
+        public bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente) 
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica " +
+                "ronda=@ronda, pontosjuri=@pontosjuri, pontostelevoto=@pontostelevoto, totalpontos=@totalpontos WHERE pontosjuri=@pontosjuri;";
+            NpgsqlTransaction? tr = null;
+            try
+            {
+                DbOpen();
+                tr = Db.BeginTransaction();
+                NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@pais", concorrente.Pais);
+                com1.Parameters.AddWithValue("@nomerepresentante", concorrente.NomeRepresentante);
+                com1.Parameters.AddWithValue("@nomemusica", concorrente.NomeMusica);
+                com1.Parameters.AddWithValue("@ronda", (int)concorrente.Ronda);
+                com1.Parameters.AddWithValue("@pontosjuri", concorrente.PontosJuri);
+                com1.Parameters.AddWithValue("@pontostelevoto", concorrente.PontosTelevoto);
+                com1.Parameters.AddWithValue("@totalpontos", concorrente.TotalPontos);
+                int resultado = com1.ExecuteNonQuery();
+                tr.Commit();
+                tr.Dispose();
+                tr = null;
+                com1.Dispose();
+                return resultado == 1;
+            }
+
+            catch (Exception e)
+            {
+                if (tr != null)
+                {
+                    tr.Rollback();
+                    tr.Dispose();
+                }
+                throw new Exception("Erro ao modificar pontos do júri do concorrente!", e);
+            }
+        }
+
+        public bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente)
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica " +
+                "ronda=@ronda, pontosjuri=@pontosjuri, pontostelevoto=@pontostelevoto, totalpontos=@totalpontos WHERE pontostelevoto=@pontostelevoto;";
+            NpgsqlTransaction? tr = null;
+            try
+            {
+                DbOpen();
+                tr = Db.BeginTransaction();
+                NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@pais", concorrente.Pais);
+                com1.Parameters.AddWithValue("@nomerepresentante", concorrente.NomeRepresentante);
+                com1.Parameters.AddWithValue("@nomemusica", concorrente.NomeMusica);
+                com1.Parameters.AddWithValue("@ronda", (int)concorrente.Ronda);
+                com1.Parameters.AddWithValue("@pontosjuri", concorrente.PontosJuri);
+                com1.Parameters.AddWithValue("@pontostelevoto", concorrente.PontosTelevoto);
+                com1.Parameters.AddWithValue("@totalpontos", concorrente.TotalPontos);
+                int resultado = com1.ExecuteNonQuery();
+                tr.Commit();
+                tr.Dispose();
+                tr = null;
+                com1.Dispose();
+                return resultado == 1;
+            }
+
+            catch (Exception e)
+            {
+                if (tr != null)
+                {
+                    tr.Rollback();
+                    tr.Dispose();
+                }
+                throw new Exception("Erro ao modificar pontos do televoto do concorrente!", e);
+            }
+        }
 
         public List<Eurovisao> GetConcorrentes()
         {
@@ -364,6 +445,19 @@ namespace Eurovisao_DALpg
                 throw new Exception("Erro ao obter lista<string> de compromissos!", e);
             }
             return list;
+        }
+
+        public bool OrdenarLista() //ordena a lista por ordem descendente de total pontos
+        {
+            List<Eurovisao> list = new List<Eurovisao>();
+            list = list.OrderByDescending(concorrente => concorrente.TotalPontos).ToList();
+            return true;
+        }
+        public Eurovisao Vencedor() //diz o vencedor da eurovisão após lista ordenada por ordem descendente de total pontos
+        {
+            OrdenarLista();
+            List<Eurovisao> list = new List<Eurovisao>();
+            return list.FirstOrDefault();
         }
     }
 }

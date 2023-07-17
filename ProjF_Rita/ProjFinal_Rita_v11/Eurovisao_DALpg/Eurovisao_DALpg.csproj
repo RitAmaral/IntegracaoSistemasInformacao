@@ -12,9 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eurovisao_BOpg\Eurovisao_BOpg.csproj" />
-    <ProjectReference Include="..\Eurovisao_Configuration\Eurovisao_Configuration.csproj" />
-    <ProjectReference Include="..\Eurovisao_DALpg\Eurovisao_DALpg.csproj" />
-    <ProjectReference Include="..\Eurovisao_Models2Api\Eurovisao_Models2Api.csproj" />
+    <ProjectReference Include="..\Eurovisao_Constantes\Eurovisao_Constantes.csproj" />
   </ItemGroup>
 
 </Project>

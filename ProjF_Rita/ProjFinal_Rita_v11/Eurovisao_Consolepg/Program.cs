@@ -1,6 +1,7 @@
 ﻿using Eurovisao_BOpg;
 using Eurovisao_BLpg;
 using Eurovisao_Constantes;
+using System.Reflection;
 
 namespace Eurovisao_Console
 {
@@ -37,6 +38,21 @@ namespace Eurovisao_Console
             Eurovisao s1f14 = gestaoEurovisao.NovoConcorrente("Azerbeijão", "TuralTuranX", "Tell Me More", Enum.Parse<Ronda>("Semifinal1"), 0, 4);
             Eurovisao s1f15 = gestaoEurovisao.NovoConcorrente("Malta", "The Busker", "Dance (Our Own Party)", Enum.Parse<Ronda>("Semifinal1"), 0, 3);
 
+            VerificarAdiciona(gestaoEurovisao, s1f2);
+            VerificarAdiciona(gestaoEurovisao, s1f3);
+            VerificarAdiciona(gestaoEurovisao, s1f4);
+            VerificarAdiciona(gestaoEurovisao, s1f5);
+            VerificarAdiciona(gestaoEurovisao, s1f6);
+            VerificarAdiciona(gestaoEurovisao, s1f7);
+            VerificarAdiciona(gestaoEurovisao, s1f8);
+            VerificarAdiciona(gestaoEurovisao, s1f9);
+            VerificarAdiciona(gestaoEurovisao, s1f10);
+            VerificarAdiciona(gestaoEurovisao, s1f11);
+            VerificarAdiciona(gestaoEurovisao, s1f12);
+            VerificarAdiciona(gestaoEurovisao, s1f13);
+            VerificarAdiciona(gestaoEurovisao, s1f14);
+            VerificarAdiciona(gestaoEurovisao, s1f15);
+
 
             /*--------------------------Mostra lista de concorrentes da primeira Semi-Final:-----------------------------------*/
 
@@ -44,7 +60,7 @@ namespace Eurovisao_Console
             Console.WriteLine("\nLista dos concorrentes da primeira Semifinal:");
             Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Ronda\t|Júri\t|Televoto\t|Total Pontos");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
-            MostrarLista(gestaoEurovisao.GetConcorrentesList(Enum.Parse<Ronda>("Semifinal1")));
+            //MostrarLista(gestaoEurovisao.GetConcorrentesList(Enum.Parse<Ronda>("Semifinal1")));
 
             /*--------------------------Apagar os 5 concorrentes com menos pontos da lista:--------------------------------------*/
 
@@ -57,7 +73,7 @@ namespace Eurovisao_Console
             gestaoEurovisao.ApagarConcorrente("Azerbeijão");
             gestaoEurovisao.ApagarConcorrente("Malta");
 
-            MostrarLista(gestaoEurovisao.GetConcorrentesList(Enum.Parse<Ronda>("Semifinal1")));
+            //MostrarLista(gestaoEurovisao.GetConcorrentesList(Enum.Parse<Ronda>("Semifinal1")));
 
 
             /*-------------------------------Lista dos concorrentes da segunda semifinal--------------------------------*/
@@ -80,6 +96,23 @@ namespace Eurovisao_Console
             Eurovisao s2f15 = gestaoEurovisao.NovoConcorrente("Roménia", "Theodor Andrei", "D.G.T. (Off and On)", Enum.Parse<Ronda>("Semifinal2"), 0, 0);
             Eurovisao s2f16 = gestaoEurovisao.NovoConcorrente("San Marino", "Piqued Jacks", "Like An Animal", Enum.Parse<Ronda>("Semifinal2"), 0, 0);
 
+            VerificarAdiciona(gestaoEurovisao, s2f1);
+            VerificarAdiciona(gestaoEurovisao, s2f2);
+            VerificarAdiciona(gestaoEurovisao, s2f3);
+            VerificarAdiciona(gestaoEurovisao, s2f4);
+            VerificarAdiciona(gestaoEurovisao, s2f5);
+            VerificarAdiciona(gestaoEurovisao, s2f6);
+            VerificarAdiciona(gestaoEurovisao, s2f7);
+            VerificarAdiciona(gestaoEurovisao, s2f8);
+            VerificarAdiciona(gestaoEurovisao, s2f9);
+            VerificarAdiciona(gestaoEurovisao, s2f10);
+            VerificarAdiciona(gestaoEurovisao, s2f11);
+            VerificarAdiciona(gestaoEurovisao, s2f12);
+            VerificarAdiciona(gestaoEurovisao, s2f13);
+            VerificarAdiciona(gestaoEurovisao, s2f14);
+            VerificarAdiciona(gestaoEurovisao, s2f15);
+            VerificarAdiciona(gestaoEurovisao, s2f16);
+
 
             /*--------------------------Mostra lista de concorrentes da segunda Semifinal:-----------------------------------*/
 
@@ -87,7 +120,7 @@ namespace Eurovisao_Console
             Console.WriteLine("\nLista dos concorrentes da segunda Semifinal:");
             Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Júri\t|Televoto\t|Total Pontos");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
-            MostrarLista(gestaoEurovisao.GetConcorrentesList(Enum.Parse<Ronda>("Semifinal2")));
+            //MostrarLista(gestaoEurovisao.GetConcorrentesList(Enum.Parse<Ronda>("Semifinal2")));
 
             /*--------------------------Apagar os 6 concorrentes com menos pontos da lista:--------------------------------------*/
 
@@ -141,13 +174,10 @@ namespace Eurovisao_Console
             s2f8.Ronda = Enum.Parse<Ronda>("Final");
             s2f9.Ronda = Enum.Parse<Ronda>("Final");
             s2f10.Ronda = Enum.Parse<Ronda>("Final");
-            
-
-            /*
 
             
             /*--------------------------Se quiser alterar Pontos do Júri:--------------------------------------*/
-            /*
+            
             Console.WriteLine($"\nA verificar a existência dos seguintes países qualificados para a final: \n- {s1f1.Pais} \n- {s1f2.Pais} \n- {s1f3.Pais} " +
                 $"\n- {s1f4.Pais} \n- {s1f5.Pais} \n- {s1f6.Pais} \n- {s1f7.Pais} \n- {s1f8.Pais} \n- {s1f9.Pais} \n- {s1f10.Pais} \n- {s2f1.Pais} " +
                 $"\n- {s2f2.Pais} \n- {s2f3.Pais} \n- {s2f4.Pais} \n- {s2f5.Pais} \n- {s2f6.Pais} \n- {s2f7.Pais} \n- {s2f8.Pais} \n- {s2f9.Pais} " +
@@ -207,9 +237,9 @@ namespace Eurovisao_Console
             {
                 Console.WriteLine("Concorrente não encontrado.");
             }
-            */
+            
             /*--------------------------Se quiser alterar Pontos do Televoto:--------------------------------------*/
-            /*
+            
             Console.WriteLine($"\nA verificar a existência dos seguintes países qualificados para a final: \n- {s1f1.Pais} \n- {s1f2.Pais} \n- {s1f3.Pais} " +
                 $"\n- {s1f4.Pais} \n- {s1f5.Pais} \n- {s1f6.Pais} \n- {s1f7.Pais} \n- {s1f8.Pais} \n- {s1f9.Pais} \n- {s1f10.Pais} \n- {s2f1.Pais} " +
                 $"\n- {s2f2.Pais} \n- {s2f3.Pais} \n- {s2f4.Pais} \n- {s2f5.Pais} \n- {s2f6.Pais} \n- {s2f7.Pais} \n- {s2f8.Pais} \n- {s2f9.Pais} " +
@@ -268,15 +298,16 @@ namespace Eurovisao_Console
             {
                 Console.WriteLine("Concorrente não encontrado.");
             }
-            */
+            
             /*--------------------------Mostra lista atualizada da Eurovisão:-----------------------------------*/
 
             Console.WriteLine("\nLista atualizada e ordenada por Total Pontos:");
             Console.WriteLine("ID\t|País\t|Representante\t|Música\t|Ronda\t|Júri\t|Televoto\t|Total Pontos");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
-            //gestaoEurovisao.OrdernarLista(); //ordena lista por total pontos
+            gestaoEurovisao.OrdernarLista(); //ordena lista por total pontos
             MostrarLista(gestaoEurovisao.GetConcorrentesList());
 
+            //Não está a funcionar:
             //Eurovisao vencedor = gestaoEurovisao.Vencedor(); //vai buscar o pais que tem maior total pontos e portanto será o vencedor da Eurovisão 2023!
             //Console.WriteLine($"\nE o vencedor da Eurovisão 2023 é.... {vencedor.Pais.ToUpper()}!!!"); //ToUpper para colocar o vencedor em letras maiúsculas
 

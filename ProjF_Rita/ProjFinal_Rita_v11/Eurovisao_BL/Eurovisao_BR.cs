@@ -1,48 +1,20 @@
-﻿using Eurovisao_BOpg;
-using Eurovisao_Configuration;
+﻿using Eurovisao_BO;
 using Eurovisao_Constantes;
-using Eurovisao_DALpg;
+using Eurovisao_DAL;
 using Eurovisao_Models2Api;
-using Npgsql;
-using System.Data;
 
-namespace Eurovisao_BLpg
+namespace Eurovisao_BL
 {
-    public class Eurovisao_BR 
+    public class Eurovisao_BR : IEurovisaoMetodos //implementar a interface IEurovisaoMetodos: garante que Eurovisao_BR implemente todos os métodos definidos na interface.
     {
-        private NpgsqlConnection _conn;
         private Eurovisao_DAO _eurovisaoDAO;
 
-        /// <summary>
-        /// construtor
-        /// </summary>
         public Eurovisao_BR()
         {
-            _conn = new NpgsqlConnection(GlobalConfig.Instancia.NpgsqlConnection);
-            _eurovisaoDAO = new Eurovisao_DAO(_conn);
-        }
-
-        /// <summary>
-        /// destrutor é necessário para terminar a ligação com a base de dados
-        /// </summary>
-        ~Eurovisao_BR()
-        {
-            if (_conn.State == ConnectionState.Open) _conn.Close();
-            _conn.Dispose();
+            _eurovisaoDAO = new Eurovisao_DAO();
         }
 
         //Métodos
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pais"></param>
-        /// <param name="nomeRepresentante"></param>
-        /// <param name="nomeMusica"></param>
-        /// <param name="ronda"></param>
-        /// <param name="pontosJuri"></param>
-        /// <param name="pontosTelevoto"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
         public Eurovisao NovoConcorrente(string pais, string nomeRepresentante, string nomeMusica, Ronda ronda, int pontosJuri, int pontosTelevoto)
         {
             string tPais = pais.Trim();
@@ -58,11 +30,6 @@ namespace Eurovisao_BLpg
             return new Eurovisao(tPais, tNomeRepresentante, tNomeMusica, tRonda, tPontosJuri, tPontosTelevoto);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="concorrente"></param>
-        /// <returns></returns>
         public bool AdicionarConcorrente(Eurovisao concorrente) //adiciona concorrente
         {
             if (ReferenceEquals(concorrente, null)) return false;
@@ -73,7 +40,8 @@ namespace Eurovisao_BLpg
         {
             return _eurovisaoDAO.GetConcorrentesList();
         }
-        public List<string> GetConcorrentesList(Ronda ronda) //obter lista de concorrentes
+
+        public List<string> GetConcorrentesList(Ronda ronda) //obter lista de concorrentes por ronda
         {
             return _eurovisaoDAO.GetConcorrentesList(ronda);
         }
@@ -83,6 +51,37 @@ namespace Eurovisao_BLpg
             return _eurovisaoDAO.ApagarConcorrente(pais);
         }
 
+        public bool ApagarConcClassificacaoFinal() //apaga concorrentes com menores pontuações
+        {
+            return _eurovisaoDAO.ApagarConcClassificacaoFinal();
+        }
+
+        public bool ApagarConcRonda(Ronda ronda) //apaga concorrentes por ronda, por semifinal1 ou por semifinal2
+        {
+            return _eurovisaoDAO.ApagarConcRonda(ronda);
+        }
+
+        public bool ExisteConcorrente(string pais) //verica se existe concorrente pelo país
+        {
+            return _eurovisaoDAO.ExisteConcorrente(pais);
+        }
+
+        public bool ExisteConcorrente(int id) //verifica se existe concorrente pelo id
+        {
+            return _eurovisaoDAO.ExisteConcorrente(id);
+        }
+        
+        public bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente) //modifica pontos de juri
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            return _eurovisaoDAO.ModificarPontosJuri(pontosJuri, concorrente); 
+        }
+        
+        public bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente) //modifica pontos de televoto
+        {
+            if (ReferenceEquals(concorrente, null)) return false;
+            return _eurovisaoDAO.ModificarPontosTelevoto(pontosTelevoto, concorrente);
+        }
 
         public bool ModificarConcorrente(int id, Eurovisao concorrente) //necessário por causo do método ModificarConcorrenteRequest em baixo
         {
@@ -96,13 +95,31 @@ namespace Eurovisao_BLpg
             return _eurovisaoDAO.ModificarRondaConcorrente(pais, ronda, concorrente);
         }
         */
-
-        public bool ExisteConcorrente(string pais, out Eurovisao? obj) //verica se existe concorrente pelo país
+        public List<string> Historico() //mostra historico
         {
-            obj = null;
-            return _eurovisaoDAO.ExisteConcorrente(pais);
+            return _eurovisaoDAO.Historico();
         }
-        
+
+        public bool OrdernarLista()
+        {
+            return _eurovisaoDAO.OrdenarLista();
+        }
+
+        public RegistoConcorrente Vencedor() //mostra vencendor da eurovisão
+        {
+            return _eurovisaoDAO.Vencedor();
+        }
+
+        /*---------------------XML--------------------*/
+        public void ExportarDados()
+        {
+            _eurovisaoDAO.ExportarDados();
+        }
+
+        public bool ImportarDados()
+        {
+            return _eurovisaoDAO.ImportarDados();
+        }
 
         /*---------------------Serviçõs para o API--------------------*/
         public List<EuroRegistoResponse> GetConcorrenteListResponse() //adicionar dependencia do eurovisao Models
