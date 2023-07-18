@@ -49,7 +49,7 @@ Mais informações:
 
 ## Notas do Projeto Final:
 
-**Versão Final (de momento): [v8](ProjFinal_Rita_v8)**
+**Versão Final (de momento): [v11](ProjFinal_Rita_v11)**
 
 ### Descrição do modelo de negócio/atividade do tema do trabalho prático:
 
