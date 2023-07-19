@@ -2,7 +2,12 @@
 
 ## Enunciado:
 
-<Em construção>
+Utilizando todo o trabalho produzido na “Task06” (duplicando a pasta utilizando os conselhos fornecidos em contexto de aula) e mantendo a imagem do modelo visual, pretende-se que seja acrescentado um novo conjunto de projetos para implementar as alterações necessárias na solução para adicionar o acesso à base de dados PostgreSQL, utilizando as estratégias sugeridas em contexto de aula.
+O novo conjunto de projetos da solução para acesso à base de dados deve reproduzir o mesmo comportamento evidenciado no conjunto de projetos que implementa o acesso aos dados em XML.
+NOTA: todo o código deverá estar a funcionar sem erros.
+
+O objetivo é atualizar a solução duplicada com o código criado e separado por módulos reutilizáveis, deve-se acrescentar as funcionalidades que se considerem necessárias de acordo com a interpretação feita do enunciado. Deverá incluir todas as aprendizagens até ao momento. O output da solução deverá ser feito a partir de projetos do tipo “Console app” correspondente a cada uma funcionalidade adicionada desde a “Task04”.
+
 
 ![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/dce2d556-99f3-4354-b9cf-cabd737ba4e0)
 
@@ -10,39 +15,18 @@
 
 ### Resposta Task 07:
 
-<Em construção>
+Primeiro foi criada a base de dados ANOTACOESDB, para serem guardadas as anotações criadas.
 
-Para ser feita a serialização em formato JSON:
+**(Colocar aqui código sql)**
 
-Primeiro foi criado um novo projeto WEB API: **Anotacoes_WebAPI**. Dentro deste projeto, existe uma pasta Controllers, onde foi criado um novo Controller: *AnotacoesController*.
-De seguida foram criadas 2 bibliotecas de classes:
-- Anotacoes_Models2Api
-  - Contêm 2 classes: AnotRegistoRequest e AnotRegistoResponse
-- Anotacoes_Services2Api
-  - Contêm 1 classe: AnotacoesServicos
- 
-Foram criados novos métodos em **AnotacoesAula_BR** para poder ser feito o CRUD (Create, Read, Update e Delete). E por isso, também foram adicionados os métodos correspondentes em **AnotacoesAula_DAO** (se estivessem em falta).
+Depois foram feitas várias alterações na solução:
 
-Depois, no Agenda Controller foi colocada a estrutura necessária que permite executar o CRUD (que aparece como *Get, Post, Put, Delete*) na lista de anotações. Quando acedermos ao swagger (que é um site que nos permite visualizar, documentar e testar APIs), vai aparecer a lista em formato JSON e depois podemos aplicar as alterações que quisermos na lista de anotações (obter, inserir, modificar, apagar).
+- Foram duplicados os projetos BO, BL, DAL, Task04App (é a Console), Services2Api, WebAPI, e modificados para BOpg, BLpg, DALpg, Task04Apppg, Services2Apipg, WebApipg, tanto no nome como depois no ficheiro .csproj. Nota: quando forem adicionados os projetos, não esquecer de alterar os namespaces (acrescentar pg), e também de alterar as dependências.
+- Em Anotacoes_Constantes foi adicionada uma constante que vai ser depois necessária para o projeto Anotacoes_Configuration (que vai ser criado de seguida): public const string NomeXmlConfiguration = "AnotacoesCFG.xml";
+- Foi criada a biblioteca de classes Anotacoes_Configuration que é necessária para tornar persistente a configuração de acesso à base de dados PostgreSQL. (Contém uma estrutura para guardar todas as informações de configuração do software).
+- O ID é agora gerado automaticamente através da base de dados, e não da classe GetNewId;
+- Foram removidas as estruturas para serialização em xml e json em quase todas as bibliotecas.
+- Em BLpg e DALpg, foi adicionado o package Npgsql 7.0.4 que permite a conexão e interação com o server PostgreSQL.
 
-O que aparece no swagger:
-
-![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/f799260e-176d-4aa6-af8c-850ac8762d9d)
-
-Se executarmos o GET/api/Anotacoes, vemos a lista de anotações, como podemos ver na imagem seguinte algumas anotações:
-
-![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/7c082aa8-75db-460e-bd0f-599dd7b61d1c)
-
-Podemos verificar que na anotação com o id 10 temos revisado como false, podemos alterar para true em PUT/api/Anotacoes/{id}:
-
-![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/057e0bee-fbf0-47cc-8d66-dd8168a09a57)
-
-Como podemos verificar na imagem acima, a alteração foi feita com sucesso. A propriedade revisado passou para true, e obtivemos o status code 200, que é o status OK.
-
-Também foi criado um outro projeto, aplicativo de console: **AnotConsole2Api**. Que permite vermos na consola o formato JSON que aparece no swagger (apesar de que também podemos apresentar o resultado de uma forma mais fácil de ler, como vemos na imagem embaixo as 2 formas). Em cima da Console2Api devemos clicar no gerir nuget, e instalar o Newtonsoft.Json.
-
-![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/81a46893-dcfb-40ee-9982-1d60cfd89e52)
-
-
-**Nota:** Um dos outputs da solução está no Projeto chamado **“Task04App”**.
+**Nota:** Os outputs estão nos projetos: “Task04App”, “Task04Apppg”, “AnotConsole2Api”, “Anotacoes_WebAPI” e “Anotacoes_WebAPIpg”**.
   
