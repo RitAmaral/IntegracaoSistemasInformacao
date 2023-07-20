@@ -46,5 +46,5 @@ Na base de dados:
 ![image](https://github.com/RitAmaral/IntegracaoSistemasInformacao/assets/132366922/f82d1011-1721-49b8-bc07-d50758d357b7)
 
 
-**Nota:** Os outputs estão nos projetos: “Task04App”, “Task04Apppg”, “AnotConsole2Api”, “Anotacoes_WebAPI” e “Anotacoes_WebAPIpg”**.
+**Nota:** Os outputs estão nos projetos: “Task04App”, “Task04Apppg”, “AnotConsole2Api”, “Anotacoes_WebAPI” e “Anotacoes_WebAPIpg”.
   
