@@ -94,7 +94,7 @@ namespace Eurovisao_DALpg
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao obter lista<string> de compromissos!", e);
+                throw new Exception("Erro ao obter lista<string> de concorrentes!", e);
             }
             return list;
         }
@@ -401,7 +401,7 @@ namespace Eurovisao_DALpg
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao obter lista<string> de compromissos!", e);
+                throw new Exception("Erro ao obter lista<string> de concorrentes!", e);
             }
             return list;
         }
@@ -442,7 +442,7 @@ namespace Eurovisao_DALpg
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao obter lista<string> de compromissos!", e);
+                throw new Exception("Erro ao obter lista<string> de concorrentes!", e);
             }
             return list;
         }

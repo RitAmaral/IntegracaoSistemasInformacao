@@ -340,11 +340,11 @@ namespace Eurovisao_Console
                 if (!br.ExisteConcorrente(novo.Pais, out obj))
                 {
                     br.AdicionarConcorrente(novo);
-                    Console.WriteLine($"Concorrente para {novo.Pais} foi adicionado na BD!");
+                    Console.WriteLine($"Concorrente de '{novo.Pais}' foi adicionado na BD!");
                 }
                 else
                 {
-                    Console.WriteLine($"Concorrente para {novo.Pais} já existe na BD!");
+                    Console.WriteLine($"Concorrente de '{novo.Pais}' já existe na BD!");
                 }
             }
         }
