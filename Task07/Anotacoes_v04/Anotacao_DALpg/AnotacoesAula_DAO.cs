@@ -65,7 +65,7 @@ namespace Anotacao_DALpg
                     tr.Rollback();
                     tr.Dispose();
                 }
-                throw new Exception("Erro ao adicionar compromisso!", e);
+                throw new Exception("Erro ao adicionar anotação!", e);
             }
         }
 
@@ -220,7 +220,7 @@ namespace Anotacao_DALpg
         public List<string> GetAnotacoesList()
         {
             List<string> list = new List<string>();
-            string sqltxt = "SELECT id, nome, aula FROM public.anotacoes;";
+            string sqltxt = "SELECT id, nome, aula, tipo, revisado FROM public.anotacoes;";
             try
             {
                 DbOpen();
@@ -233,14 +233,16 @@ namespace Anotacao_DALpg
                         int tmpId = res1.GetInt32(res1.GetOrdinal("id"));
                         string tmpNome = res1["nome"].ToString();
                         string tmpAula = res1["aula"].ToString();
-                        list.Add($"{tmpId}, {tmpNome}\t{tmpAula}");
+                        Tipo tmpTipo = (Tipo)res1.GetByte(res1.GetOrdinal("tipo"));
+                        bool tmpRevisado = res1.GetBoolean(res1.GetOrdinal("revisado"));
+                        list.Add($"{tmpId}, {tmpNome} |\t{tmpAula} |\t{tmpTipo} |\t{tmpRevisado}");
                     }
                 }
                 if (!res1.IsClosed) res1.Close();
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao obter lista<string> de compromissos!", e);
+                throw new Exception("Erro ao obter lista<string> de anotações!", e);
             }
             return list;
         }
@@ -282,7 +284,7 @@ namespace Anotacao_DALpg
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao obter lista<string> de compromissos!", e);
+                throw new Exception("Erro ao obter lista<string> de anotações!", e);
             }
             return list;
         }

@@ -76,10 +76,10 @@ namespace Anotacao_BLpg
         {
             return _AnotacoesDao.ExisteAnotacao(nome);
         }
-        public bool ExisteAnotacao(string nomeCliente, out AnotacoesAula? obj)
+        public bool ExisteAnotacao(string nome, out AnotacoesAula? obj)
         {
             obj = null;
-            return _AnotacoesDao.ExisteAnotacao(nomeCliente, out obj);
+            return _AnotacoesDao.ExisteAnotacao(nome, out obj);
         }
 
         //serviços para o API

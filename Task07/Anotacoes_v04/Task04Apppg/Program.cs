@@ -28,15 +28,15 @@ internal class Program
         /*-------------------------------------Listar os objetos----------------------------------*/
 
         Console.WriteLine("\nListar os objetos:");
-        Console.WriteLine("ID\t|\tNOME\t|\tAULA");
-        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("ID\t|\tNOME\t|\tAULA\t|\tTIPO\tREVISADO");
+        Console.WriteLine("-----------------------------------------------------------------");
         MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
         /*-------------------------------------Apagar objeto----------------------------------*/
 
         Console.WriteLine("\nA apagar o objeto com o nome \"Formas Barrocas: Kandinsky\"");
-        Console.WriteLine("ID\t|\tNOME\t|\tAULA");
-        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("ID\t|\tNOME\t|\tAULA\t|\tTIPO\tREVISADO");
+        Console.WriteLine("-----------------------------------------------------------------");
         if (gestaoAnotacoes.ApagarAnotacao("Formas Barrocas: Kandinsky"))
             MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
@@ -55,8 +55,8 @@ internal class Program
 
         Console.WriteLine();
         Console.WriteLine("Listar os objetos:");
-        Console.WriteLine("ID\t|\tNOME\t|\tAULA");
-        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("ID\t|\tNOME\t|\tAULA\t|\tTIPO\tREVISADO");
+        Console.WriteLine("-----------------------------------------------------------------");
         MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
 
@@ -76,11 +76,11 @@ internal class Program
             if (!br.ExisteAnotacao(novo.Nome, out obj))
             {
                 br.AdicionarAnotacao(novo);
-                Console.WriteLine($"Compromisso para {novo.Nome} foi adicionado na BD!");
+                Console.WriteLine($"Anotação '{novo.Nome}' foi adicionada na BD!");
             }
             else
             {
-                Console.WriteLine($"Compromisso para {novo.Nome} já existe na BD!");
+                Console.WriteLine($"Anotação '{novo.Nome}' já existe na BD!");
             }
         }
     }
