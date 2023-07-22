@@ -34,7 +34,7 @@ internal class Program
         if (gestaoCompromissos.ExisteCompromisso(novo1.Nome))
         {
             Console.WriteLine($"Modificar a data do objeto com o nome\"{novo1.Nome}\"");
-            gestaoCompromissos.ModificarCompromisso(novo1, 15, 3);
+            gestaoCompromissos.ModificarCompromisso(novo1, 14, 3);
         }
 
         Console.WriteLine("Adicionar o objeto com o nome \"Armando\"");
