@@ -66,6 +66,12 @@ namespace Anotacao_BLpg
             if (ReferenceEquals(anotacao, null)) return false;
             return _AnotacoesDao.ModificarAnotacao(id, anotacao);
         }
+        public bool ModificarAnotacao(string aula, AnotacoesAula anotacao) //modifica aula de uma anotação
+        {
+            if (ReferenceEquals(anotacao, null)) return false;
+            anotacao.Aula = aula;
+            return _AnotacoesDao.ModificarAnotacao(anotacao.Id, anotacao);
+        }
         public bool ExisteAnotacao(string nome) //verifica se existe anotação pelo nome
         {
             return _AnotacoesDao.ExisteAnotacao(nome);

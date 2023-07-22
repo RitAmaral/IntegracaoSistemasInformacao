@@ -17,7 +17,7 @@ internal class Program
         Console.WriteLine("... a verificar os dados na BD ...");
         VerificarAdiciona(gestaoAnotacoes, novo1);
 
-        VerificarAdiciona(gestaoAnotacoes, novo1);
+        VerificarAdiciona(gestaoAnotacoes, novo1); //como já foi adicionado em cima, vai aparecer na consola que esta anotação já foi adicionada
         VerificarAdiciona(gestaoAnotacoes, gestaoAnotacoes.NovaAnotacao("Economia Americana Pós-Guerra", "HISTÓRIA 230", Enum.Parse<Tipo>("Sessao"), true));
         VerificarAdiciona(gestaoAnotacoes, gestaoAnotacoes.NovaAnotacao("Kazuo Ishiguro: Debate", "LITERATURA 455", Enum.Parse <Tipo>("GrupoDeEstudo"), false));
         VerificarAdiciona(gestaoAnotacoes, gestaoAnotacoes.NovaAnotacao("Formas Barrocas: Kandinsky", "ARTE 399", Enum.Parse<Tipo>("Leitura"), true));
@@ -27,14 +27,16 @@ internal class Program
 
         /*-------------------------------------Listar os objetos----------------------------------*/
 
-        Console.WriteLine("Listar os objetos:");
-        Console.WriteLine("REVISADO\t|\tID\t|\tNOME\t|\tAULA\t|\tTIPO");
-        Console.WriteLine("-----------------------------------------------------------------------------------------");
+        Console.WriteLine("\nListar os objetos:");
+        Console.WriteLine("ID\t|\tNOME\t|\tAULA");
+        Console.WriteLine("----------------------------------------");
         MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
         /*-------------------------------------Apagar objeto----------------------------------*/
 
-        Console.WriteLine("A apagar o objeto com o nome \"Formas Barrocas: Kandinsky\"");
+        Console.WriteLine("\nA apagar o objeto com o nome \"Formas Barrocas: Kandinsky\"");
+        Console.WriteLine("ID\t|\tNOME\t|\tAULA");
+        Console.WriteLine("----------------------------------------");
         if (gestaoAnotacoes.ApagarAnotacao("Formas Barrocas: Kandinsky"))
             MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
@@ -44,15 +46,17 @@ internal class Program
         Console.WriteLine($"A verificar a existência do objeto com o nome \"{novo1.Nome}\"...");
         if (gestaoAnotacoes.ExisteAnotacao(novo1.Nome))
         {
-            Console.WriteLine($"A modificar o ID do objeto com o nome \"{novo1.Nome}\"...");
-            novo1.Id = 10; //quero mudar o ID para 10
-            gestaoAnotacoes.ModificarAnotacao(1, novo1); //o novo1 tem o ID = 1, e vai passar para ID = 10
+            Console.WriteLine($"A modificar a Aula do objeto com o nome \"{novo1.Nome}\"...");
+            novo1.Aula = "MATEMÁTICA 650"; //quero mudar a aula para MATEMÁTICA 650, em vez de 630
+            gestaoAnotacoes.ModificarAnotacao(1, novo1); //o novo1 tem o ID = 1
         }
 
         /*-------------------------------------Lista os objetos após apagar e modificar----------------------------------*/
 
         Console.WriteLine();
         Console.WriteLine("Listar os objetos:");
+        Console.WriteLine("ID\t|\tNOME\t|\tAULA");
+        Console.WriteLine("----------------------------------------");
         MostrarLista(gestaoAnotacoes.GetAnotacoesList());
 
 
