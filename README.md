@@ -22,12 +22,15 @@ ___
   - [Agenda v2](Work01/Agenda_v02) - Início da aula sobre xml e serialização
   - [Agenda v3](Work01/Agenda_v03) - Exercício finalizado: serialização xml
   - [Agenda v4](Work01/Agenda_v04) - Exercício serialização json
+  - [Agenda v5](Work01/Agenda_v05) - Exercício ligação à base de dados
 * [Task 04](Task04), aula: 15/06/2023, 19/06/2023
   - [Anotações v1](Task04/Anotacoes_v01)
 * [Task 05](Task05), aula: 23/06/2023 - serialização xml
   - [Anotações v2](Task05/Anotacoes_v02)
-* [Task 06](Task06), aula: 03/07/2023 - serialização json finalizada
+* [Task 06](Task07), aula: 03/07/2023 - serialização json finalizada
   - [Anotações v3](Task06/Anotacoes_v03)
+* [Task 07](Task07), aula: 18/07/2023 - ligação à base de dados
+  - [Anotações v4](Task07/Anotacoes_v04)
 * [Projeto Final](ProjF_Rita)
 
 ---
