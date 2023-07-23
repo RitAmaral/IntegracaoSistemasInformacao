@@ -257,7 +257,7 @@ namespace Eurovisao_DALpg
         public bool ModificarConcorrente(int id, Eurovisao concorrente) 
         {
             if (ReferenceEquals(concorrente, null)) return false;
-            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica " +
+            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica, " +
                 "ronda=@ronda, pontosjuri=@pontosjuri, pontostelevoto=@pontostelevoto, totalpontos=@totalpontos WHERE id=@id;";
             NpgsqlTransaction? tr = null;
             try
@@ -265,6 +265,7 @@ namespace Eurovisao_DALpg
                 DbOpen();
                 tr = Db.BeginTransaction();
                 NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@id", concorrente.ID);
                 com1.Parameters.AddWithValue("@pais", concorrente.Pais);
                 com1.Parameters.AddWithValue("@nomerepresentante", concorrente.NomeRepresentante);
                 com1.Parameters.AddWithValue("@nomemusica", concorrente.NomeMusica);
@@ -279,7 +280,6 @@ namespace Eurovisao_DALpg
                 com1.Dispose();
                 return resultado == 1;
             }
-
             catch (Exception e)
             {
                 if (tr != null)
@@ -294,7 +294,7 @@ namespace Eurovisao_DALpg
         public bool ModificarPontosJuri(int pontosJuri, Eurovisao concorrente) 
         {
             if (ReferenceEquals(concorrente, null)) return false;
-            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica " +
+            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica, " +
                 "ronda=@ronda, pontosjuri=@pontosjuri, pontostelevoto=@pontostelevoto, totalpontos=@totalpontos WHERE pontosjuri=@pontosjuri;";
             NpgsqlTransaction? tr = null;
             try
@@ -302,6 +302,7 @@ namespace Eurovisao_DALpg
                 DbOpen();
                 tr = Db.BeginTransaction();
                 NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@id", concorrente.ID);
                 com1.Parameters.AddWithValue("@pais", concorrente.Pais);
                 com1.Parameters.AddWithValue("@nomerepresentante", concorrente.NomeRepresentante);
                 com1.Parameters.AddWithValue("@nomemusica", concorrente.NomeMusica);
@@ -331,7 +332,7 @@ namespace Eurovisao_DALpg
         public bool ModificarPontosTelevoto(int pontosTelevoto, Eurovisao concorrente)
         {
             if (ReferenceEquals(concorrente, null)) return false;
-            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica " +
+            string sqltxt = "UPDATE public.concorrentes SET pais=@pais, nomerepresentante=@nomerepresentante, nomemusica=@nomemusica, " +
                 "ronda=@ronda, pontosjuri=@pontosjuri, pontostelevoto=@pontostelevoto, totalpontos=@totalpontos WHERE pontostelevoto=@pontostelevoto;";
             NpgsqlTransaction? tr = null;
             try
@@ -339,6 +340,7 @@ namespace Eurovisao_DALpg
                 DbOpen();
                 tr = Db.BeginTransaction();
                 NpgsqlCommand com1 = new NpgsqlCommand(sqltxt, Db);
+                com1.Parameters.AddWithValue("@id", concorrente.ID);
                 com1.Parameters.AddWithValue("@pais", concorrente.Pais);
                 com1.Parameters.AddWithValue("@nomerepresentante", concorrente.NomeRepresentante);
                 com1.Parameters.AddWithValue("@nomemusica", concorrente.NomeMusica);
